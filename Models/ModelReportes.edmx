@@ -1,0 +1,1275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pruebaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Archivos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Idusuario" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Idmensaje" Type="int" />
+          <Property Name="Extension" Type="varchar" MaxLength="50" />
+          <Property Name="Idnovedad" Type="int" />
+          <Property Name="Idproyecto" Type="int" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Idarea" />
+          </Key>
+          <Property Name="Idarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Carpetas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="User_Id" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Estado_novedades">
+          <Key>
+            <PropertyRef Name="idestadonovedad" />
+          </Key>
+          <Property Name="idestadonovedad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="idusuario" Type="int" />
+          <Property Name="color" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Estado_requerimiento">
+          <Key>
+            <PropertyRef Name="Idestado" />
+          </Key>
+          <Property Name="Idestado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="idusuario" Type="int" />
+          <Property Name="color" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="HistorialDelega">
+          <Key>
+            <PropertyRef Name="Idhistorial" />
+          </Key>
+          <Property Name="Idhistorial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Idproyecto" Type="int" />
+          <Property Name="Idmensaje" Type="int" />
+          <Property Name="Usuariodelega" Type="varchar" MaxLength="150" />
+          <Property Name="Usuariodelegado" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="LNK_ROL_Permiso">
+          <Key>
+            <PropertyRef Name="Rol_Id" />
+            <PropertyRef Name="Permiso_Id" />
+          </Key>
+          <Property Name="Rol_Id" Type="int" Nullable="false" />
+          <Property Name="Permiso_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LNK_Usuario_Rol">
+          <Key>
+            <PropertyRef Name="User_Id" />
+            <PropertyRef Name="Rol_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Rol_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mensajes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Remitente" Type="varchar" MaxLength="150" />
+          <Property Name="Asunto" Type="varchar" MaxLength="150" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Idusuariodestino" Type="int" />
+          <Property Name="Maildestino" Type="nvarchar" MaxLength="150" />
+          <Property Name="Destinatario" Type="varchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Idpadre" Type="int" />
+          <Property Name="Idproyecto" Type="int" />
+          <Property Name="Idusuariodelega" Type="int" />
+          <Property Name="Usuariodelega" Type="varchar" MaxLength="150" />
+          <Property Name="Idestado" Type="int" />
+          <Property Name="IdCarpeta" Type="int" />
+        </EntityType>
+        <EntityType Name="Novedades">
+          <Key>
+            <PropertyRef Name="Idnovedad" />
+          </Key>
+          <Property Name="Idnovedad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Idmensaje" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Usuario" Type="varchar" MaxLength="255" />
+          <Property Name="Titulo" Type="varchar" MaxLength="250" />
+          <Property Name="Idproyecto" Type="int" />
+          <Property Name="Idestadonovedad" Type="int" />
+          <Property Name="User_Id" Type="int" />
+          <Property Name="Privado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="Permiso_Id" />
+          </Key>
+          <Property Name="Permiso_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proyectos">
+          <Key>
+            <PropertyRef Name="Idproyecto" />
+          </Key>
+          <Property Name="Idproyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="500" />
+          <Property Name="Creadopor" Type="varchar" MaxLength="250" />
+          <Property Name="Idmensaje" Type="int" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="User_Id" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Fechamodif" Type="datetime" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="Rol_Id" />
+          </Key>
+          <Property Name="Rol_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+          <Property Name="EsAdmin" Type="bit" />
+          <Property Name="Modificado" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Modificado" Type="datetime" />
+          <Property Name="Inactivo" Type="bit" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="30" />
+          <Property Name="Inicial" Type="nvarchar" MaxLength="3" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Idproyectos" Type="int" />
+          <Property Name="Idarea" Type="int" />
+        </EntityType>
+        <Association Name="FK_Archivos_Mensajes">
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="0..1" />
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archivos_Novedades">
+          <End Role="Novedades" Type="Self.Novedades" Multiplicity="0..1" />
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Novedades">
+              <PropertyRef Name="Idnovedad" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idnovedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archivos_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carpetas_Mensajes">
+          <End Role="Carpetas" Type="Self.Carpetas" Multiplicity="0..1" />
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carpetas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="IdCarpeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carpetas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Carpetas" Type="Self.Carpetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Carpetas">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_novedades_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Estado_novedades" Type="Self.Estado_novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Estado_novedades">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_requerimiento_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Estado_requerimiento" Type="Self.Estado_requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Estado_requerimiento">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialDelega_Mensajes">
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="0..1" />
+          <End Role="HistorialDelega" Type="Self.HistorialDelega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialDelega">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialDelega_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+          <End Role="HistorialDelega" Type="Self.HistorialDelega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="HistorialDelega">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNK_ROL_Permiso_Permisos">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+          <End Role="LNK_ROL_Permiso" Type="Self.LNK_ROL_Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="Permiso_Id" />
+            </Principal>
+            <Dependent Role="LNK_ROL_Permiso">
+              <PropertyRef Name="Permiso_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNK_ROL_Permiso_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="LNK_ROL_Permiso" Type="Self.LNK_ROL_Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="Rol_Id" />
+            </Principal>
+            <Dependent Role="LNK_ROL_Permiso">
+              <PropertyRef Name="Rol_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNK_Usuario_Rol_ROLES">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="LNK_Usuario_Rol" Type="Self.LNK_Usuario_Rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="Rol_Id" />
+            </Principal>
+            <Dependent Role="LNK_Usuario_Rol">
+              <PropertyRef Name="Rol_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNK_Usuario_Rol_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="LNK_Usuario_Rol" Type="Self.LNK_Usuario_Rol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="LNK_Usuario_Rol">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mensajes_Estado_requerimiento">
+          <End Role="Estado_requerimiento" Type="Self.Estado_requerimiento" Multiplicity="0..1" />
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_requerimiento">
+              <PropertyRef Name="Idestado" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="Idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mensajes_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mensajes_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Estado_novedades">
+          <End Role="Estado_novedades" Type="Self.Estado_novedades" Multiplicity="0..1" />
+          <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_novedades">
+              <PropertyRef Name="idestadonovedad" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idestadonovedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Mensajes">
+          <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="0..1" />
+          <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Proyectos">
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+          <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Idarea" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="Idarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AgruparCarpetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Idmensaje" Type="int" Mode="In" />
+          <Parameter Name="Idcarpeta" Type="int" Mode="In" />
+        </Function>
+        <Function Name="historialDelegacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Idmensaje" Type="int" Mode="In" />
+          <Parameter Name="Idproyecto" Type="int" Mode="In" />
+          <Parameter Name="Usuariodelega" Type="varchar" Mode="In" />
+          <Parameter Name="Usuariodelegado" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="pruebaModelStoreContainer">
+          <EntitySet Name="Archivos" EntityType="Self.Archivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carpetas" EntityType="Self.Carpetas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado_novedades" EntityType="Self.Estado_novedades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado_requerimiento" EntityType="Self.Estado_requerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialDelega" EntityType="Self.HistorialDelega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LNK_ROL_Permiso" EntityType="Self.LNK_ROL_Permiso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LNK_Usuario_Rol" EntityType="Self.LNK_Usuario_Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mensajes" EntityType="Self.Mensajes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Novedades" EntityType="Self.Novedades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyectos" EntityType="Self.Proyectos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Archivos_Mensajes" Association="Self.FK_Archivos_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archivos_Novedades" Association="Self.FK_Archivos_Novedades">
+            <End Role="Novedades" EntitySet="Novedades" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archivos_Proyectos" Association="Self.FK_Archivos_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carpetas_Mensajes" Association="Self.FK_Carpetas_Mensajes">
+            <End Role="Carpetas" EntitySet="Carpetas" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carpetas_Usuarios" Association="Self.FK_Carpetas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Carpetas" EntitySet="Carpetas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_novedades_Usuarios" Association="Self.FK_Estado_novedades_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estado_novedades" EntitySet="Estado_novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_requerimiento_Usuarios" Association="Self.FK_Estado_requerimiento_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialDelega_Mensajes" Association="Self.FK_HistorialDelega_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialDelega_Proyectos" Association="Self.FK_HistorialDelega_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNK_ROL_Permiso_Permisos" Association="Self.FK_LNK_ROL_Permiso_Permisos">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="LNK_ROL_Permiso" EntitySet="LNK_ROL_Permiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNK_ROL_Permiso_ROLES" Association="Self.FK_LNK_ROL_Permiso_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="LNK_ROL_Permiso" EntitySet="LNK_ROL_Permiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNK_Usuario_Rol_ROLES" Association="Self.FK_LNK_Usuario_Rol_ROLES">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="LNK_Usuario_Rol" EntitySet="LNK_Usuario_Rol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNK_Usuario_Rol_Usuarios" Association="Self.FK_LNK_Usuario_Rol_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="LNK_Usuario_Rol" EntitySet="LNK_Usuario_Rol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mensajes_Estado_requerimiento" Association="Self.FK_Mensajes_Estado_requerimiento">
+            <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mensajes_Proyectos" Association="Self.FK_Mensajes_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mensajes_Usuarios" Association="Self.FK_Mensajes_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Estado_novedades" Association="Self.FK_Novedades_Estado_novedades">
+            <End Role="Estado_novedades" EntitySet="Estado_novedades" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Mensajes" Association="Self.FK_Novedades_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Proyectos" Association="Self.FK_Novedades_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Usuarios" Association="Self.FK_Novedades_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_Usuarios" Association="Self.FK_Proyectos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Area" Association="Self.FK_Usuarios_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pruebaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RequerimientosConn" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="updateidlote">
+          </FunctionImport>
+          <FunctionImport Name="updateidloteReportes" />
+          <EntitySet Name="Archivos" EntityType="pruebaModel.Archivos" />
+          <EntitySet Name="Mensajes" EntityType="pruebaModel.Mensajes" />
+          <AssociationSet Name="FK_Archivos_Mensajes" Association="pruebaModel.FK_Archivos_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
+          <EntitySet Name="Permisos" EntityType="pruebaModel.Permisos" />
+          <EntitySet Name="ROLES" EntityType="pruebaModel.ROLES" />
+          <EntitySet Name="Usuarios" EntityType="pruebaModel.Usuarios" />
+          <AssociationSet Name="FK_Mensajes_Usuarios" Association="pruebaModel.FK_Mensajes_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="LNK_ROL_Permiso" Association="pruebaModel.LNK_ROL_Permiso">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="ROLES" EntitySet="ROLES" />
+          </AssociationSet>
+          <AssociationSet Name="LNK_Usuario_Rol" Association="pruebaModel.LNK_Usuario_Rol">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <FunctionImport Name="Mensajeria" ReturnType="Collection(pruebaModel.Mensajeria_Result)">
+          </FunctionImport>
+          <FunctionImport Name="Mensajerias" EntitySet="Mensajes" ReturnType="Collection(pruebaModel.Mensajes)">
+          </FunctionImport>
+          <EntitySet Name="Novedades" EntityType="pruebaModel.Novedades" />
+          <AssociationSet Name="FK_Archivos_Novedades" Association="pruebaModel.FK_Archivos_Novedades">
+            <End Role="Novedades" EntitySet="Novedades" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Mensajes" Association="pruebaModel.FK_Novedades_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <EntitySet Name="Proyectos" EntityType="pruebaModel.Proyectos" />
+          <AssociationSet Name="FK_Mensajes_Proyectos" Association="pruebaModel.FK_Mensajes_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyectos_Usuarios" Association="pruebaModel.FK_Proyectos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Proyectos" EntitySet="Proyectos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Proyectos" Association="pruebaModel.FK_Novedades_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archivos_Proyectos" Association="pruebaModel.FK_Archivos_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
+          <EntitySet Name="Area" EntityType="pruebaModel.Area" />
+          <AssociationSet Name="FK_Usuarios_Area" Association="pruebaModel.FK_Usuarios_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Estado_novedades" EntityType="pruebaModel.Estado_novedades" />
+          <EntitySet Name="Estado_requerimiento" EntityType="pruebaModel.Estado_requerimiento" />
+          <AssociationSet Name="FK_Estado_novedades_Usuarios" Association="pruebaModel.FK_Estado_novedades_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estado_novedades" EntitySet="Estado_novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Estado_novedades" Association="pruebaModel.FK_Novedades_Estado_novedades">
+            <End Role="Estado_novedades" EntitySet="Estado_novedades" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estado_requerimiento_Usuarios" Association="pruebaModel.FK_Estado_requerimiento_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mensajes_Estado_requerimiento" Association="pruebaModel.FK_Mensajes_Estado_requerimiento">
+            <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <EntitySet Name="HistorialDelega" EntityType="pruebaModel.HistorialDelega" />
+          <FunctionImport Name="historialDelegacion">
+            <Parameter Name="Idmensaje" Mode="In" Type="Int32" />
+            <Parameter Name="Idproyecto" Mode="In" Type="Int32" />
+            <Parameter Name="Usuariodelega" Mode="In" Type="String" />
+            <Parameter Name="Usuariodelegado" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="FK_HistorialDelega_Mensajes" Association="pruebaModel.FK_HistorialDelega_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialDelega_Proyectos" Association="pruebaModel.FK_HistorialDelega_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Usuarios" Association="pruebaModel.FK_Novedades_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Novedades" EntitySet="Novedades" />
+          </AssociationSet>
+          <FunctionImport Name="AgruparCarpetas">
+            <Parameter Name="Idmensaje" Mode="In" Type="Int32" />
+            <Parameter Name="Idcarpeta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Carpetas" EntityType="pruebaModel.Carpetas" />
+          <AssociationSet Name="FK_Carpetas_Mensajes" Association="pruebaModel.FK_Carpetas_Mensajes">
+            <End Role="Carpetas" EntitySet="Carpetas" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carpetas_Usuarios" Association="pruebaModel.FK_Carpetas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Carpetas" EntitySet="Carpetas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Archivos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Idusuario" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Idmensaje" Type="Int32" />
+          <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Archivos_Mensajes" FromRole="Archivos" ToRole="Mensajes" />
+          <Property Name="Idnovedad" Type="Int32" />
+          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Archivos_Novedades" FromRole="Archivos" ToRole="Novedades" />
+          <Property Name="Idproyecto" Type="Int32" />
+          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Archivos_Proyectos" FromRole="Archivos" ToRole="Proyectos" />
+        </EntityType>
+        <EntityType Name="Mensajes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Remitente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Asunto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Idusuariodestino" Type="Int32" />
+          <Property Name="Maildestino" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Destinatario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Idpadre" Type="Int32" />
+          <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Mensajes" FromRole="Mensajes" ToRole="Archivos" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Mensajes" ToRole="Usuarios" />
+          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Mensajes" ToRole="Novedades" />
+          <Property Name="Idproyecto" Type="Int32" />
+          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Mensajes" ToRole="Proyectos" />
+          <Property Name="Idusuariodelega" Type="Int32" />
+          <Property Name="Usuariodelega" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Idestado" Type="Int32" />
+          <NavigationProperty Name="Estado_requerimiento" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Mensajes" ToRole="Estado_requerimiento" />
+          <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Mensajes" FromRole="Mensajes" ToRole="HistorialDelega" />
+          <Property Name="IdCarpeta" Type="Int32" />
+          <NavigationProperty Name="Carpetas" Relationship="pruebaModel.FK_Carpetas_Mensajes" FromRole="Mensajes" ToRole="Carpetas" />
+        </EntityType>
+        <Association Name="FK_Archivos_Mensajes">
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
+          <End Type="pruebaModel.Archivos" Role="Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="Permiso_Id" />
+          </Key>
+          <Property Name="Permiso_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ROLES" Relationship="pruebaModel.LNK_ROL_Permiso" FromRole="Permisos" ToRole="ROLES" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="Rol_Id" />
+          </Key>
+          <Property Name="Rol_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EsAdmin" Type="Boolean" />
+          <Property Name="Modificado" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Permisos" Relationship="pruebaModel.LNK_ROL_Permiso" FromRole="ROLES" ToRole="Permisos" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.LNK_Usuario_Rol" FromRole="ROLES" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Modificado" Type="DateTime" Precision="3" />
+          <Property Name="Inactivo" Type="Boolean" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Titulo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Inicial" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Usuarios" ToRole="Mensajes" />
+          <NavigationProperty Name="ROLES" Relationship="pruebaModel.LNK_Usuario_Rol" FromRole="Usuarios" ToRole="ROLES" />
+          <Property Name="Idproyectos" Type="Int32" />
+          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Proyectos_Usuarios" FromRole="Usuarios" ToRole="Proyectos" />
+          <Property Name="Idarea" Type="Int32" />
+          <NavigationProperty Name="Area" Relationship="pruebaModel.FK_Usuarios_Area" FromRole="Usuarios" ToRole="Area" />
+          <NavigationProperty Name="Estado_novedades" Relationship="pruebaModel.FK_Estado_novedades_Usuarios" FromRole="Usuarios" ToRole="Estado_novedades" />
+          <NavigationProperty Name="Estado_requerimiento" Relationship="pruebaModel.FK_Estado_requerimiento_Usuarios" FromRole="Usuarios" ToRole="Estado_requerimiento" />
+          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Usuarios" FromRole="Usuarios" ToRole="Novedades" />
+          <NavigationProperty Name="Carpetas" Relationship="pruebaModel.FK_Carpetas_Usuarios" FromRole="Usuarios" ToRole="Carpetas" />
+        </EntityType>
+        <Association Name="FK_Mensajes_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LNK_ROL_Permiso">
+          <End Type="pruebaModel.Permisos" Role="Permisos" Multiplicity="*" />
+          <End Type="pruebaModel.ROLES" Role="ROLES" Multiplicity="*" />
+        </Association>
+        <Association Name="LNK_Usuario_Rol">
+          <End Type="pruebaModel.ROLES" Role="ROLES" Multiplicity="*" />
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="Mensajeria_Result">
+          <Property Type="String" Name="Remitente" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Asunto" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="Fecha" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="Novedades">
+          <Key>
+            <PropertyRef Name="Idnovedad" />
+          </Key>
+          <Property Name="Idnovedad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Idmensaje" Type="Int32" />
+          <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Novedades" FromRole="Novedades" ToRole="Archivos" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Novedades" ToRole="Mensajes" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Idproyecto" Type="Int32" />
+          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Novedades_Proyectos" FromRole="Novedades" ToRole="Proyectos" />
+          <Property Name="Idestadonovedad" Type="Int32" />
+          <NavigationProperty Name="Estado_novedades" Relationship="pruebaModel.FK_Novedades_Estado_novedades" FromRole="Novedades" ToRole="Estado_novedades" />
+          <Property Name="User_Id" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Novedades_Usuarios" FromRole="Novedades" ToRole="Usuarios" />
+          <Property Name="Privado" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_Archivos_Novedades">
+          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="0..1" />
+          <End Type="pruebaModel.Archivos" Role="Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Novedades">
+              <PropertyRef Name="Idnovedad" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idnovedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Mensajes">
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
+          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Proyectos">
+          <Key>
+            <PropertyRef Name="Idproyecto" />
+          </Key>
+          <Property Name="Idproyecto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Creadopor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Idmensaje" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="User_Id" Type="Int32" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Proyectos" ToRole="Mensajes" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Proyectos_Usuarios" FromRole="Proyectos" ToRole="Usuarios" />
+          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Proyectos" FromRole="Proyectos" ToRole="Novedades" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Fechamodif" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Proyectos" FromRole="Proyectos" ToRole="Archivos" />
+          <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Proyectos" FromRole="Proyectos" ToRole="HistorialDelega" />
+        </EntityType>
+        <Association Name="FK_Mensajes_Proyectos">
+          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyectos_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Proyectos">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Proyectos">
+          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
+          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archivos_Proyectos">
+          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
+          <End Type="pruebaModel.Archivos" Role="Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Idarea" />
+          </Key>
+          <Property Name="Idarea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Usuarios_Area" FromRole="Area" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_Usuarios_Area">
+          <End Type="pruebaModel.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Idarea" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="Idarea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Estado_novedades">
+          <Key>
+            <PropertyRef Name="idestadonovedad" />
+          </Key>
+          <Property Name="idestadonovedad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idusuario" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_novedades_Usuarios" FromRole="Estado_novedades" ToRole="Usuarios" />
+          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Estado_novedades" FromRole="Estado_novedades" ToRole="Novedades" />
+          <Property Name="color" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Estado_requerimiento">
+          <Key>
+            <PropertyRef Name="Idestado" />
+          </Key>
+          <Property Name="Idestado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idusuario" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_requerimiento_Usuarios" FromRole="Estado_requerimiento" ToRole="Usuarios" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Estado_requerimiento" ToRole="Mensajes" />
+          <Property Name="color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Estado_novedades_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="pruebaModel.Estado_novedades" Role="Estado_novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Estado_novedades">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Estado_novedades">
+          <End Type="pruebaModel.Estado_novedades" Role="Estado_novedades" Multiplicity="0..1" />
+          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_novedades">
+              <PropertyRef Name="idestadonovedad" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idestadonovedad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estado_requerimiento_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="pruebaModel.Estado_requerimiento" Role="Estado_requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Estado_requerimiento">
+              <PropertyRef Name="idusuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mensajes_Estado_requerimiento">
+          <End Type="pruebaModel.Estado_requerimiento" Role="Estado_requerimiento" Multiplicity="0..1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_requerimiento">
+              <PropertyRef Name="Idestado" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="Idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HistorialDelega">
+          <Key>
+            <PropertyRef Name="Idhistorial" />
+          </Key>
+          <Property Name="Idhistorial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Idproyecto" Type="Int32" />
+          <Property Name="Idmensaje" Type="Int32" />
+          <Property Name="Usuariodelega" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Usuariodelegado" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_HistorialDelega_Mensajes" FromRole="HistorialDelega" ToRole="Mensajes" />
+          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_HistorialDelega_Proyectos" FromRole="HistorialDelega" ToRole="Proyectos" />
+        </EntityType>
+        <Association Name="FK_HistorialDelega_Mensajes">
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
+          <End Type="pruebaModel.HistorialDelega" Role="HistorialDelega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialDelega">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialDelega_Proyectos">
+          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
+          <End Type="pruebaModel.HistorialDelega" Role="HistorialDelega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="HistorialDelega">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Carpetas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="User_Id" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Carpetas_Mensajes" FromRole="Carpetas" ToRole="Mensajes" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Carpetas_Usuarios" FromRole="Carpetas" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_Carpetas_Mensajes">
+          <End Type="pruebaModel.Carpetas" Role="Carpetas" Multiplicity="0..1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carpetas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="IdCarpeta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carpetas_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="pruebaModel.Carpetas" Role="Carpetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Carpetas">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pruebaModelStoreContainer" CdmEntityContainer="RequerimientosConn">
+          <EntitySetMapping Name="Archivos">
+            <EntityTypeMapping TypeName="pruebaModel.Archivos">
+              <MappingFragment StoreEntitySet="Archivos">
+                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+                <ScalarProperty Name="Idnovedad" ColumnName="Idnovedad" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Idusuario" ColumnName="Idusuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mensajes">
+            <EntityTypeMapping TypeName="pruebaModel.Mensajes">
+              <MappingFragment StoreEntitySet="Mensajes">
+                <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
+                <ScalarProperty Name="Idestado" ColumnName="Idestado" />
+                <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
+                <ScalarProperty Name="Idusuariodelega" ColumnName="Idusuariodelega" />
+                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+                <ScalarProperty Name="Idpadre" ColumnName="Idpadre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+                <ScalarProperty Name="Maildestino" ColumnName="Maildestino" />
+                <ScalarProperty Name="Idusuariodestino" ColumnName="Idusuariodestino" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Remitente" ColumnName="Remitente" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="pruebaModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Permiso_Id" ColumnName="Permiso_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="pruebaModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+                <ScalarProperty Name="EsAdmin" ColumnName="EsAdmin" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="pruebaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
+                <ScalarProperty Name="Idproyectos" ColumnName="Idproyectos" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Inicial" ColumnName="Inicial" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Inactivo" ColumnName="Inactivo" />
+                <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="LNK_ROL_Permiso" TypeName="pruebaModel.LNK_ROL_Permiso" StoreEntitySet="LNK_ROL_Permiso">
+            <EndProperty Name="ROLES">
+              <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+            </EndProperty>
+            <EndProperty Name="Permisos">
+              <ScalarProperty Name="Permiso_Id" ColumnName="Permiso_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="LNK_Usuario_Rol" TypeName="pruebaModel.LNK_Usuario_Rol" StoreEntitySet="LNK_Usuario_Rol">
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+            </EndProperty>
+            <EndProperty Name="ROLES">
+              <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Novedades">
+            <EntityTypeMapping TypeName="pruebaModel.Novedades">
+              <MappingFragment StoreEntitySet="Novedades">
+                <ScalarProperty Name="Privado" ColumnName="Privado" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Idestadonovedad" ColumnName="Idestadonovedad" />
+                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Idnovedad" ColumnName="Idnovedad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyectos">
+            <EntityTypeMapping TypeName="pruebaModel.Proyectos">
+              <MappingFragment StoreEntitySet="Proyectos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fechamodif" ColumnName="Fechamodif" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+                <ScalarProperty Name="Creadopor" ColumnName="Creadopor" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="pruebaModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado_novedades">
+            <EntityTypeMapping TypeName="pruebaModel.Estado_novedades">
+              <MappingFragment StoreEntitySet="Estado_novedades">
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idestadonovedad" ColumnName="idestadonovedad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado_requerimiento">
+            <EntityTypeMapping TypeName="pruebaModel.Estado_requerimiento">
+              <MappingFragment StoreEntitySet="Estado_requerimiento">
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Idestado" ColumnName="Idestado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialDelega">
+            <EntityTypeMapping TypeName="pruebaModel.HistorialDelega">
+              <MappingFragment StoreEntitySet="HistorialDelega">
+                <ScalarProperty Name="Usuariodelegado" ColumnName="Usuariodelegado" />
+                <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
+                <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+                <ScalarProperty Name="Idhistorial" ColumnName="Idhistorial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="historialDelegacion" FunctionName="pruebaModel.Store.historialDelegacion" />
+          <FunctionImportMapping FunctionImportName="AgruparCarpetas" FunctionName="pruebaModel.Store.AgruparCarpetas" />
+          <EntitySetMapping Name="Carpetas">
+            <EntityTypeMapping TypeName="pruebaModel.Carpetas">
+              <MappingFragment StoreEntitySet="Carpetas">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

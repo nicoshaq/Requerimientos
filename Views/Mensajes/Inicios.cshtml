@@ -1,0 +1,115 @@
+﻿@model List<Requerimientos.Models.Carpetas>
+@*@model List<Requerimientos.Models.Carpetas>*@
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<style>
+    
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: initial;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 15px 0px 7px;
+    min-height: 48px;
+}
+
+.ibox-content {
+    background-color: initial;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+.ibox-tools a {
+    cursor: pointer;
+    margin-left: 5px;
+    color: #666666;
+}
+
+
+</style>
+
+@*<h5>Carpetas</h5>*@
+
+<div class="ibox collapsed">
+    <div class="ibox-title">
+        <h5>Carpetas</h5>@*<a href="@Url.Action("Create", "Carpetas")">  Crear nueva</a>*@
+        <div class="ibox-tools">
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li>
+                    <a href="#" class="dropdown-item">Config option 1</a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-item">Config option 2</a>
+                </li>
+            </ul>
+            <a class="close-link">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+    <div class="ibox-content" style="">
+        <ul class="category-list" style="padding: 0">
+
+
+            @foreach (var item in Model.Where(r => r.Id > 1))
+            {
+
+                <li>
+                    @*@Html.DisplayFor(modelItem => item.Nombre)*@
+
+
+                    <a href="@Url.Action("Carpetadetalle", "Mensajes", new {id = item.Id})">
+                        <i class="fa fa-folder-open text-navy" style="color: black"></i>
+                        @Html.DisplayFor(modelItem => item.Nombre) ( @item.Mensajes.Count())
+                    </a>
+                </li>
+
+
+
+            }
+        </ul>
+        <br/>
+        <a href="@Url.Action("Create", "Carpetas")"><i class="fa fa-plus text-navy" style="color: black"></i>  Nueva Carpeta</a>
+    </div>
+</div>
+
+@*<ul class="category-list" style="padding: 0">
+    
+
+    @foreach (var item in Model.Where(r => r.Id > 1))
+    {
+
+        <li>
+            @Html.DisplayFor(modelItem => item.Nombre)
+
+
+            <a href="@Url.Action("Carpetadetalle", "Mensajes", new {id = item.Id})"><i class="fa fa-folder-open text-navy" style="color: black"></i>
+                @Html.DisplayFor(modelItem => item.Nombre) ( @item.Mensajes.Count())
+            </a>
+        </li>
+
+
+
+    }
+</ul>*@
+
+
+

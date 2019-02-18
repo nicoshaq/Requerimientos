@@ -1,0 +1,81 @@
+﻿@model Requerimientos.Models.Usuarios
+
+@{
+
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(":input[type='button']").button();
+        $(":input[type='submit']").button();
+    });
+</script>
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Usuarios</h2>
+        <ol class="breadcrumb">
+            @*<li>
+                <a href="@Url.Action("Dashboard_1", "Dashboards")">Home</a>
+            </li>
+            <li>
+                <a>Tables</a>
+            </li>
+            <li class="active">
+                <strong>Validation</strong>
+            </li>*@
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+@using (Html.BeginForm("ListaUsuarios", "Admin", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset class="col-lg-6">
+        @*<legend>
+            <h3>
+                User Details
+            </h3>
+        </legend>*@
+        @Html.Partial("_DetalleUsuario", Model)
+       
+        @*<input type="button" value="Edit" onclick="location.href='@Url.Action("EditarUsuario", "Admin", new { id = Model.User_Id })'" />*@
+    </fieldset>
+
+    <fieldset class="col-lg-6" id="RolesTable">
+        @*<legend>
+            <h3>
+                Roles Associated with this User
+            </h3>
+        </legend>*@
+        
+            @Html.Partial("_ListaUsuariosRoles", Model)
+            
+    </fieldset>
+}
+
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+
+
+        <div>
+            <span>@Html.ActionLink("Ir a Usuarios", "Index", "Admin", new { @class = "btn btn-primary btn-w-m" })</span>
+
+           
+        </div>
+
+        <div>
+            @*@Html.ActionLink("Ir a Usuarios", "Index", "Admin")*@
+        </div>
+
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+

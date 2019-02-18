@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pruebaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Archivos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="Idusuario" Type="int" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Idmensaje" Type="int" />
+    <Property Name="Extension" Type="varchar" MaxLength="50" />
+    <Property Name="Idnovedad" Type="int" />
+    <Property Name="Idproyecto" Type="int" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="Idarea" />
+    </Key>
+    <Property Name="Idarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Carpetas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Fecha" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Estado_novedades">
+    <Key>
+      <PropertyRef Name="idestadonovedad" />
+    </Key>
+    <Property Name="idestadonovedad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+    <Property Name="idusuario" Type="int" />
+    <Property Name="color" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Estado_requerimiento">
+    <Key>
+      <PropertyRef Name="Idestado" />
+    </Key>
+    <Property Name="Idestado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" />
+    <Property Name="idusuario" Type="int" />
+    <Property Name="color" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="HistorialDelega">
+    <Key>
+      <PropertyRef Name="Idhistorial" />
+    </Key>
+    <Property Name="Idhistorial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Idproyecto" Type="int" />
+    <Property Name="Idmensaje" Type="int" />
+    <Property Name="Usuariodelega" Type="varchar" MaxLength="150" />
+    <Property Name="Usuariodelegado" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="LNK_ROL_Permiso">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+      <PropertyRef Name="Permiso_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+    <Property Name="Permiso_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LNK_Usuario_Rol">
+    <Key>
+      <PropertyRef Name="User_Id" />
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Rol_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mensajes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Remitente" Type="varchar" MaxLength="150" />
+    <Property Name="Asunto" Type="varchar" MaxLength="150" />
+    <Property Name="Mensaje" Type="varchar(max)" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="Idusuariodestino" Type="int" />
+    <Property Name="Maildestino" Type="nvarchar" MaxLength="150" />
+    <Property Name="Destinatario" Type="varchar" MaxLength="150" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Idpadre" Type="int" />
+    <Property Name="Idproyecto" Type="int" />
+    <Property Name="Idusuariodelega" Type="int" />
+    <Property Name="Usuariodelega" Type="varchar" MaxLength="150" />
+    <Property Name="Idestado" Type="int" />
+    <Property Name="IdCarpeta" Type="int" />
+  </EntityType>
+  <EntityType Name="Novedades">
+    <Key>
+      <PropertyRef Name="Idnovedad" />
+    </Key>
+    <Property Name="Idnovedad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Idmensaje" Type="int" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="Usuario" Type="varchar" MaxLength="255" />
+    <Property Name="Titulo" Type="varchar" MaxLength="250" />
+    <Property Name="Idproyecto" Type="int" />
+    <Property Name="Idestadonovedad" Type="int" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Privado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="Permiso_Id" />
+    </Key>
+    <Property Name="Permiso_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proyectos">
+    <Key>
+      <PropertyRef Name="Idproyecto" />
+    </Key>
+    <Property Name="Idproyecto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="500" />
+    <Property Name="Creadopor" Type="varchar" MaxLength="250" />
+    <Property Name="Idmensaje" Type="int" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Fechamodif" Type="datetime" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="Rol_Id" />
+    </Key>
+    <Property Name="Rol_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+    <Property Name="EsAdmin" Type="bit" />
+    <Property Name="Modificado" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Modificado" Type="datetime" />
+    <Property Name="Inactivo" Type="bit" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="30" />
+    <Property Name="Inicial" Type="nvarchar" MaxLength="3" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="100" />
+    <Property Name="Idproyectos" Type="int" />
+    <Property Name="Idarea" Type="int" />
+  </EntityType>
+  <Association Name="FK_Archivos_Mensajes">
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="0..1" />
+    <End Role="Archivos" Type="Self.Archivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mensajes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Archivos">
+        <PropertyRef Name="Idmensaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Archivos_Novedades">
+    <End Role="Novedades" Type="Self.Novedades" Multiplicity="0..1" />
+    <End Role="Archivos" Type="Self.Archivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Novedades">
+        <PropertyRef Name="Idnovedad" />
+      </Principal>
+      <Dependent Role="Archivos">
+        <PropertyRef Name="Idnovedad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Archivos_Proyectos">
+    <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+    <End Role="Archivos" Type="Self.Archivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyectos">
+        <PropertyRef Name="Idproyecto" />
+      </Principal>
+      <Dependent Role="Archivos">
+        <PropertyRef Name="Idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carpetas_Mensajes">
+    <End Role="Carpetas" Type="Self.Carpetas" Multiplicity="0..1" />
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carpetas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="IdCarpeta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carpetas_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Carpetas" Type="Self.Carpetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Carpetas">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estado_novedades_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Estado_novedades" Type="Self.Estado_novedades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Estado_novedades">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estado_requerimiento_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Estado_requerimiento" Type="Self.Estado_requerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Estado_requerimiento">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialDelega_Mensajes">
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="0..1" />
+    <End Role="HistorialDelega" Type="Self.HistorialDelega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mensajes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistorialDelega">
+        <PropertyRef Name="Idmensaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialDelega_Proyectos">
+    <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+    <End Role="HistorialDelega" Type="Self.HistorialDelega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyectos">
+        <PropertyRef Name="Idproyecto" />
+      </Principal>
+      <Dependent Role="HistorialDelega">
+        <PropertyRef Name="Idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LNK_ROL_Permiso_Permisos">
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+    <End Role="LNK_ROL_Permiso" Type="Self.LNK_ROL_Permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permisos">
+        <PropertyRef Name="Permiso_Id" />
+      </Principal>
+      <Dependent Role="LNK_ROL_Permiso">
+        <PropertyRef Name="Permiso_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LNK_ROL_Permiso_ROLES">
+    <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+    <End Role="LNK_ROL_Permiso" Type="Self.LNK_ROL_Permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="LNK_ROL_Permiso">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LNK_Usuario_Rol_ROLES">
+    <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+    <End Role="LNK_Usuario_Rol" Type="Self.LNK_Usuario_Rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="Rol_Id" />
+      </Principal>
+      <Dependent Role="LNK_Usuario_Rol">
+        <PropertyRef Name="Rol_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LNK_Usuario_Rol_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="LNK_Usuario_Rol" Type="Self.LNK_Usuario_Rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="LNK_Usuario_Rol">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensajes_Estado_requerimiento">
+    <End Role="Estado_requerimiento" Type="Self.Estado_requerimiento" Multiplicity="0..1" />
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado_requerimiento">
+        <PropertyRef Name="Idestado" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="Idestado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensajes_Proyectos">
+    <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyectos">
+        <PropertyRef Name="Idproyecto" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="Idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mensajes_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Novedades_Estado_novedades">
+    <End Role="Estado_novedades" Type="Self.Estado_novedades" Multiplicity="0..1" />
+    <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado_novedades">
+        <PropertyRef Name="idestadonovedad" />
+      </Principal>
+      <Dependent Role="Novedades">
+        <PropertyRef Name="Idestadonovedad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Novedades_Mensajes">
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="0..1" />
+    <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mensajes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Novedades">
+        <PropertyRef Name="Idmensaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Novedades_Proyectos">
+    <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="0..1" />
+    <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyectos">
+        <PropertyRef Name="Idproyecto" />
+      </Principal>
+      <Dependent Role="Novedades">
+        <PropertyRef Name="Idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Novedades_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Novedades" Type="Self.Novedades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Novedades">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proyectos_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Proyectos" Type="Self.Proyectos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Proyectos">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Area">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="Idarea" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Idarea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AgruparCarpetas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Idmensaje" Type="int" Mode="In" />
+    <Parameter Name="Idcarpeta" Type="int" Mode="In" />
+  </Function>
+  <Function Name="historialDelegacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Idmensaje" Type="int" Mode="In" />
+    <Parameter Name="Idproyecto" Type="int" Mode="In" />
+    <Parameter Name="Usuariodelega" Type="varchar" Mode="In" />
+    <Parameter Name="Usuariodelegado" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="pruebaModelStoreContainer">
+    <EntitySet Name="Archivos" EntityType="Self.Archivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carpetas" EntityType="Self.Carpetas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_novedades" EntityType="Self.Estado_novedades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado_requerimiento" EntityType="Self.Estado_requerimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistorialDelega" EntityType="Self.HistorialDelega" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LNK_ROL_Permiso" EntityType="Self.LNK_ROL_Permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LNK_Usuario_Rol" EntityType="Self.LNK_Usuario_Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mensajes" EntityType="Self.Mensajes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Novedades" EntityType="Self.Novedades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proyectos" EntityType="Self.Proyectos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Archivos_Mensajes" Association="Self.FK_Archivos_Mensajes">
+      <End Role="Mensajes" EntitySet="Mensajes" />
+      <End Role="Archivos" EntitySet="Archivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Archivos_Novedades" Association="Self.FK_Archivos_Novedades">
+      <End Role="Novedades" EntitySet="Novedades" />
+      <End Role="Archivos" EntitySet="Archivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Archivos_Proyectos" Association="Self.FK_Archivos_Proyectos">
+      <End Role="Proyectos" EntitySet="Proyectos" />
+      <End Role="Archivos" EntitySet="Archivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carpetas_Mensajes" Association="Self.FK_Carpetas_Mensajes">
+      <End Role="Carpetas" EntitySet="Carpetas" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carpetas_Usuarios" Association="Self.FK_Carpetas_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Carpetas" EntitySet="Carpetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estado_novedades_Usuarios" Association="Self.FK_Estado_novedades_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Estado_novedades" EntitySet="Estado_novedades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estado_requerimiento_Usuarios" Association="Self.FK_Estado_requerimiento_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialDelega_Mensajes" Association="Self.FK_HistorialDelega_Mensajes">
+      <End Role="Mensajes" EntitySet="Mensajes" />
+      <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialDelega_Proyectos" Association="Self.FK_HistorialDelega_Proyectos">
+      <End Role="Proyectos" EntitySet="Proyectos" />
+      <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LNK_ROL_Permiso_Permisos" Association="Self.FK_LNK_ROL_Permiso_Permisos">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="LNK_ROL_Permiso" EntitySet="LNK_ROL_Permiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LNK_ROL_Permiso_ROLES" Association="Self.FK_LNK_ROL_Permiso_ROLES">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="LNK_ROL_Permiso" EntitySet="LNK_ROL_Permiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LNK_Usuario_Rol_ROLES" Association="Self.FK_LNK_Usuario_Rol_ROLES">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="LNK_Usuario_Rol" EntitySet="LNK_Usuario_Rol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LNK_Usuario_Rol_Usuarios" Association="Self.FK_LNK_Usuario_Rol_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="LNK_Usuario_Rol" EntitySet="LNK_Usuario_Rol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensajes_Estado_requerimiento" Association="Self.FK_Mensajes_Estado_requerimiento">
+      <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensajes_Proyectos" Association="Self.FK_Mensajes_Proyectos">
+      <End Role="Proyectos" EntitySet="Proyectos" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mensajes_Usuarios" Association="Self.FK_Mensajes_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Novedades_Estado_novedades" Association="Self.FK_Novedades_Estado_novedades">
+      <End Role="Estado_novedades" EntitySet="Estado_novedades" />
+      <End Role="Novedades" EntitySet="Novedades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Novedades_Mensajes" Association="Self.FK_Novedades_Mensajes">
+      <End Role="Mensajes" EntitySet="Mensajes" />
+      <End Role="Novedades" EntitySet="Novedades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Novedades_Proyectos" Association="Self.FK_Novedades_Proyectos">
+      <End Role="Proyectos" EntitySet="Proyectos" />
+      <End Role="Novedades" EntitySet="Novedades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Novedades_Usuarios" Association="Self.FK_Novedades_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Novedades" EntitySet="Novedades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proyectos_Usuarios" Association="Self.FK_Proyectos_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Proyectos" EntitySet="Proyectos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Area" Association="Self.FK_Usuarios_Area">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

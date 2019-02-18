@@ -1,0 +1,119 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <a href="@Url.Action("Dashboard_1", "Dashboards")"><img alt="image" class="img-circle" src="~/Images/s_logo23.png" style="width:57px;margin-left: 50px;" /></a>
+                    </span>
+                  
+                </div>
+                <div class="logo-element">
+                    <a href="@Url.Action("Dashboard_1", "Dashboards")"><img alt="image" class="img-circle" src="~/Images/s_logo23.png" style="width:35px;" /></a>
+                </div>
+            </li>
+
+@*//////////////////////////////SISTEMA ALTIRIS//////////////////////////////////////////*@
+
+            <li class="@Html.IsSelected(controller: "Altiris")">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Sistema Altiris</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Altiris", cssClass: "in")">
+                  
+                    
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Reportes")">Reportes</a></li>
+
+@{
+    if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+    {
+
+
+
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "ImportarExcel")">Importar</a></li>
+                    <li class="@Html.IsSelected(action: "Agregar")"><a href="@Url.Action("Agregar", "Reportes")">Nuevo Reporte</a></li>
+
+    } }
+                  
+                </ul>
+            </li>
+       
+@*//////////////////////////////SISTEMA INV-GATE//////////////////////////////////////////*@
+
+
+
+            <li class="@Html.IsSelected(controller: "Inv-gate")">
+                <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Sistema Inv-Gate</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Inv-gate", cssClass: "in")">
+
+
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "ReportesIG")">Reportes</a></li>
+
+@{
+
+    if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+    {
+
+                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "ImportarIG")">Importar</a></li>
+   
+                    <li class="@Html.IsSelected(action: "Agregar")"><a href="@Url.Action("Agregar", "ReportesIG")">NUevo Reporte</a></li>
+    }
+    }
+
+
+                </ul>
+            </li>
+     
+
+
+
+@*//////////////////////////////LOTES//////////////////////////////////////////*@
+
+
+
+@if (ViewContext.Controller.HasRole("Administrador"))
+    {
+
+    if (ViewContext.Controller.HasPermission("Carga de informacion")) { 
+
+
+
+                <li class="@Html.IsSelected(controller: "Lotes")">
+            <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label" data-i18n="nav.mailbox">Administracion </span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Lotes", cssClass: "in")">
+               
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Lotes")">Lotes</a></li>
+            
+            </ul>
+        </li>
+    }
+}
+
+
+@*//////////////////////////////ADMIN//////////////////////////////////////////*@
+
+          @if (ViewContext.Controller.HasRole("Administrador"))
+          {
+        <li class="@Html.IsSelected(controller: "Pages")">
+            <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label" data-i18n="nav.otherpages">Seguridad</span><span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Pages", cssClass: "in")">
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Admin")">Usuarios</a></li>
+                <li class="@Html.IsSelected(action: "RolIndex")"><a href="@Url.Action("RolIndex", "Admin")">Roles</a></li>
+                <li class="@Html.IsSelected(action: "PermisosIndex")"><a href="@Url.Action("PermisosIndex", "Admin")">Permisos</a></li>
+             
+            </ul>
+        </li>
+          }
+
+
+
+        </ul>
+    </div>
+</nav>
+
+<div style="border-top: 1px solid #2f4050;background-color:#2f4050" class="footer">
+    <div class="pull-left" style="color:white;">
+        Version 1.3
+    </div>
+    @*<div>
+        <strong>SUI</strong> Sistema Unificado de Incidentes © 2018
+    </div>*@
+</div>

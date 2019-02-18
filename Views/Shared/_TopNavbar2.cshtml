@@ -1,0 +1,246 @@
+﻿<style type="text/css">
+    /*Added css for design notification area, you can design by your self*/
+    /* COPY css content from youtube video description*/
+    .noti-content {
+        position: fixed;
+        right: 100px;
+        background: #e5e5e5;
+        border-radius: 4px;
+        top: 47px;
+        width: 250px;
+        display: none;
+        border: 1px solid #9E988B;
+    }
+
+    ul#notiContent {
+        max-height: 200px;
+        overflow: auto;
+        padding: 0px;
+        margin: 0px;
+        padding-left: 20px;
+    }
+
+        ul#notiContent li {
+            margin: 3px;
+            padding: 6px;
+            background: #fff;
+        }
+
+    .noti-top-arrow {
+        border-color: transparent;
+        border-bottom-color: #F5DEB3;
+        border-style: dashed dashed solid;
+        border-width: 0 8.5px 8.5px;
+        position: absolute;
+        right: 32px;
+        top: -8px;
+    }
+
+    span.noti {
+        color: #FF2323;
+        margin: 15px;
+        position: fixed;
+        right: 100px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    span.count {
+        position: relative;
+        top: -3px;
+    }
+</style>
+
+
+
+
+
+
+
+<div class="row border-bottom white-bg">
+    <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <i class="fa fa-reorder"></i>
+            </button>
+            <a href="/" class="navbar-brand">Requerimientos</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav" style="padding-left: 5%;">
+                @*<li class="active">
+                    <span class="noti glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                    <div class="noti-content">
+                        <div class="noti-top-arrow"></div>
+                        <ul id="notiContent"></ul>
+                    </div>
+                </li>*@
+
+
+                @*<li class="@Html.IsSelected(controller: "Altiris")">
+                    <a href="@Url.Action("Dashboard_1", "Dashboards")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Sistema Altiris</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Altiris", cssClass: "in")">
+
+
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Reportes")">Reportes</a></li>
+
+                        @{
+                            if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+                            {
+
+
+
+                                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "ImportarExcel")">Importar</a></li>
+                                <li class="@Html.IsSelected(action: "Agregar")"><a href="@Url.Action("Agregar", "Reportes")">Nuevo Reporte</a></li>
+
+                            } }
+
+                    </ul>
+                </li>*@
+
+
+
+                <li class="dropdown">
+                    <a aria-expanded="true" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Requerimientos <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Mensajes")">Requerimientos</a></li>
+
+                        @*@{
+                            if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+                            {*@
+
+
+
+                                <li class="@Html.IsSelected(action: "Enviados")"><a href="@Url.Action("Enviados", "Mensajes")">Requerimientos Enviados</a></li>
+                                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Mensajes")">Nuevo Requerimiento</a></li>
+
+                            @*} }*@
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a aria-expanded="true" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Novedades <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Novedades")">Novedades</a></li>
+                        @*@{
+                if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+                {*@
+
+
+
+                        @*<li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Novedades")">Crear Novedad</a></li>*@
+                        @*<li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Mensajes")">Nuevo mensaje</a></li>*@
+
+                        @*} }*@
+                    </ul>
+                </li>
+
+@*@if (ViewContext.Controller.HasRoles("sAsASAsSsSs") || ViewContext.Controller.HasRoles("Suscriptor"))
+{*@
+                <li class="dropdown">
+                    <a aria-expanded="true" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Proyectos <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Proyectos")">Proyectos</a></li>
+                        <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Proyectos")">Nuevo Proyecto</a></li>
+                        @*@{
+                if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+                {*@
+
+
+
+                        @*<li class="@Html.IsSelected(action: "Enviados")"><a href="@Url.Action("Enviados", "Mensajes")">Enviados</a></li>
+                        <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Mensajes")">Nuevo mensaje</a></li>*@
+
+                        @*} }*@
+                    </ul>
+                </li>
+@*}*@
+
+            
+
+
+
+
+                <li class="dropdown">
+                    <a aria-expanded="true" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Estados <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Estado_requerimiento")">Requerimientos</a></li>
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Estado_novedades")">Novedades</a></li>
+                        @*@{
+                if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
+                {*@
+
+
+
+                        @*<li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Novedades")">Crear Novedad</a></li>*@
+                        @*<li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Mensajes")">Nuevo mensaje</a></li>*@
+
+                        @*} }*@
+                    </ul>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@if (ViewContext.Controller.HasRoles("Administrador") || ViewContext.Controller.HasRoles ("Suscriptor"))
+{*@
+
+                <li class="dropdown">
+                    <a aria-expanded="true" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Seguridad <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Admin")">Usuarios</a></li>
+                        <li class="@Html.IsSelected(action: "RolIndex")"><a href="@Url.Action("RolIndex", "Admin")">Roles</a></li>
+                        <li class="@Html.IsSelected(action: "PermisosIndex")"><a href="@Url.Action("PermisosIndex", "Admin")">Permisos</a></li>
+                        <li class="@Html.IsSelected(action: "AreasIndex")"><a href="@Url.Action("AreasIndex", "Admin")">Areas</a></li>
+                       
+                    </ul>
+                </li>
+
+
+@*}*@
+                @*<li class="dropdown">
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                        <li><a href="">Menu item</a></li>
+                    </ul>
+                </li>*@
+
+            </ul>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                   
+                    <a href="">
+                        @*<i class="fa fa-sign-out"></i>*@ @User.Identity.Name
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+</div>

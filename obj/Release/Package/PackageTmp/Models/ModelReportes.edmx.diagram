@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bb3d863b510425b811ea5b8cfb69255" Name="Diagram1">
+        <EntityTypeShape EntityType="pruebaModel.SUI_Lote" Width="1.5" PointX="6.75" PointY="1.625" />
+        <EntityTypeShape EntityType="pruebaModel.Permiso" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="pruebaModel.Rol" Width="1.5" PointX="3" PointY="9.125" />
+        <EntityTypeShape EntityType="pruebaModel.Usuario" Width="1.5" PointX="5.25" PointY="8.875" />
+        <AssociationConnector Association="pruebaModel.FK_SUI_Usuarios_SUI_Rol" />
+        <AssociationConnector Association="pruebaModel.PermisoDenegadoPorRol" />
+        <EntityTypeShape EntityType="pruebaModel.Reportes" Width="1.5" PointX="9" PointY="6.625" />
+        <AssociationConnector Association="pruebaModel.FK_Reportes_SUI_Lote" />
+        <EntityTypeShape EntityType="pruebaModel.ReportesIG" Width="1.5" PointX="9" PointY="1.125" />
+        <AssociationConnector Association="pruebaModel.FK_ReportesIG_SUI_Lote" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

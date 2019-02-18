@@ -1,0 +1,148 @@
+﻿@model List<Requerimientos.Models.Usuarios>
+@{
+    ViewBag.Title = "RBAC Administration";
+
+
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+
+}
+
+@section Styles {
+    @Styles.Render("~/plugins/awesomeCheckboxStyles")
+    @Styles.Render("~/plugins/clockpickerStyles")
+    @Styles.Render("~/plugins/dateRangeStyles")
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+    @Styles.Render("~/Content/plugins/chosen/chosenStyles")
+    @Styles.Render("~/plugins/switcheryStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/nouiSliderStyles")
+    @Styles.Render("~/plugins/dataPickerStyles")
+    @Styles.Render("~/Content/plugins/ionRangeSlider/ionRangeStyles")
+    @Styles.Render("~/plugins/imagecropperStyles")
+    @Styles.Render("~/Content/plugins/colorpicker/colorpickerStyles")
+    @Styles.Render("~/plugins/select2Styles")
+    @Styles.Render("~/plugins/touchSpinStyles")
+    @Styles.Render("~/plugins/tagInputsStyles")
+    @Styles.Render("~/plugins/duallistStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/dataPicker")
+    @Scripts.Render("~/plugins/ionRange")
+    @Scripts.Render("~/plugins/nouiSlider")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/switchery")
+    @Scripts.Render("~/plugins/chosen")
+    @Scripts.Render("~/plugins/knob")
+    @Scripts.Render("~/plugins/imagecropper")
+    @Scripts.Render("~/plugins/colorpicker")
+    @Scripts.Render("~/plugins/clockpicker")
+    @Scripts.Render("~/plugins/dateRange")
+    @Scripts.Render("~/plugins/select2")
+    @Scripts.Render("~/plugins/touchSpin")
+    @Scripts.Render("~/plugins/tagInputs")
+    @Scripts.Render("~/plugins/duallist")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/toastr")
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.demo1').click(function () {
+                swal({
+                    title: "Welcome in Alerts",
+                    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                });
+            });
+
+            $('.demo2').click(function () {
+                swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    type: "success"
+                });
+            });
+
+            $('.demo3').click(function () {
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                }, function () {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                });
+            });
+
+            $('.demo4').click(function () {
+                swal({
+                    title: "Are you sure?",
+                    text: "Your will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel plx!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                            } else {
+                                swal("Cancelled", "Your imaginary file is safe :)", "error");
+                            }
+                        });
+            });
+
+        });
+    </script>
+}
+
+
+<fieldset id="UserTable">
+    @*<legend>
+        <h3>
+            System Users
+        </h3>
+    </legend>
+    <fieldset style="font: 100%; border: Black; border-style: solid; border-width: thin; width: 30%">
+        <legend><strong>Search Filter</strong></legend>
+        <br />
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <h3>
+                            Last Name:
+                        </h3>
+                    </td>
+                    <td>
+                        @Html.TextBox("SurnameId", string.Empty, new { style = "width:200px", maxlength = 30 })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="Apply Filter" id="pbFilter" name="pbFilter" />
+                        <input type="button" value="Reset" id="pbReset" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>*@
+    <br />
+    <br />
+    @Html.Partial("_ListaUsuarios", Model)
+    <br />    
+    @*<div>
+        <input type="button" class="btn btn-primary btn-xs" value="Create User" onclick="location.href='@Url.Action("CrearUsuario", "Admin")'" />
+        <br />
+    </div>*@
+</fieldset>

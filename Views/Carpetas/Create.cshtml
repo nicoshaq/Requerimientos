@@ -1,0 +1,378 @@
+﻿@model Requerimientos.Models.Carpetas
+
+
+@{
+    ViewBag.Title = "Nuevo";
+
+
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(":input[type='submit']").button();
+
+
+
+
+        $("#mycolor").colorpicker({ transparentColor: true });
+
+    });
+
+
+
+
+
+
+
+</script>
+
+
+<input type="hidden" id="success"
+       value="@TempData["success"]" />
+<input type="hidden" id="info"
+       value="@TempData["info"]" />
+<input type="hidden" id="warning"
+       value="@TempData["warning"]" />
+<input type="hidden" id="error"
+       value="@TempData["error"]" />
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Carpetas</h2>
+        <ol class="breadcrumb">
+            @*<li>
+                    <a href="@Url.Action("Dashboard_1", "Dashboards")">Home</a>
+                </li>
+                <li>
+                    <a>Tables</a>
+                </li>
+                <li class="active">
+                    <strong>Validation</strong>
+                </li>*@
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+@*<div class="panel">*@
+@using (Html.BeginForm("Create", "Carpetas", FormMethod.Post))
+{
+
+
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#">Config option 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <h2>
+                    Nueva Carpeta
+                </h2>
+                <form role="form" class="form-inline">
+                    @*<div class="form-group">
+                            <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                            <input type="email" placeholder="Enter email" id="exampleInputEmail2" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword2" class="sr-only">Password</label>
+                            <input type="password" placeholder="Password" id="exampleInputPassword2" class="form-control">
+                        </div>
+                        <div class="checkbox m-l m-r-xs"><label class="i-checks"> <input type="checkbox"><i></i> Remember me </label></div>
+                        <button class="btn btn-white" type="submit">Sign in</button>*@
+                    <div id="expanderContent">
+                        <table style='width: 100%'>
+                            <tr>
+                                <td style='text-align: center; width: 10%; font-weight: bold' class='userTable'>
+                                    <label>Descripcion</label>
+                                </td>
+                                <td style='width: 28%' class='userTable'>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.Nombre, new { @class = "singlelinetextinput form-control" })
+                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+
+                              
+                               
+
+
+
+
+                            </tr>
+
+
+
+                        </table>
+                    </div>
+                    <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" />
+
+                    <a href="@Url.Action("Inicio", "Carpetas")" class="btn btn-primary btn-w-m pull-right"> Ir a Carpetas</a>
+
+
+                    @*<a href="@Url.Action("Index", "Admin")" class="btn btn-primary btn-w-m pull-right"> Ir a Usuarios</a>*@
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <h2>
+                        Datos de Usuario
+                    </h2>
+                    <form role="form" class="form-inline">
+
+                        @Html.ValidationSummary(true)
+
+                            <br />
+                            <table style='width: 100%'>
+                                <tr>
+                                    <td style='text-align: center; width: 10%; font-weight: bold' class='userTable'>
+                                        @Html.LabelFor(model => model.Usuario, "Usuario")
+                                    </td>
+                                    <td class='userTable'>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.Usuario, new { @class = "singlelinetextinput form-control" })
+                                            @Html.ValidationMessageFor(model => model.Usuario)
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style='text-align: center; width: 10%; font-weight: bold' class='userTable'>
+                                        @Html.LabelFor(model => model.Nombre, "Nombre")
+                                    </td>
+                                    <td class='userTable'>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.Nombre, new { @class = "singlelinetextinput form-control" })
+                                            @Html.ValidationMessageFor(model => model.Nombre)
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(model => model.Idarea, htmlAttributes: new { @class = "control-label col-md-2", @style = "vertical-align: middle;padding - top: 10px;" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("Idarea", null, htmlAttributes: new { @class = "form-control", @style = "width:50%" })
+
+
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td style='text-align: center; width: 10%; font-weight: bold' class='userTable'>
+                                        @Html.LabelFor(model => model.Apellido, "Apellido")
+                                    </td>
+                                    <td class='userTable'>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.Apellido, new { @class = "singlelinetextinput form-control" })
+                                            @Html.ValidationMessageFor(model => model.Apellido)
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br />
+                            <input type="submit" value="Create" />
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>*@
+
+}
+@*</div>*@
+
+
+@*<div>
+        @Html.ActionLink("Go to Users", "Index", "Admin")
+    </div>*@
+
+
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+
+    @Styles.Render("~/plugins/footableStyles")
+    @Styles.Render("~/plugins/awesomeCheckboxStyles")
+    @Styles.Render("~/plugins/clockpickerStyles")
+    @Styles.Render("~/plugins/dateRangeStyles")
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+    @Styles.Render("~/Content/plugins/chosen/chosenStyles")
+    @Styles.Render("~/plugins/switcheryStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/nouiSliderStyles")
+    @Styles.Render("~/plugins/dataPickerStyles")
+    @Styles.Render("~/Content/plugins/ionRangeSlider/ionRangeStyles")
+    @Styles.Render("~/plugins/imagecropperStyles")
+    @Styles.Render("~/Content/plugins/colorpicker/colorpickerStyles")
+    @Styles.Render("~/plugins/select2Styles")
+    @Styles.Render("~/plugins/touchSpinStyles")
+    @Styles.Render("~/plugins/tagInputsStyles")
+    @Styles.Render("~/plugins/duallistStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+
+
+
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/dataPicker")
+    @Scripts.Render("~/plugins/ionRange")
+    @Scripts.Render("~/plugins/nouiSlider")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/switchery")
+    @Scripts.Render("~/plugins/chosen")
+    @Scripts.Render("~/plugins/knob")
+    @Scripts.Render("~/plugins/imagecropper")
+    @Scripts.Render("~/plugins/colorpicker")
+    @Scripts.Render("~/plugins/clockpicker")
+    @Scripts.Render("~/plugins/dateRange")
+    @Scripts.Render("~/plugins/select2")
+    @Scripts.Render("~/plugins/touchSpin")
+    @Scripts.Render("~/plugins/tagInputs")
+    @Scripts.Render("~/plugins/duallist")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/toastr")
+
+
+    @Scripts.Render("~/plugins/footable")
+    @Scripts.Render("~/plugins/iCheck")
+
+}
+
+
+
+
+
+
+
+
+@*@{
+        ViewBag.Title = "Create";
+        Layout = "~/Views/Shared/_Layout_2.cshtml";
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#mycolor").colorpicker({ transparentColor: true });
+
+        });
+    </script>
+
+    <h2>Create</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Estado_requerimiento</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div style="width:128px;">
+                <input style="width:100px;" id="mycolor" name="mycolor" class="colorPicker evo-cp0" />
+                <div class="evo-colorind" style="background-color:#8db3e2"></div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+    }*@

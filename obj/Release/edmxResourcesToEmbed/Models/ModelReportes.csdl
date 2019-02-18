@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pruebaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="pruebaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SUI_Lote" EntityType="pruebaModel.SUI_Lote" />
+    <FunctionImport Name="updateidlote" />
+    <FunctionImport Name="updateidloteReportes" />
+    <EntitySet Name="Permiso" EntityType="pruebaModel.Permiso" />
+    <EntitySet Name="Rol" EntityType="pruebaModel.Rol" />
+    <EntitySet Name="Usuario" EntityType="pruebaModel.Usuario" />
+    <AssociationSet Name="FK_SUI_Usuarios_SUI_Rol" Association="pruebaModel.FK_SUI_Usuarios_SUI_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="PermisoDenegadoPorRol" Association="pruebaModel.PermisoDenegadoPorRol">
+      <End Role="Permiso" EntitySet="Permiso" />
+      <End Role="Rol" EntitySet="Rol" />
+    </AssociationSet>
+    <EntitySet Name="Reportes" EntityType="pruebaModel.Reportes" />
+    <AssociationSet Name="FK_Reportes_SUI_Lote" Association="pruebaModel.FK_Reportes_SUI_Lote">
+      <End Role="SUI_Lote" EntitySet="SUI_Lote" />
+      <End Role="Reportes" EntitySet="Reportes" />
+    </AssociationSet>
+    <EntitySet Name="ReportesIG" EntityType="pruebaModel.ReportesIG" />
+    <AssociationSet Name="FK_ReportesIG_SUI_Lote" Association="pruebaModel.FK_ReportesIG_SUI_Lote">
+      <End Role="SUI_Lote" EntitySet="SUI_Lote" />
+      <End Role="ReportesIG" EntitySet="ReportesIG" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SUI_Lote">
+    <Key>
+      <PropertyRef Name="Idlote" />
+    </Key>
+    <Property Name="Idlote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" Nullable="true" />
+    <Property Name="Sistema" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reportes" Relationship="pruebaModel.FK_Reportes_SUI_Lote" FromRole="SUI_Lote" ToRole="Reportes" />
+    <NavigationProperty Name="ReportesIG" Relationship="pruebaModel.FK_ReportesIG_SUI_Lote" FromRole="SUI_Lote" ToRole="ReportesIG" />
+  </EntityType>
+  <EntityType Name="Permiso">
+    <Key>
+      <PropertyRef Name="Permiso_id" />
+    </Key>
+    <Property Name="Permiso_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Modulo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rol" Relationship="pruebaModel.PermisoDenegadoPorRol" FromRole="Permiso" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Rol_id" />
+    </Key>
+    <Property Name="Rol_id" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuario" Relationship="pruebaModel.FK_SUI_Usuarios_SUI_Rol" FromRole="Rol" ToRole="Usuario" />
+    <NavigationProperty Name="Permiso" Relationship="pruebaModel.PermisoDenegadoPorRol" FromRole="Rol" ToRole="Permiso" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usu_nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Rol_id" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Usu_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rol" Relationship="pruebaModel.FK_SUI_Usuarios_SUI_Rol" FromRole="Usuario" ToRole="Rol" />
+  </EntityType>
+  <Association Name="FK_SUI_Usuarios_SUI_Rol">
+    <End Type="pruebaModel.Rol" Role="Rol" Multiplicity="1" />
+    <End Type="pruebaModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Rol_id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PermisoDenegadoPorRol">
+    <End Type="pruebaModel.Permiso" Role="Permiso" Multiplicity="*" />
+    <End Type="pruebaModel.Rol" Role="Rol" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Reportes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdReporte" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Incidente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prioridad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Subtipo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Id_externo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Fecha_resolucion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Resuelto_por" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Lote" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="Canal" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="Idlote" Type="Int32" />
+    <NavigationProperty Name="SUI_Lote" Relationship="pruebaModel.FK_Reportes_SUI_Lote" FromRole="Reportes" ToRole="SUI_Lote" />
+  </EntityType>
+  <Association Name="FK_Reportes_SUI_Lote">
+    <End Type="pruebaModel.SUI_Lote" Role="SUI_Lote" Multiplicity="0..1" />
+    <End Type="pruebaModel.Reportes" Role="Reportes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUI_Lote">
+        <PropertyRef Name="Idlote" />
+      </Principal>
+      <Dependent Role="Reportes">
+        <PropertyRef Name="Idlote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ReportesIG">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Origen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Prioridad" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mesa_ayuda" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Agente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Idlote" Type="Int32" />
+    <NavigationProperty Name="SUI_Lote" Relationship="pruebaModel.FK_ReportesIG_SUI_Lote" FromRole="ReportesIG" ToRole="SUI_Lote" />
+  </EntityType>
+  <Association Name="FK_ReportesIG_SUI_Lote">
+    <End Type="pruebaModel.SUI_Lote" Role="SUI_Lote" Multiplicity="0..1" />
+    <End Type="pruebaModel.ReportesIG" Role="ReportesIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUI_Lote">
+        <PropertyRef Name="Idlote" />
+      </Principal>
+      <Dependent Role="ReportesIG">
+        <PropertyRef Name="Idlote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

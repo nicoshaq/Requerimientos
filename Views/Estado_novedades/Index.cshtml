@@ -1,0 +1,540 @@
+﻿@model IEnumerable<Requerimientos.Models.Estado_novedades>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<script>
+    $(document).ready(function () {
+    $('.deleteUser').attr('href', 'javascript://');
+    $('.deleteUser').click(function () {
+        $dialog.data('Idestado', $(this).attr('Idestado')).data('Idestado', $(this).attr('Idestado')).dialog("open");
+    });
+
+    var $dialog = $('<div/>')
+    .html("Warning: se borrará un usuario.<br/><br/>Desea continuar?")
+    .dialog({
+        autoOpen: false,
+        resizable: false,
+        height: 250,
+        modal: true,
+        title: 'borrar usuario',
+        buttons: [
+                    {
+                        text: "Continue",
+                        id: "continuebtn",
+                        click: function () {
+                            var _id = $(this).data('Idestado');
+                            var _parameters = { userId: _id };
+                            $.ajax({
+                                url: "/Estado_requerimiento/DeleteestadoReturnPartialView",
+                                type: "GET",
+                                data: _parameters,
+                                success: function (data, textStatus, jqXHR) {
+                                    $('#UserTable').html(data);
+                                }
+                            });
+                            $(this).dialog('close');
+                        }
+                    },
+                    {
+                        text: "Cancelar",
+                        id: "cancelbtn",
+                        click: function () {
+                            $(this).dialog("close");
+                        }
+                    }]
+    });
+
+    });
+</script>
+<style>
+    .html5buttons {
+        display: none;
+    }
+</style>
+<input type="hidden" id="success"
+       value="@TempData["success"]" />
+<input type="hidden" id="info"
+       value="@TempData["info"]" />
+<input type="hidden" id="warning"
+       value="@TempData["warning"]" />
+<input type="hidden" id="error"
+       value="@TempData["error"]" />
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Estados de Novedades</h2>
+        <ol class="breadcrumb"></ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Estados de novedades</h5>
+
+                    <div class="ibox-tools">
+
+
+
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <input type="button" class="btn btn-primary btn-w-m pull-right" value="Nuevo Estado" onclick="location.href='@Url.Action("Create", "Estado_novedades")'" />
+
+                    @*@using (Html.BeginForm())
+                        {
+                            <div class="form-group form-inline" id="data_5">
+
+                                <div class="input-daterange input-group" id="datepicker">
+                                    <input type="text" id="comienzo" class="input-sm form-control" name="start" placeholder="Fecha desde" />
+                                    <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" id="final" class="input-sm form-control" name="end" placeholder="fecha hasta" />
+
+                                </div>
+                                <div class="btn-group">
+
+                                    <input type="submit" value="Filtrar" class="btn btn-primary" id="btngetdata">
+                                </div>
+                                <a href="/ImportarExcel/Index" id="submitButton1" class="btn btn-primary subir">Importar Reporte</a>
+                            </div>
+
+                        }*@
+
+                    @*<form class='filter-form form-inline'>
+                            <h3>Filtros</h3>
+                            <div class="form-group">
+                                <label>Subtipo :</label>
+                                <input type='text' value='' class='filter'>
+                                <label>Id Externo :</label>
+                                <input type='text' value='' class='filter2'>
+                                <label>Area:</label>
+                                <input type='text' value='' class='filter3'>
+                            </div>
+                        </form>*@
+
+                    <div class="ibox-content">
+                        <form role="form" class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                                <input type="email" placeholder="Novedades" id="exampleInputEmail2" class="form-control filter">
+                            </div>
+
+                            @*<div class="form-group">
+                                    <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                                    <input type="email" placeholder="Id Externo" id="exampleInputEmail2" class="form-control filter2">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                                    <input type="email" placeholder="Area" id="exampleInputEmail2" class="form-control filter3">
+                                </div>*@
+
+
+
+
+
+                        </form>
+
+
+
+                    </div>
+
+
+
+
+
+                    <table id="tabla" class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Estados
+                                </th>
+
+                                <th>
+                                    Creado por
+                                </th>
+
+                                <th>
+                                    Color
+                                </th>
+
+                                <th>
+                                    Acciones
+                                </th>
+
+
+
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody id="fbody">
+                            @foreach (Requerimientos.Models.Estado_novedades item in Model)
+                            {
+
+                                <tr class="gradeX">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Usuarios.Usuario)
+                                    </td>
+
+                                    <td style="color:#fff; background-color: @Html.DisplayFor(modelItem => item.color)">
+                                        @Html.DisplayFor(modelItem => item.color)
+                                    </td>
+
+
+                                    <td style="text-align:center;">
+                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Idestado }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.Idestado }) |*@
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.idestadonovedad })|
+                                        @*<img class="deleteUser" src="@Url.Content("~/Content/Images/bin.png")" alt="Borrar usuario" id="@item.Idestado" />*@
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>@*@Html.ActionLink("Create New", "Create")*@
+
+                    <br />
+                    <div>
+
+                        @*<input type="button" id="importPermissions2" name="importPermissions2" value="Import Permissions" onclick="location.href='@Url.Action("PermissionsImport", "Admin")'" />*@
+                        <br />
+                    </div>
+                    
+                    <br />
+                    @*@Html.ActionLink("Go to Roles", "RolIndex", "Admin")*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section Styles {
+    @Styles.Render("~/plugins/awesomeCheckboxStyles")
+    @Styles.Render("~/plugins/clockpickerStyles")
+    @Styles.Render("~/plugins/dateRangeStyles")
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+    @Styles.Render("~/Content/plugins/chosen/chosenStyles")
+    @Styles.Render("~/plugins/switcheryStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/nouiSliderStyles")
+    @Styles.Render("~/plugins/dataPickerStyles")
+    @Styles.Render("~/Content/plugins/ionRangeSlider/ionRangeStyles")
+    @Styles.Render("~/plugins/imagecropperStyles")
+    @Styles.Render("~/Content/plugins/colorpicker/colorpickerStyles")
+    @Styles.Render("~/plugins/select2Styles")
+    @Styles.Render("~/plugins/touchSpinStyles")
+    @Styles.Render("~/plugins/tagInputsStyles")
+    @Styles.Render("~/plugins/duallistStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/dataPicker")
+    @Scripts.Render("~/plugins/ionRange")
+    @Scripts.Render("~/plugins/nouiSlider")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/switchery")
+    @Scripts.Render("~/plugins/chosen")
+    @Scripts.Render("~/plugins/knob")
+    @Scripts.Render("~/plugins/imagecropper")
+    @Scripts.Render("~/plugins/colorpicker")
+    @Scripts.Render("~/plugins/clockpicker")
+    @Scripts.Render("~/plugins/dateRange")
+    @Scripts.Render("~/plugins/select2")
+    @Scripts.Render("~/plugins/touchSpin")
+    @Scripts.Render("~/plugins/tagInputs")
+    @Scripts.Render("~/plugins/duallist")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/toastr")
+
+    <script type="text/javascript">
+
+        $.fn.dataTable.ext.search.push(
+    function (settings, data, dataIndex) {
+        var min = parseInt($('#min').val(), 10);
+        var max = parseInt($('#max').val(), 10);
+        var fecha = parseFloat(data[3]) || 0; // use data for the age column
+
+        if ((isNaN(min) && isNaN(max)) ||
+             (isNaN(min) && fecha <= max) ||
+             (min <= fecha && isNaN(max)) ||
+             (min <= fecha && fecha <= max)) {
+            return true;
+        }
+        return false;
+    }
+);
+
+
+
+
+
+        $(document).ready(function () {
+
+
+            //$(function () {
+            //    var displayMessage = function (message, msgType) {
+            //        toastr.options = {
+            //            "closeButton": true,
+            //            "debug": false,
+            //            "newestOnTop": false,
+            //            "progressBar": true,
+            //            "positionClass": "toast-top-right",
+            //            "preventDuplicates": false,
+            //            "onclick": null,
+            //            "showDuration": "300",
+            //            "hideDuration": "1000",
+            //            "timeOut": "5000",
+            //            "extendedTimeOut": "1000",
+            //            "showEasing": "swing",
+            //            "hideEasing": "linear",
+            //            "showMethod": "fadeIn",
+            //            "hideMethod": "fadeOut"
+            //        };
+            //        toastr[msgType](message);
+            //    };
+
+            //    if ($('#success').val()) {
+            //        displayMessage($('#success').val(), 'success');
+            //    }
+            //    if ($('#info').val()) {
+            //        displayMessage($('#info').val(), 'info');
+            //    }
+            //    if ($('#warning').val()) {
+            //        displayMessage($('#warning').val(), 'warning');
+            //    }
+            //    if ($('#error').val()) {
+            //        displayMessage($('#error').val(), 'error');
+            //    }
+            //});
+
+
+
+
+
+
+
+
+
+
+
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+
+
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Reportes' },
+                    { extend: 'pdf', title: 'Reportes', orientation: 'landscape', pageSize: "LEGAL" },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact','width:100%')
+                                    .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+
+
+
+            });
+
+
+
+
+            var dtable = $('#tabla').DataTable();
+
+            $('.filter').on('keyup change', function () {
+                dtable
+                  .column(0).search(this.value)
+                  //.column(4).search(this.value)
+
+                  .draw();
+            });
+
+            $('.filter2').on('keyup change', function () {
+                dtable
+                  .column(6).search(this.value)
+
+                  .draw();
+            });
+
+            $('.filter3').on('keyup change', function () {
+                dtable
+                  .column(7).search(this.value)
+
+                  .draw();
+            });
+
+            $(".dataTables_filter input").on('keyup change', function () {
+                //clear column search values
+                dtable.columns().search('');
+                //clear input values
+                $('.filter').val('');
+            });
+
+
+
+          });
+
+
+
+
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuarios.Usuario)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuarios.Usuario)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Idestado }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Idestado }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Idestado })
+            </td>
+        </tr>
+    }
+
+    </table>*@

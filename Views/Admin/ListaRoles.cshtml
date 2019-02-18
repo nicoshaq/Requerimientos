@@ -1,0 +1,146 @@
+﻿@model Requerimientos.Models.ROLES
+@{
+    ViewBag.Title = "Role: " + Html.DisplayFor(model => model.Descripcion);
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $(":input[type='button']").button();
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+        <fieldset class="col-lg-6">
+            <div class="wrapper wrapper-content  animated fadeInRight">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="ibox ">
+
+                            <div class="ibox-content">
+                                <h2>
+                                    Detalle del Rol
+                                </h2>
+                                <p>
+                                    <input type="button" value="Editar" class="btn btn-primary btn-xs" onclick="location.href='@Url.Action("EditarRol", "Admin", new { id = Model.Rol_Id })'" />
+
+                                </p>
+
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Method</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Nombre</td>
+                                            <td>@Model.Nombre</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Descripcion</td>
+                                            <td>@Model.Descripcion</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Admin</td>
+                                            <td>  @Html.DisplayFor(model => model.EsAdmin)</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+
+                                @*<input type="button" value="Edit" onclick="location.href='@Url.Action("EditarRol", "Admin", new { id = Model.Rol_Id })'" />*@
+                            </div>
+
+
+                            <div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+                
+        </fieldset>
+        <div>
+            <fieldset class="col-lg-6">
+
+
+                <div class="wrapper wrapper-content  animated fadeInRight">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+
+                                <div class="ibox-content">
+                                    <h2>
+                                        Detalle del Rol
+                                    </h2>
+
+                                    <div id="PermissionsTable">
+                                        @Html.Partial("_ListaPermisos", Model)
+                                    </div>
+
+                                    @*<input type="button" value="Edit" onclick="location.href='@Url.Action("EditarRol", "Admin", new { id = Model.Rol_Id })'" />*@
+                                </div>
+
+
+                                <div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </fieldset>
+        </div>
+  
+</div>
+<br />
+<div>
+    @Html.ActionLink("Ir a Roles", "RolIndex", "Admin")
+</div>

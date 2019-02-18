@@ -1,0 +1,88 @@
+﻿@*@using Requerimientos.Models*@
+@using Requerimientos.Models
+@model Requerimientos.Models.ROLES
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Unbind the original image 'href' set by the controller...
+        $('.borrarPermiso').attr('href', 'javascript://');
+        $('.borrarPermiso').click(function () {
+            $dialog.data('id', $(this).attr('id')).data('permisoId', $(this).attr('permisoId')).dialog("open");
+        });
+
+        var $dialog = $('<div/>')
+		.html("Advertencia: Esto eliminará el Permiso seleccionado de esta Función. La eliminación de este permiso puede evitar que los usuarios accedan a las áreas de la aplicación. Solo elimine este permiso si tiene la intención de restringir el acceso a la aplicación en este rol.<br/><br/>Desea continuar?")
+		.dialog({
+		    autoOpen: false,
+		    resizable: false,
+		    height: 250,
+		    modal: true,
+		    title: 'Remover Permiso',
+		    buttons: [
+                        {
+                            text: "Continuar",
+                            id: "continuebtn",
+                            click: function () {
+                                var _id = $(this).data('id');
+                                var _permisoId = $(this).data('permisoId');
+
+                                var _parameters = { id: _id, permisoId: _permisoId };
+                                $.ajax({
+                                    url: "/Admin/DeletePermissionFromRoleReturnPartialView",
+                                    type: "GET",
+                                    data: _parameters,
+                                    success: function (data, textStatus, jqXHR) {
+                                        $('#PermissionsTable').html(data);
+                                    }
+                                });
+                                $(this).dialog('close');
+                            }
+                        },
+                        {
+                            text: "Cancelar",
+                            id: "cancelbtn",
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        }]
+		});
+    });
+</script>
+
+@{if (Model.Permisos.Count == 0)
+{
+    <h2><font color="red">No hay permisos asociados...</font></h2>
+    <br />
+}
+else
+{
+    <table id="PermissionTable" style="width: 65%">
+        <thead>
+        <th style="width:90%">
+            Permiso
+        </th>
+        <th>
+            Accion
+        </th>
+        </thead>
+        @foreach (Permisos permission in Model.Permisos.OrderBy(n => n.Descripcion))
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(permission.Descripcion, "ListaPermisos", new { id = permission.Permiso_Id })
+                </td>
+                <td>
+                    <center>
+                        <a href="@Url.Action("borrarPermiso", "Admin", new { id = Model.Rol_Id, permisoId = permission.Permiso_Id })" class="borrarPermiso" id=@Model.Rol_Id permisoId=@permission.Permiso_Id>
+                            <img src="@Url.Content("~/Content/images/bin.png")" />
+                        </a>
+                    </center>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+}
+}
+

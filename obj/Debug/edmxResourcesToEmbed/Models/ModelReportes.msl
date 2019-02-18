@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pruebaModelStoreContainer" CdmEntityContainer="RequerimientosConn">
+    <EntitySetMapping Name="Archivos">
+      <EntityTypeMapping TypeName="pruebaModel.Archivos">
+        <MappingFragment StoreEntitySet="Archivos">
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+          <ScalarProperty Name="Idnovedad" ColumnName="Idnovedad" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Idusuario" ColumnName="Idusuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mensajes">
+      <EntityTypeMapping TypeName="pruebaModel.Mensajes">
+        <MappingFragment StoreEntitySet="Mensajes">
+          <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
+          <ScalarProperty Name="Idestado" ColumnName="Idestado" />
+          <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
+          <ScalarProperty Name="Idusuariodelega" ColumnName="Idusuariodelega" />
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+          <ScalarProperty Name="Idpadre" ColumnName="Idpadre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+          <ScalarProperty Name="Maildestino" ColumnName="Maildestino" />
+          <ScalarProperty Name="Idusuariodestino" ColumnName="Idusuariodestino" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Remitente" ColumnName="Remitente" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisos">
+      <EntityTypeMapping TypeName="pruebaModel.Permisos">
+        <MappingFragment StoreEntitySet="Permisos">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Permiso_Id" ColumnName="Permiso_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="pruebaModel.ROLES">
+        <MappingFragment StoreEntitySet="ROLES">
+          <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+          <ScalarProperty Name="EsAdmin" ColumnName="EsAdmin" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="pruebaModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
+          <ScalarProperty Name="Idproyectos" ColumnName="Idproyectos" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Inicial" ColumnName="Inicial" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Inactivo" ColumnName="Inactivo" />
+          <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LNK_ROL_Permiso" TypeName="pruebaModel.LNK_ROL_Permiso" StoreEntitySet="LNK_ROL_Permiso">
+      <EndProperty Name="ROLES">
+        <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+      </EndProperty>
+      <EndProperty Name="Permisos">
+        <ScalarProperty Name="Permiso_Id" ColumnName="Permiso_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LNK_Usuario_Rol" TypeName="pruebaModel.LNK_Usuario_Rol" StoreEntitySet="LNK_Usuario_Rol">
+      <EndProperty Name="Usuarios">
+        <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="ROLES">
+        <ScalarProperty Name="Rol_Id" ColumnName="Rol_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Novedades">
+      <EntityTypeMapping TypeName="pruebaModel.Novedades">
+        <MappingFragment StoreEntitySet="Novedades">
+          <ScalarProperty Name="Privado" ColumnName="Privado" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Idestadonovedad" ColumnName="Idestadonovedad" />
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Idnovedad" ColumnName="Idnovedad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proyectos">
+      <EntityTypeMapping TypeName="pruebaModel.Proyectos">
+        <MappingFragment StoreEntitySet="Proyectos">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fechamodif" ColumnName="Fechamodif" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+          <ScalarProperty Name="Creadopor" ColumnName="Creadopor" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="pruebaModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado_novedades">
+      <EntityTypeMapping TypeName="pruebaModel.Estado_novedades">
+        <MappingFragment StoreEntitySet="Estado_novedades">
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="idestadonovedad" ColumnName="idestadonovedad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado_requerimiento">
+      <EntityTypeMapping TypeName="pruebaModel.Estado_requerimiento">
+        <MappingFragment StoreEntitySet="Estado_requerimiento">
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Idestado" ColumnName="Idestado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistorialDelega">
+      <EntityTypeMapping TypeName="pruebaModel.HistorialDelega">
+        <MappingFragment StoreEntitySet="HistorialDelega">
+          <ScalarProperty Name="Usuariodelegado" ColumnName="Usuariodelegado" />
+          <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
+          <ScalarProperty Name="Idmensaje" ColumnName="Idmensaje" />
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+          <ScalarProperty Name="Idhistorial" ColumnName="Idhistorial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="historialDelegacion" FunctionName="pruebaModel.Store.historialDelegacion" />
+    <FunctionImportMapping FunctionImportName="AgruparCarpetas" FunctionName="pruebaModel.Store.AgruparCarpetas" />
+    <EntitySetMapping Name="Carpetas">
+      <EntityTypeMapping TypeName="pruebaModel.Carpetas">
+        <MappingFragment StoreEntitySet="Carpetas">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

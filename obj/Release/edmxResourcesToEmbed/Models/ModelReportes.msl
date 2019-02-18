@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pruebaModelStoreContainer" CdmEntityContainer="pruebaEntities">
+    <EntitySetMapping Name="SUI_Lote">
+      <EntityTypeMapping TypeName="pruebaModel.SUI_Lote">
+        <MappingFragment StoreEntitySet="SUI_Lote">
+          <ScalarProperty Name="Sistema" ColumnName="Sistema" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Idlote" ColumnName="Idlote" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="updateidlote" FunctionName="pruebaModel.Store.updateidlote" />
+    <FunctionImportMapping FunctionImportName="updateidloteReportes" FunctionName="pruebaModel.Store.updateidloteReportes" />
+    <EntitySetMapping Name="Permiso">
+      <EntityTypeMapping TypeName="pruebaModel.Permiso">
+        <MappingFragment StoreEntitySet="Permiso">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+          <ScalarProperty Name="Permiso_id" ColumnName="Permiso_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="pruebaModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Rol_id" ColumnName="Rol_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="pruebaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Usu_usuario" ColumnName="Usu_usuario" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Rol_id" ColumnName="Rol_id" />
+          <ScalarProperty Name="Usu_nombre" ColumnName="Usu_nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PermisoDenegadoPorRol" TypeName="pruebaModel.PermisoDenegadoPorRol" StoreEntitySet="PermisoDenegadoPorRol">
+      <EndProperty Name="Rol">
+        <ScalarProperty Name="Rol_id" ColumnName="Rol_id" />
+      </EndProperty>
+      <EndProperty Name="Permiso">
+        <ScalarProperty Name="Permiso_id" ColumnName="Permiso_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Reportes">
+      <EntityTypeMapping TypeName="pruebaModel.Reportes">
+        <MappingFragment StoreEntitySet="Reportes">
+          <ScalarProperty Name="Idlote" ColumnName="Idlote" />
+          <ScalarProperty Name="Canal" ColumnName="Canal" />
+          <ScalarProperty Name="Lote" ColumnName="Lote" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Resuelto_por" ColumnName="Resuelto_por" />
+          <ScalarProperty Name="Fecha_resolucion" ColumnName="Fecha_resolucion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Id_externo" ColumnName="Id_externo" />
+          <ScalarProperty Name="Subtipo" ColumnName="Subtipo" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Incidente" ColumnName="Incidente" />
+          <ScalarProperty Name="IdReporte" ColumnName="IdReporte" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportesIG">
+      <EntityTypeMapping TypeName="pruebaModel.ReportesIG">
+        <MappingFragment StoreEntitySet="ReportesIG">
+          <ScalarProperty Name="Idlote" ColumnName="Idlote" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Agente" ColumnName="Agente" />
+          <ScalarProperty Name="Mesa_ayuda" ColumnName="Mesa_ayuda" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

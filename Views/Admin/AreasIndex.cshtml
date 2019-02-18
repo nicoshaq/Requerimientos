@@ -1,0 +1,541 @@
+﻿@*@using Requerimientos.Models*@
+@model IEnumerable<Requerimientos.Models.Area>
+@{
+    ViewBag.Title = "Areas";
+
+
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(":input[type='button']").button();
+    });
+</script>
+<style>
+
+    .html5buttons{
+
+        display:none;
+    }
+
+</style>
+
+<input type="hidden" id="success"
+       value="@TempData["success"]" />
+<input type="hidden" id="info"
+       value="@TempData["info"]" />
+<input type="hidden" id="warning"
+       value="@TempData["warning"]" />
+<input type="hidden" id="error"
+       value="@TempData["error"]" />
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Permisos</h2>
+        <ol class="breadcrumb">
+            
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Permisos del sistema</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+
+                    @*@using (Html.BeginForm())
+                    {
+                        <div class="form-group form-inline" id="data_5">
+                          
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" id="comienzo" class="input-sm form-control" name="start" placeholder="Fecha desde" />
+                                <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input type="text" id="final" class="input-sm form-control" name="end" placeholder="fecha hasta" />
+
+                            </div>
+                            <div class="btn-group">
+
+                                <input type="submit" value="Filtrar" class="btn btn-primary" id="btngetdata">
+                            </div>
+                            <a href="/ImportarExcel/Index" id="submitButton1" class="btn btn-primary subir">Importar Reporte</a>
+                        </div>
+
+                    }*@
+
+                    @*<form class='filter-form form-inline'>
+                            <h3>Filtros</h3>
+                            <div class="form-group">
+                                <label>Subtipo :</label>
+                                <input type='text' value='' class='filter'>
+                                <label>Id Externo :</label>
+                                <input type='text' value='' class='filter2'>
+                                <label>Area:</label>
+                                <input type='text' value='' class='filter3'>
+                            </div>
+                        </form>*@
+
+                    <div class="ibox-content">
+                        <form role="form" class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                                <input type="email" placeholder="Permisos" id="exampleInputEmail2" class="form-control filter">
+                            </div>
+
+                            @*<div class="form-group">
+                                <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                                <input type="email" placeholder="Id Externo" id="exampleInputEmail2" class="form-control filter2">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail2" class="sr-only">Email address</label>
+                                <input type="email" placeholder="Area" id="exampleInputEmail2" class="form-control filter3">
+                            </div>*@
+
+
+
+
+
+                        </form>
+
+
+
+                    </div>
+
+
+
+
+
+                    <table id="tabla" class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre del Área
+                                </th>
+
+                                <th>
+                                  Acciones
+                                </th>
+
+                               
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody id="fbody">
+                           @foreach (Requerimientos.Models.Area item in Model)
+                           {
+                               <tr class="gradeX">
+                                   <td>
+                                       @Html.DisplayFor(modelItem => item.Descripcion)
+                                   </td>
+
+                                   <td>
+                                       <button class="btn btn-warning btn-sm demo3" data-toggle="modal" data-target="#myModal6" alt="Borrar Carpeta">Eliminar</button>
+                                   </td>
+
+
+
+
+
+                               </tr>
+
+                            <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="display: none;">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="sa-icon sa-warning pulseWarning" style="display: block; text-align: center;">
+                                                <i class="fa fa-exclamation" style="font-size: 60px; color: red; text-align: center;"></i>
+                                            </div>
+                                            <span class="alerta"> <h2>Está seguro?</h2></span>
+                                            <span>
+                                                <p class="alerta_descripcion" style="display: block; text-align: center;">Va a eliminar un Area!</p>
+                                            </span>
+                                            @*<div class="sa-icon sa-warning pulseWarning" style="display: block;">
+                                                    <span class="sa-body pulseWarningIns"></span>
+                                                    <span class="sa-dot pulseWarningIns"></span>
+                                                </div>*@
+
+                                        </div>
+                                        <div class="modal-footer">
+
+
+
+
+                                            @*<input type="button" class="btn btn-primary" value="Eliminar" onclick="location.href = '@Url.Action("borrar", "Carpetas", new {id = item.Id})'"/>*@
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("borrar", "Admin", new {id = item.Idarea})'">Eliminar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                           }
+                        </tbody>
+                        
+                    </table>
+
+                    <br />
+                    <div>
+                        @*<a href="@Url.Action("CrearPermiso", "Admin")" class="btn btn-primary btn-w-m"> Crear Permisos</a>*@
+                        @*<a href="@Url.Action("PermissionsImport", "Admin")" class="btn btn-primary btn-w-m"> Importar Permisos</a>
+                        <a href="@Url.Action("RolIndex", "Admin")" class="btn btn-primary btn-w-m pull-right"> Ir a Roles</a>*@
+                        <input type="button" value="Crear Area" onclick="location.href='@Url.Action("CrearArea", "Admin")'" />
+                        @*<input type="button" id="importPermissions2" name="importPermissions2" value="Import Permissions" onclick="location.href='@Url.Action("PermissionsImport", "Admin")'" />*@
+                        <br />
+                    </div>
+                   
+                    <br />
+                    
+                    @*@Html.ActionLink("Go to Roles", "RolIndex", "Admin")*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section Styles {
+    @Styles.Render("~/plugins/awesomeCheckboxStyles")
+    @Styles.Render("~/plugins/clockpickerStyles")
+    @Styles.Render("~/plugins/dateRangeStyles")
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+    @Styles.Render("~/Content/plugins/chosen/chosenStyles")
+    @Styles.Render("~/plugins/switcheryStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/nouiSliderStyles")
+    @Styles.Render("~/plugins/dataPickerStyles")
+    @Styles.Render("~/Content/plugins/ionRangeSlider/ionRangeStyles")
+    @Styles.Render("~/plugins/imagecropperStyles")
+    @Styles.Render("~/Content/plugins/colorpicker/colorpickerStyles")
+    @Styles.Render("~/plugins/select2Styles")
+    @Styles.Render("~/plugins/touchSpinStyles")
+    @Styles.Render("~/plugins/tagInputsStyles")
+    @Styles.Render("~/plugins/duallistStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/dataPicker")
+    @Scripts.Render("~/plugins/ionRange")
+    @Scripts.Render("~/plugins/nouiSlider")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/switchery")
+    @Scripts.Render("~/plugins/chosen")
+    @Scripts.Render("~/plugins/knob")
+    @Scripts.Render("~/plugins/imagecropper")
+    @Scripts.Render("~/plugins/colorpicker")
+    @Scripts.Render("~/plugins/clockpicker")
+    @Scripts.Render("~/plugins/dateRange")
+    @Scripts.Render("~/plugins/select2")
+    @Scripts.Render("~/plugins/touchSpin")
+    @Scripts.Render("~/plugins/tagInputs")
+    @Scripts.Render("~/plugins/duallist")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/toastr")
+
+    <script type="text/javascript">
+
+        $.fn.dataTable.ext.search.push(
+    function (settings, data, dataIndex) {
+        var min = parseInt($('#min').val(), 10);
+        var max = parseInt($('#max').val(), 10);
+        var fecha = parseFloat(data[3]) || 0; // use data for the age column
+
+        if ((isNaN(min) && isNaN(max)) ||
+             (isNaN(min) && fecha <= max) ||
+             (min <= fecha && isNaN(max)) ||
+             (min <= fecha && fecha <= max)) {
+            return true;
+        }
+        return false;
+    }
+);
+
+
+
+
+
+        $(document).ready(function () {
+
+
+            $(function () {
+                var displayMessage = function (message, msgType) {
+                    toastr.options = {
+                        "closeButton": true,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    };
+                    toastr[msgType](message);
+                };
+
+                if ($('#success').val()) {
+                    displayMessage($('#success').val(), 'success');
+                }
+                if ($('#info').val()) {
+                    displayMessage($('#info').val(), 'info');
+                }
+                if ($('#warning').val()) {
+                    displayMessage($('#warning').val(), 'warning');
+                }
+                if ($('#error').val()) {
+                    displayMessage($('#error').val(), 'error');
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+
+
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Reportes' },
+                    { extend: 'pdf', title: 'Reportes', orientation: 'landscape', pageSize: "LEGAL" },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact','width:100%')
+                                    .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+
+
+
+            });
+
+
+
+
+            var dtable = $('#tabla').DataTable();
+
+            $('.filter').on('keyup change', function () {
+                dtable
+                  .column(0).search(this.value)
+                  //.column(4).search(this.value)
+
+                  .draw();
+            });
+
+            $('.filter2').on('keyup change', function () {
+                dtable
+                  .column(6).search(this.value)
+
+                  .draw();
+            });
+
+            $('.filter3').on('keyup change', function () {
+                dtable
+                  .column(7).search(this.value)
+
+                  .draw();
+            });
+
+            $(".dataTables_filter input").on('keyup change', function () {
+                //clear column search values
+                dtable.columns().search('');
+                //clear input values
+                $('.filter').val('');
+            });
+
+
+            });
+
+
+
+
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<fieldset>
+    <legend>
+        <h3>
+            Permissions
+        </h3>
+    </legend>
+    <table id="PermissionTable" style="width: 90%">
+        <thead>
+        <th>
+            Permission
+        </th>
+        <th style="width: 8%">
+            Action
+        </th>
+        </thead>
+        @foreach (Requerimientos.Models.Permisos item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Descripcion, "ListaPermisos", new { id = item.Permiso_Id })
+                </td>
+                <td>
+                    <center>
+                        <a href="@Url.Action("EditarPermiso", "Admin", new { id = item.Permiso_Id })">
+                            <img src="@Url.Content("~/Content/Images/pen.png")" alt="Edit Permission" />
+                        </a>
+
+                        <a href="@Url.Action("BorrarPermiso", "Admin", new { id = item.Permiso_Id })">
+                            <img src="@Url.Content("~/Content/Images/bin.png")" alt="Delete Permission" />
+                        </a>
+                    </center>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <div>
+        <input type="button" value="Create Permission" onclick="location.href='@Url.Action("CrearPermiso", "Admin")'" />
+        <input type="button" id="importPermissions2" name="importPermissions2" value="Import Permissions" onclick="location.href='@Url.Action("PermissionsImport", "Admin")'" />
+        <br />
+    </div>
+</fieldset>
+<br />
+@Html.ActionLink("Go to Roles", "RolIndex", "Admin")*@

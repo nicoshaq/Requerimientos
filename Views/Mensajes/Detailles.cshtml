@@ -1,0 +1,108 @@
+﻿@model Requerimientos.Models.Mensajes
+
+<div>
+    <h4>Mensajes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Remitente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remitente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asunto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asunto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mensaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mensaje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idusuariodestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idusuariodestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maildestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maildestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destinatario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destinatario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idpadre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idpadre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuarios.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuarios.Usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

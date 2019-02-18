@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pruebaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Permiso">
+    <Key>
+      <PropertyRef Name="Permiso_id" />
+    </Key>
+    <Property Name="Permiso_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Modulo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PermisoDenegadoPorRol">
+    <Key>
+      <PropertyRef Name="Rol_id" />
+      <PropertyRef Name="Permiso_id" />
+    </Key>
+    <Property Name="Rol_id" Type="int" Nullable="false" />
+    <Property Name="Permiso_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reportes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdReporte" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Incidente" Type="varchar" MaxLength="255" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="Prioridad" Type="varchar" MaxLength="50" />
+    <Property Name="Tipo" Type="varchar" MaxLength="255" />
+    <Property Name="Subtipo" Type="varchar" MaxLength="255" />
+    <Property Name="Id_externo" Type="varchar" MaxLength="255" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Fecha_resolucion" Type="varchar" MaxLength="50" />
+    <Property Name="Resuelto_por" Type="varchar" MaxLength="255" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="Lote" Type="nchar" MaxLength="250" />
+    <Property Name="Canal" Type="nchar" MaxLength="250" />
+    <Property Name="Idlote" Type="int" />
+  </EntityType>
+  <EntityType Name="ReportesIG">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cliente" Type="varchar" MaxLength="255" />
+    <Property Name="Tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Origen" Type="varchar" MaxLength="50" />
+    <Property Name="Prioridad" Type="varchar" MaxLength="255" />
+    <Property Name="Titulo" Type="varchar" MaxLength="255" />
+    <Property Name="Mesa_ayuda" Type="varchar" MaxLength="255" />
+    <Property Name="Agente" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Idlote" Type="int" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Rol_id" />
+    </Key>
+    <Property Name="Rol_id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SUI_Lote">
+    <Key>
+      <PropertyRef Name="Idlote" />
+    </Key>
+    <Property Name="Idlote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="250" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Sistema" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usu_nombre" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Rol_id" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="Usu_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Reportes_SUI_Lote">
+    <End Role="SUI_Lote" Type="Self.SUI_Lote" Multiplicity="0..1" />
+    <End Role="Reportes" Type="Self.Reportes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUI_Lote">
+        <PropertyRef Name="Idlote" />
+      </Principal>
+      <Dependent Role="Reportes">
+        <PropertyRef Name="Idlote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportesIG_SUI_Lote">
+    <End Role="SUI_Lote" Type="Self.SUI_Lote" Multiplicity="0..1" />
+    <End Role="ReportesIG" Type="Self.ReportesIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUI_Lote">
+        <PropertyRef Name="Idlote" />
+      </Principal>
+      <Dependent Role="ReportesIG">
+        <PropertyRef Name="Idlote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUI_Rol_Permiso_SUI_Permisos">
+    <End Role="Permiso" Type="Self.Permiso" Multiplicity="1" />
+    <End Role="PermisoDenegadoPorRol" Type="Self.PermisoDenegadoPorRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permiso">
+        <PropertyRef Name="Permiso_id" />
+      </Principal>
+      <Dependent Role="PermisoDenegadoPorRol">
+        <PropertyRef Name="Permiso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUI_Rol_Permiso_SUI_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="PermisoDenegadoPorRol" Type="Self.PermisoDenegadoPorRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Rol_id" />
+      </Principal>
+      <Dependent Role="PermisoDenegadoPorRol">
+        <PropertyRef Name="Rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUI_Usuarios_SUI_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Rol_id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="updateidlote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="updateidloteReportes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="pruebaModelStoreContainer">
+    <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermisoDenegadoPorRol" EntityType="Self.PermisoDenegadoPorRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reportes" EntityType="Self.Reportes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportesIG" EntityType="Self.ReportesIG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUI_Lote" EntityType="Self.SUI_Lote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Reportes_SUI_Lote" Association="Self.FK_Reportes_SUI_Lote">
+      <End Role="SUI_Lote" EntitySet="SUI_Lote" />
+      <End Role="Reportes" EntitySet="Reportes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportesIG_SUI_Lote" Association="Self.FK_ReportesIG_SUI_Lote">
+      <End Role="SUI_Lote" EntitySet="SUI_Lote" />
+      <End Role="ReportesIG" EntitySet="ReportesIG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUI_Rol_Permiso_SUI_Permisos" Association="Self.FK_SUI_Rol_Permiso_SUI_Permisos">
+      <End Role="Permiso" EntitySet="Permiso" />
+      <End Role="PermisoDenegadoPorRol" EntitySet="PermisoDenegadoPorRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUI_Rol_Permiso_SUI_Rol" Association="Self.FK_SUI_Rol_Permiso_SUI_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="PermisoDenegadoPorRol" EntitySet="PermisoDenegadoPorRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUI_Usuarios_SUI_Rol" Association="Self.FK_SUI_Usuarios_SUI_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

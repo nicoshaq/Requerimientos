@@ -1,0 +1,589 @@
+﻿@model Requerimientos.Models.Mensajes
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<style>
+
+    .mensaje {
+          
+    padding: 40px;
+    }
+    .Aceptado {
+        background-color:#1ab394;
+        color: #FFFFFF;
+    }
+
+    .Incosistente {
+        background-color: #f0ad4e;
+        color: #FFFFFF;
+    }
+
+    .Rechazado {
+        background-color: #ff0000;
+        color: #FFFFFF;
+    }
+
+
+       .Delegado {
+        background-color: #0094ff;
+        color: #FFFFFF;
+    }
+
+ .Activo {
+        background-color: #1ab394;
+        color: #FFFFFF;
+    }
+
+    .Inactivo {
+        background-color: #f0ad4e;
+        color: #FFFFFF;
+    }
+
+    .Cerrado {
+        background-color: #ff0000;
+        color: #FFFFFF;
+    }
+    
+    .Iniciado {
+        background-color: #ffd800;
+        color: #FFFFFF;
+    }
+
+    .Proceso {
+        background-color: #0094ff;
+        color: #FFFFFF;
+    }
+
+    .Finalizado {
+        background-color:#1ab394;
+        color: #FFFFFF;
+    }
+
+
+
+</style>
+
+<input type="hidden" id="success"
+       value="@TempData["success"]" />
+<input type="hidden" id="info"
+       value="@TempData["info"]" />
+<input type="hidden" id="warning"
+       value="@TempData["warning"]" />
+<input type="hidden" id="error"
+       value="@TempData["error"]" />
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Requerimientos</h2>
+        <ol class="breadcrumb"></ol>
+    </div>
+</div>
+@using (Html.BeginForm("Details", "Mensajes", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+
+
+
+
+
+
+
+     
+                <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title">Historial delegacion Requerimiento</h4>
+                                @*<small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>*@
+                            </div>
+                            <div class="modal-body">
+                                <div class="mail-box">                                    <table class="table footable table-hover table-stripped" data-page-size="11" data-filter=#filter>
+
+                                        <tr style="background-color:#1ab394;color:#FFFFFF;">
+                                            <th>
+                                                Id
+                                            </th>
+                                            <th>
+                                                Identificador
+                                            </th>
+                                            <th>
+                                                Proyecto
+                                            </th>
+                                            <th>
+                                                Usuario que delega
+                                            </th>
+                                            <th>
+                                                Usuario Delegado
+                                            </th>
+                                            
+
+                                        @foreach (var item in Model.HistorialDelega)
+                                        {
+                                            <tbody>
+
+
+                                                <tr>
+                                                    @*<td class="check-mail">
+                            <input type="checkbox" class="i-checks">
+                            </td>*@
+
+
+                                                    <td class="i-checks">@Html.DisplayFor(modelItem => item.Idhistorial)</td>
+                                                    <td class="mail-ontact">@Html.DisplayFor(modelItem => item.Idmensaje)</td>
+                                                    <td class="mail-subject">@Html.DisplayFor(modelItem => item.Proyectos.Titulo) </td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Usuariodelega)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.Usuariodelegado)</td>
+                                                 
+                                                  
+                                                </tr>
+
+
+
+
+                                            </tbody>
+                                        }
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="10">
+                                                    <ul class="pagination pull-right"></ul>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+                                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+       
+    
+        <div class="col-lg-12 animated fadeInRight">
+            <div class="mail-box-header">
+                <div class="pull-right tooltip-demo">
+                    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
+                    @Html.ActionLink("Back to List", "Index")
+                    @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)*@
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">
+                        Usuarios delegados
+                    </button>
+                    @if (ViewBag.estadodos == false) {
+
+                    <a href="@Url.Action("Create", "Novedades", new { id = Model.Id, idproyecto = Model.Idproyecto })" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Ingresar Novedad"><i class="fa fa-pencil"></i> Novedades</a>
+                    }
+                    <a href="@Url.Action("Index", "Mensajes")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Volver"><i class="fa fa-reply"></i> Volver</a>
+                   
+                    @*<a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
+                    <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>*@
+                   <div><p><span style="background-color: @Html.DisplayFor(modelItem => Model.Estado_requerimiento.color); color:#fff;" class="pull-right font-normal label pull-right">@Html.DisplayFor(modelItem => Model.Estado_requerimiento.Descripcion)</span></p></div>
+                   
+@if (Model.Idusuariodelega != null) { 
+                    <div style="padding-top:9%;"><p><strong>Delegado a:</strong><span class="pull-right font-normal label Delegado"> @Html.DisplayFor(modelItem => Model.Usuariodelega)</span></p></div>
+}
+                </div>
+                <h2>
+                    Requerimiento
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md" style="margin-bottom: 2%;">
+                    <h3>
+                        <span class="font-normal">Proyecto: </span>@Html.DisplayFor(model => model.Proyectos.Titulo) <span class="font-normal label @Html.DisplayFor(modelItem => Model.Proyectos.Estado)">@Html.DisplayFor(modelItem => Model.Proyectos.Estado)</span>
+                    </h3>
+
+                    <h3>
+                        <span class="font-normal">Asunto: </span>@Html.DisplayFor(model => model.Asunto)
+                    </h3>
+                  
+                    <h5>
+                        <span class="pull-right font-normal">@Html.DisplayFor(model => model.Fecha)</span>
+                      
+                        <span class="font-normal">De: </span>@Html.DisplayFor(model => model.Remitente)
+                    
+
+
+
+                    </h5>
+
+                   
+                </div>
+
+@if (ViewBag.ocultar == false)
+{
+    if (ViewBag.estadodos == false)
+    {
+        //if (Model.Estado_requerimiento.Idestado != null)
+        //{
+        <div class="row" style="margin-bottom: 2%;">
+            <div style="width: 100%">
+                <div class="col-lg-1"><label class="control-label">Estado:</label></div>
+                <div class="col-lg-3">  @Html.DropDownList("CambioEstado", null, "--select--", htmlAttributes: new { @class = "form-control" })</div>
+                <div class="col-lg-3">
+                    <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" /></div>
+                    @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+
+
+
+
+
+            //}
+            }
+            }
+            @if (ViewBag.estadodos == false)
+            {
+                <div class="row">
+                    <div style="width: 100%">
+                        <div class="col-lg-1"><label class="control-label">Delegar:</label></div>
+
+
+                        <div class="col-lg-3">@Html.DropDownList("userdelega", null, "--select--", htmlAttributes: new { @class = "form-control" })</div>
+
+                        <div class="col-lg-3"><input class="btn btn-primary btn-w-m" type="submit" value="Guardar" /></div>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+
+
+            <div class="mail-box">
+         
+
+                <div class="mail-body mensaje">
+                    
+                        @Html.Raw(Model.Mensaje)
+                    <div style="display:none">
+                    @Html.TextAreaFor(model => model.Mensaje, new { @readonly = "readonly" })
+                        @Html.TextAreaFor(model => model.User_Id, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Asunto, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Fecha, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Remitente, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Estado, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Idusuariodestino, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Maildestino, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Destinatario, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Idproyecto, new { @readonly = "readonly" })
+                        @Html.EditorFor(model => model.Status, new { @readonly = "readonly" })
+                    
+                    </div>
+                    
+                    
+                </div>
+
+                <div class="mail-attachment">
+
+                        @*<li>
+                          
+                            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>
+                        </li>*@
+
+
+
+                    @*<p>
+                        <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
+                        <a href="#">Download all</a>
+                        |
+                        <a href="#">View all images</a>
+                    </p>*@
+                    <div class="attachment">
+@foreach (var item in Model.Archivos)
+{
+                        <div class="file-box">
+
+
+
+
+                            <div class="file">
+
+                                <a class="title" href="/Mensajes/Descarga/?p=@(item.Id + item.Extension)&d=@item.Nombre">
+                                    <span class="corner"></span>
+                                    <div class="icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                    <div class="file-name">
+                                        @item.Nombre
+                                
+                                        <br />
+                                        @*<small>Added: Jan 11, 2014</small>*@
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+}
+                     
+                        <div class="clearfix"></div>
+                    </div>
+                  
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Novedades</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li>
+                                            <a href="#">Config option 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Config option 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                                       placeholder="Buscar en toda la tabla">
+                                <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                    <thead>
+                                        <tr style="background-color: rgb(26, 179, 148);color: rgb(255, 255, 255);display: table-row;">
+                                            <th>Estado</th>
+                                            <th>Titulo/Descripcion</th>
+                                            <th data-hide="phone,tablet">Usuario</th>
+                                            <th data-hide="phone,tablet">Proyecto</th>
+                                         <th data-hide="phone,tablet">Fecha</th>
+                                            @*<th data-hide="phone,tablet">CSS grade</th>*@
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+@foreach (var item in Model.Novedades.Where(m =>m.Privado && m.User_Id == Model.Usuarios.User_Id || !m.Privado).OrderByDescending(n => n.Fecha))
+{
+
+
+    <tr>
+        <td>
+@if (item.Privado == true)
+{
+  //  @item.Privado;
+    @Html.DisplayName("Privado");
+}
+
+            <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_novedades.color); color: #fff;" class="label pull-right">@Html.DisplayFor(modelItem => item.Estado_novedades.Descripcion)</span>
+        </td>
+        <td class="issue-info">
+            <a href="@Url.Action("Details", "Novedades", new { id = item.Idnovedad })">
+                @item.Titulo
+
+                <small>
+                    @Html.Raw(item.Descripcion)
+                </small>
+            </a>
+        </td>
+        <td>
+            @item.Usuario
+        </td>
+        <td>
+            @item.Mensajes.Proyectos.Titulo
+        </td>
+        <td>
+            @item.Fecha
+        </td>
+
+
+        @*<td style="cursor:pointer;" data-toggle="modal"  data-target="#myModal6">
+            @item.Fecha
+        </td>*@
+        @*<td>
+
+
+            <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">@item.Titulo</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                <strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                remaining essentially unchanged.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>*@
+    </tr>
+   
+
+}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5">
+                                                <ul class="pagination pull-right"></ul>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+                @*<div class="mail-body text-right tooltip-demo">
+                    <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-reply"></i> Reply</a>
+                    <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-arrow-right"></i> Forward</a>
+                    <button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Print" class="btn btn-sm btn-white"><i class="fa fa-print"></i> Print</button>
+                    <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</button>
+                </div>
+                <div class="clearfix"></div>*@
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+   @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)
+</p>*@
+
+
+@section Styles {
+    @Styles.Render("~/plugins/footableStyles")
+@Styles.Render("~/plugins/clockpickerStyles")
+@Styles.Render("~/plugins/dateRangeStyles")
+@Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+@Styles.Render("~/Content/plugins/chosen/chosenStyles")
+@Styles.Render("~/plugins/switcheryStyles")
+@Styles.Render("~/plugins/jasnyBootstrapStyles")
+@Styles.Render("~/plugins/nouiSliderStyles")
+@Styles.Render("~/plugins/dataPickerStyles")
+@Styles.Render("~/Content/plugins/ionRangeSlider/ionRangeStyles")
+@Styles.Render("~/plugins/imagecropperStyles")
+@Styles.Render("~/Content/plugins/colorpicker/colorpickerStyles")
+@Styles.Render("~/plugins/select2Styles")
+@Styles.Render("~/plugins/touchSpinStyles")
+@Styles.Render("~/plugins/tagInputsStyles")
+@Styles.Render("~/plugins/duallistStyles")
+@Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+@Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/footable")
+@Scripts.Render("~/plugins/iCheck")
+@Scripts.Render("~/plugins/dataPicker")
+@Scripts.Render("~/plugins/ionRange")
+@Scripts.Render("~/plugins/nouiSlider")
+@Scripts.Render("~/plugins/jasnyBootstrap")
+@Scripts.Render("~/plugins/switchery")
+@Scripts.Render("~/plugins/chosen")
+@Scripts.Render("~/plugins/knob")
+@Scripts.Render("~/plugins/imagecropper")
+@Scripts.Render("~/plugins/colorpicker")
+@Scripts.Render("~/plugins/clockpicker")
+@Scripts.Render("~/plugins/dateRange")
+@Scripts.Render("~/plugins/select2")
+@Scripts.Render("~/plugins/touchSpin")
+@Scripts.Render("~/plugins/tagInputs")
+@Scripts.Render("~/plugins/duallist")
+@Scripts.Render("~/plugins/dataTables")
+@Scripts.Render("~/plugins/toastr")
+
+<script type="text/javascript">
+
+
+        $.fn.dataTable.ext.search.push(
+  function (settings, data, dataIndex) {
+      var min = parseInt($('#min').val(), 10);
+      var max = parseInt($('#max').val(), 10);
+      var fecha = parseFloat(data[3]) || 0; // use data for the age column
+
+      if ((isNaN(min) && isNaN(max)) ||
+           (isNaN(min) && fecha <= max) ||
+           (min <= fecha && isNaN(max)) ||
+           (min <= fecha && fecha <= max)) {
+          return true;
+      }
+      return false;
+  }
+);
+
+
+
+
+        $(document).ready(function () {
+            $('.footable').footable();
+            $('.footable2').footable();
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+        });
+
+   </script> 
+}

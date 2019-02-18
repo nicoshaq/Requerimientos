@@ -1,0 +1,311 @@
+﻿@model Requerimientos.Models.Proyectos
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+
+
+
+
+
+
+@*<div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-4">
+            <h2>Proyectos</h2>
+            <ol class="breadcrumb"></ol>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    @using (Html.BeginForm(null, null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="wrapper wrapper-content">
+            <div class="row">
+
+                <div class="col-lg-12 animated fadeInRight">
+                    <div class="mail-box-header">
+                        <div class="pull-right tooltip-demo">
+                            <a href="@Url.Action("Index", "Mensajes")" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Descartar Mensaje"><i class="fa fa-times"></i> Descartar</a>
+                        </div>
+                        <h2>
+                            Nuevo Proyecto
+                        </h2>
+                    </div>
+                    <div class="mail-box">
+
+                        <div class="mail-body" style="padding-bottom: 3%;">
+                            <form>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" style="vertical-align: middle;padding-top: 10px;">Titulo:</label>
+                                    <div>
+                                        @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                        @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                                    </div>
+
+
+
+                                </div>
+                                <div class="form-group">
+
+                                    @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2", @style = "vertical-align: middle;padding - top: 10px;" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("CambioEstado", null, htmlAttributes: new { @class = "form-control", @style = "width:50%" })
+
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="mail-text h-200">
+                            <div class="summernote">
+                                @Html.TextAreaFor(model => model.Descripcion, new { htmlAttributes = new { @class = "panel-body form-control" } })
+                                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div style="display:none">
+                            @Html.HiddenFor(model => model.Fecha, new { @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.Creadopor, new { @readonly = "readonly" })
+                            @Html.HiddenFor(model => model.User_Id, new { @readonly = "readonly" })
+
+
+                        </div>
+
+
+                        <div class="mail-body text-right tooltip-demo">
+                            <input type="submit" value="Enviar" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Enviar" />
+
+                          </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+*@
+@section Styles {
+    @Styles.Render("~/plugins/summernoteStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/summernote")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+           function HomeIndex() {
+        var $this = this;
+
+        function initialize() {
+            $('#Descripcion').summernote({
+                focus: true,
+                height: 150,
+                codemirror: {
+                    theme: 'united'
+                }
+            });
+        }
+
+        $this.init = function () {
+            initialize();
+        }
+    }
+    $(function () {
+        var self = new HomeIndex();
+        self.init();
+    })
+
+
+
+
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Proyectos</h2>
+        <ol class="breadcrumb"></ol>
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Idproyecto)
+    <div class="wrapper wrapper-content">
+        <div class="row">
+
+            <div class="col-lg-12 animated fadeInRight">
+                <div class="mail-box-header">
+                    <div class="pull-right tooltip-demo">
+                        <a href="@Url.Action("Details", "Proyectos", new { id = Model.Idproyecto })" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Descartar edición"><i class="fa fa-times"></i> Descartar</a>
+                    </div>
+                    <h2>
+                        Editar Proyecto
+                    </h2>
+                </div>
+                <div class="mail-box">
+
+                    <div class="mail-body" style="padding-bottom: 3%;">
+                        <form>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="vertical-align: middle;padding-top: 10px;">Titulo:</label>
+                                <div>
+                                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+                                </div>
+
+
+
+                            </div>
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2", @style = "vertical-align: middle;padding - top: 10px;" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("CambioEstado", null, htmlAttributes: new { @class = "form-control", @style = "width:50%" })
+
+
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="mail-text h-200">
+                        <div class="summernote">
+                            @Html.TextAreaFor(model => model.Descripcion, new { htmlAttributes = new { @class = "panel-body form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div style="display:none">
+                        @Html.EditorFor(model => model.Fecha, new { @readonly = "readonly" })
+                       @Html.EditorFor(model => model.Creadopor, new { @readonly = "readonly" })
+    @*@Html.EditorFor(model => model.User_Id, new { @readonly = "readonly" })*@
+
+
+                    </div>
+
+
+                    <div class="mail-body text-right tooltip-demo">
+                        <input type="submit" value="Enviar" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Enviar" />
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*<div class="form-horizontal">
+        <h4>Proyectos</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Idproyecto)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Creadopor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Creadopor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Creadopor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Idmensaje, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Idmensaje, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Idmensaje, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.User_Id, "User_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("User_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

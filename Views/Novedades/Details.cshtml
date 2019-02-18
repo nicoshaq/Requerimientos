@@ -1,0 +1,242 @@
+﻿@model Requerimientos.Models.Novedades
+
+@{
+    ViewBag.Title = "Detalles de novedad";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<h2>Detalle de la novedad</h2>
+
+
+
+
+
+
+
+
+<style>
+    .Aceptado {
+        background-color:#1ab394;
+        color: #FFFFFF;
+    }
+
+    .Incosistente {
+        background-color: #f0ad4e;
+        color: #FFFFFF;
+    }
+
+    .Rechazado {
+        background-color: #ff0000;
+        color: #FFFFFF;
+    }
+
+
+
+    .Iniciado {
+        background-color: #ffd800;
+        color: #FFFFFF;
+    }
+
+    .Proceso {
+        background-color: #0094ff;
+        color: #FFFFFF;
+    }
+
+    .Finalizado {
+        background-color:#1ab394;
+        color: #FFFFFF;
+    }
+</style>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="row">
+
+            <div class="col-lg-12 animated fadeInRight">
+                <div class="mail-box-header">
+                    <div class="pull-right tooltip-demo">
+                        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                            @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
+                            @Html.ActionLink("Back to List", "Index")
+                            @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)*@
+
+
+                        @*<a href="@Url.Action("Create", "Novedades")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Ingresar Novedad"><i class="fa fa-pencil"></i> Novedades</a>*@
+
+                        <a href="javascript:history.back(-1);" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Volver a Novedades"><i class="fa fa-reply"></i> Volver</a>
+                        @*<a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
+                            <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>*@
+                        <div><p><span class="pull-right font-normal label pull-right" style="color:#fff;background-color:@Html.DisplayFor(modelItem => Model.Estado_novedades.color)">@Html.DisplayFor(modelItem => Model.Estado_novedades.Descripcion)</span></p></div>
+                    </div>
+                    <h2>
+                        Detalle de la novedad
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+
+                        <h3>
+                            <span class="font-normal">Titulo: </span>@Html.DisplayFor(model => model.Titulo)
+                        </h3>
+
+                        <h5>
+                            <span class="pull-right font-normal">@Html.DisplayFor(model => model.Fecha)</span>
+
+                            <span class="font-normal">De: </span>@Html.DisplayFor(model => model.Usuario)
+
+
+
+
+                        </h5>
+                    </div>
+
+                    @if (ViewBag.ocultar == false)
+                    {
+
+                        if (Model.Estado != "Finalizado")
+                        {
+                            <div style="width: 10%">
+                                @Html.DropDownList("CambioEstado", null, htmlAttributes: new { @class = "form-control" })
+                                <input type="submit" value="Save" />
+                                @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
+                            </div>
+
+
+
+
+
+                        }
+                    }
+                </div>
+
+
+
+                <div class="mail-box">
+
+
+                    <div class="mail-body">
+
+                        @Html.Raw(Model.Descripcion)
+                        <div style="display:none">
+                            @Html.TextAreaFor(model => model.Usuario, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Titulo, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Fecha, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Descripcion, new { @readonly = "readonly" })
+                         
+
+                        </div>
+
+
+                    </div>
+
+                    @*<div class="mail-attachment">
+
+                      
+                        <div class="attachment">
+                            @foreach (var item in Model.Archivos)
+                            {
+                                <div class="file-box">
+
+
+
+
+                                    <div class="file">
+
+                                        <a class="title" href="/Mensajes/Descarga/?p=@(item.Id + item.Extension)&d=@item.Nombre">
+                                            <span class="corner"></span>
+                                            <div class="icon">
+                                                <i class="fa fa-file"></i>
+                                            </div>
+                                            <div class="file-name">
+                                                @item.Nombre
+
+                                                <br />
+                                            
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            }
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>*@
+             
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div>
+    <h4>Novedades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mensajes.Remitente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mensajes.Remitente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Idnovedad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

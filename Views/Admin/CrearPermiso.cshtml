@@ -1,0 +1,35 @@
+﻿@model Requerimientos.Models.Permisos
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(":input[type='submit']").button();
+        $(":input[type='text']").text();
+    });
+</script>
+<div class="panel">
+    <fieldset>
+        <legend>
+            <h3>
+                Create Permission</h3>
+        </legend>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Descripcion, "Descripcion")
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Descripcion, new { style = "width:450px" })
+                @Html.ValidationMessageFor(model => model.Descripcion)
+            </div>          
+            <br />
+            <input type="submit" value="Create" />           
+        }
+    </fieldset>
+</div>
+<div>
+    @Html.ActionLink("Go to Permissions", "PermisosIndex", "Admin")
+</div>

@@ -1,0 +1,234 @@
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\SUI_Reportes.dll.config
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\SUI_Reportes.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\SUI_Reportes.pdb
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\Antlr3.Runtime.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\EntityFramework.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\EntityFramework.SqlServer.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\Newtonsoft.Json.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Helpers.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Mvc.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Optimization.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Razor.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.WebPages.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.WebPages.Razor.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\WebGrease.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\Antlr3.Runtime.pdb
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\EntityFramework.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\EntityFramework.SqlServer.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\Newtonsoft.Json.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Helpers.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Mvc.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Optimization.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.Razor.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.WebPages.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\System.Web.WebPages.Razor.xml
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\pl\System.Web.Optimization.resources.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\bin\pl\System.Web.Razor.resources.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\obj\Debug\Requerimientos.csprojResolveAssemblyReference.cache
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\obj\Debug\SUI_Reportes.dll
+C:\Users\Nicolás Vega\Documents\banco\REPORTES\reportes\Requerimientos\obj\Debug\SUI_Reportes.pdb
+C:\inetpub\wwwroot\Requerimientos\bin\SUI_Reportes.dll.config
+C:\inetpub\wwwroot\Requerimientos\bin\SUI_Reportes.dll
+C:\inetpub\wwwroot\Requerimientos\bin\SUI_Reportes.pdb
+C:\inetpub\wwwroot\Requerimientos\bin\Antlr3.Runtime.dll
+C:\inetpub\wwwroot\Requerimientos\bin\EntityFramework.dll
+C:\inetpub\wwwroot\Requerimientos\bin\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\Requerimientos\bin\log4net.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Web.Infrastructure.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Newtonsoft.Json.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Helpers.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Http.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Mvc.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Optimization.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Razor.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.WebPages.Deployment.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.WebPages.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.WebPages.Razor.dll
+C:\inetpub\wwwroot\Requerimientos\bin\WebGrease.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Net.Http.Formatting.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Antlr3.Runtime.pdb
+C:\inetpub\wwwroot\Requerimientos\bin\EntityFramework.xml
+C:\inetpub\wwwroot\Requerimientos\bin\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\Requerimientos\bin\Newtonsoft.Json.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Helpers.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Http.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Mvc.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Optimization.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Razor.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.WebPages.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.WebPages.Deployment.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.WebPages.Razor.xml
+C:\inetpub\wwwroot\Requerimientos\bin\System.Net.Http.Formatting.xml
+C:\inetpub\wwwroot\Requerimientos\bin\pl\System.Web.Optimization.resources.dll
+C:\inetpub\wwwroot\Requerimientos\bin\pl\System.Web.Razor.resources.dll
+C:\inetpub\wwwroot\Requerimientos\obj\Debug\SUI_Reportes.dll
+C:\inetpub\wwwroot\Requerimientos\obj\Debug\SUI_Reportes.pdb
+C:\inetpub\wwwroot\Requerimientos\obj\Debug\Requerimientos.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Owin.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Owin.Security.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Owin.xml
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.Owin.Security.xml
+C:\inetpub\wwwroot\Requerimientos\bin\Owin.dll
+C:\inetpub\wwwroot\Requerimientos\bin\Microsoft.CSharp.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.ComponentModel.DataAnnotations.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Configuration.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Data.DataSetExtensions.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Data.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Drawing.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.EnterpriseServices.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Net.Http.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Net.Http.WebRequest.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Runtime.Serialization.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Security.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Abstractions.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.ApplicationServices.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.DynamicData.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Entity.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Extensions.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Routing.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Web.Services.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Xml.dll
+C:\inetpub\wwwroot\Requerimientos\bin\System.Xml.Linq.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\obj\Debug\Requerimientos.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\SUI_Reportes.dll.config
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\SUI_Reportes.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\SUI_Reportes.pdb
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Antlr3.Runtime.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\EntityFramework.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\log4net.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.CSharp.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Owin.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Owin.Security.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Web.Infrastructure.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Newtonsoft.Json.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Owin.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.ComponentModel.DataAnnotations.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Configuration.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Data.DataSetExtensions.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Data.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Drawing.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.EnterpriseServices.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Net.Http.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Net.Http.WebRequest.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Runtime.Serialization.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Security.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Abstractions.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.ApplicationServices.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.DynamicData.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Entity.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Extensions.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Helpers.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Mvc.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Optimization.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Razor.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Routing.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Services.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.WebPages.Deployment.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.WebPages.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.WebPages.Razor.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Xml.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Xml.Linq.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\WebGrease.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Antlr3.Runtime.pdb
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\EntityFramework.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Owin.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Microsoft.Owin.Security.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\Newtonsoft.Json.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Helpers.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Mvc.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Optimization.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.Razor.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.WebPages.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.WebPages.Deployment.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\System.Web.WebPages.Razor.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\pl\System.Web.Optimization.resources.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\bin\pl\System.Web.Razor.resources.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\obj\Debug\SUI_Reportes.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS_old\Requerimientos\obj\Debug\SUI_Reportes.pdb
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\SUI_Reportes.dll.config
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\SUI_Reportes.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\SUI_Reportes.pdb
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Antlr3.Runtime.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\EntityFramework.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\EntityFramework.SqlServer.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\log4net.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.CSharp.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Owin.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Owin.Security.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Web.Infrastructure.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Newtonsoft.Json.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Owin.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.ComponentModel.DataAnnotations.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Configuration.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Data.DataSetExtensions.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Data.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Drawing.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.EnterpriseServices.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Net.Http.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Net.Http.WebRequest.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Runtime.Serialization.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Security.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Abstractions.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.ApplicationServices.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.DynamicData.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Entity.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Extensions.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Helpers.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Mvc.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Optimization.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Razor.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Routing.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Services.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.WebPages.Deployment.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.WebPages.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.WebPages.Razor.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Xml.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Xml.Linq.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\WebGrease.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Antlr3.Runtime.pdb
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\EntityFramework.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\EntityFramework.SqlServer.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Owin.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Microsoft.Owin.Security.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\Newtonsoft.Json.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Helpers.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Mvc.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Optimization.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.Razor.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.WebPages.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.WebPages.Deployment.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\System.Web.WebPages.Razor.xml
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\pl\System.Web.Optimization.resources.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\pl\System.Web.Razor.resources.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\obj\Debug\SUI_Reportes.dll
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\obj\Debug\SUI_Reportes.pdb
+C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\obj\Debug\Requerimientos.csprojResolveAssemblyReference.cache

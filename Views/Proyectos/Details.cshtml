@@ -1,0 +1,460 @@
+﻿@model Requerimientos.Models.Proyectos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<style>
+
+
+    .Activo {
+        background-color: #1ab394;
+        color: #FFFFFF;
+    }
+
+    .Inactivo {
+        background-color: #f0ad4e;
+        color: #FFFFFF;
+    }
+
+    .Cerrado {
+        background-color: #ff0000;
+        color: #FFFFFF;
+    }
+
+
+.footable-odd {
+    background-color: #fff;
+}
+.feed-activity-list .feed-element {
+    border-bottom: 0px solid #e7eaec;
+}
+
+
+
+
+    .Aceptado {
+        background-color: #1ab394;
+        color: #FFFFFF;
+    }
+
+    .Incosistente {
+        background-color: #f0ad4e;
+        color: #FFFFFF;
+    }
+
+    .Rechazado {
+        background-color: #ff0000;
+        color: #FFFFFF;
+    }
+
+
+
+    .Iniciado {
+        background-color: #ffd800;
+        color: #FFFFFF;
+    }
+
+    .Proceso {
+        background-color: #0094ff;
+        color: #FFFFFF;
+    }
+
+    .Finalizado {
+        background-color: #1ab394;
+        color: #FFFFFF;
+    }
+</style>
+
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Proyectos</h2>
+        <ol class="breadcrumb"></ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="m-b-md">
+                                
+                         <h2>@Html.DisplayFor(model => model.Titulo)</h2>
+                                </div>
+                                <dl class="dl-horizontal">
+                                    <dt>Status:</dt>
+                                    <dd><span class="label @Html.DisplayFor(Model => Model.Estado)">@Html.DisplayFor(model => Model.Estado)</span></dd>
+                                </dl>
+
+                                <dl class="dl-horizontal">
+                                   
+                                    <dd>@Html.ActionLink("Editar Proyecto", "Edit", new { id = Model.Idproyecto }, new {
+                                       @class = "btn btn-white btn-xs pull-right"})</dd>
+                                </dl>
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-5">
+
+                                <dl class="dl-horizontal">
+                                    <dt>Creado por:</dt>
+                                    <dd>@Html.DisplayFor(model => model.Creadopor)</dd>
+                                    <dt>Requerimientos:</dt>
+                                    <dd>  @ViewData["mensajeproyecto"]</dd>
+                                    @*<dt>Client:</dt>
+                                    <dd><a href="#" class="text-navy"> Zender Company</a> </dd>
+                                    <dt>Version:</dt>
+                                    <dd> 	v1.1 </dd>*@
+                                </dl>
+                            </div>
+                            <div class="col-lg-7" id="cluster_info">
+                                <dl class="dl-horizontal">
+                                    <dt>Ultima actualizacion:</dt>
+                                    <dd>@Html.DisplayFor(model => model.Fechamodif)</dd>
+                                    <dt>Creado:</dt>
+                                    <dd> 	@Html.DisplayFor(model => model.Fecha) </dd>
+                                    @*<dt>Participants:</dt>
+
+                                    <dd class="project-people">
+                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a3.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a1.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a2.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a4.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a5.jpg"></a>
+                                    </dd>*@
+                                </dl>
+                            </div>
+                        </div>
+                        @*<div class="row">
+                            <div class="col-lg-12">
+                                <dl class="dl-horizontal">
+                                    <dt>Completed:</dt>
+                                    <dd>
+                                        <div class="progress progress-striped active m-b-sm">
+                                            <div style="width: 60%;" class="progress-bar"></div>
+                                        </div>
+                                        <small>Project completed in <strong>60%</strong>. Remaining close the project, sign a contract and invoice.</small>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>*@
+                        <div class="row m-t-sm">
+                            <div class="col-lg-12">
+                                <div class="panel blank-panel">
+                                    @*<a href="@Html.ActionLink("Edit", "Edit", new { id = Model.Idproyecto })" class="btn btn-white btn-xs pull-right">Edit project</a>*@
+                                    <div class="panel-heading">
+                                        <div class="panel-options">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#tab-1" data-toggle="tab">Requerimientos</a></li>
+                                                <li class=""><a href="#tab-2" data-toggle="tab">Novedades</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab-1">
+                                                <div class="feed-activity-list">
+
+
+
+    <table class="table footable table-hover table-stripped" data-page-size="11" data-filter=#filter>
+        <thead>
+            <tr>
+                <td></td>
+
+            </tr>
+            </thead>
+        <tbody>
+
+@foreach (var item in Model.Mensajes.OrderByDescending(n => n.Fecha))
+{
+            <tr>
+                <td>
+                    <div class="feed-element">
+                        @*<a href="#" class="pull-left">
+                <img alt="image" class="img-circle" src="~/Images/a2.jpg">
+            </a>*@
+
+
+                        <div class="media-body ">
+                            <small class="pull-right"></small>
+                            <strong>@item.Usuarios.Usuario</strong> envio un Requerimiento a <strong>@item.Destinatario</strong><br>
+                            <small class="text-muted">@item.Fecha</small>
+                            <div class="well">
+                                @Html.Raw(item.Mensaje)
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+            </tr>
+}
+
+
+        </tbody>
+
+
+
+        <tfoot>
+            <tr>
+                <td colspan="10">
+                    <ul class="pagination pull-right"></ul>
+                </td>
+            </tr>
+        </tfoot>
+
+        </table>
+          
+
+
+
+
+          
+</div>
+                                            </div>
+                                            <div class="tab-pane" id="tab-2">
+                                                <table class="table footable table-hover table-stripped" data-page-size="11" data-filter=#filter>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Estado</th>
+                                                            <th>Titulo</th>
+                                                            <th>Fecha</th>
+                                                            <th>End Time</th>
+                                                            <th>Comentario</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        @foreach (var item in Model.Novedades.OrderByDescending(n => n.Fecha))
+                                                        {
+
+
+                                                            <tr>
+                                                                <td>
+                                                                    <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_novedades.color); color:#fff;" class="label pull-right"><i class="fa fa-check"></i>@Html.DisplayFor(modelItem => item.Estado_novedades.Descripcion)</span>
+                                                                </td>
+                                                                <td>
+                                                                    @item.Titulo
+                                                                </td>
+                                                                <td>
+                                                                    @item.Fecha
+                                                                </td>
+                                                                <td>
+                                                                    @item.Usuario
+                                                                </td>
+                                                                <td>
+                                                                    <p class="small">
+                                                                        @Html.Raw(item.Descripcion)
+                                                                    </p>
+                                                                </td>
+
+
+
+                                                            </tr>
+                                                        }
+
+
+
+
+
+
+
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="10">
+                                                                <ul class="pagination pull-right"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="wrapper wrapper-content project-manager">
+                <h4>Descripcion del proyecto</h4>
+                @*<img src="~/Images/zender_logo.png" class="img-responsive">*@
+                <p class="small">
+                    @Html.Raw(Model.Descripcion)
+                </p>
+             
+             
+
+
+
+                <h4>Archivos vinculados al proyecto</h4>
+
+
+@foreach (var item in Model.Archivos)
+{
+
+               
+
+    <ul class="list-unstyled project-files">
+        <li><a href="/Mensajes/Descarga/?p=@(item.Id + item.Extension)&d=@item.Nombre"><i class="fa fa-file"></i> @item.Nombre</a></li>
+        @*<li><a href=""><i class="fa fa-file-picture-o"></i> Logo_zender_company.jpg</a></li>
+        <li><a href=""><i class="fa fa-stack-exchange"></i> Email_from_Alex.mln</a></li>
+        <li><a href=""><i class="fa fa-file"></i> Contract_20_11_2014.docx</a></li>*@
+    </ul>
+    @*<div class="text-center m-t-md">
+        <a href="#" class="btn btn-xs btn-primary">Add files</a>
+        <a href="#" class="btn btn-xs btn-primary">Report contact</a>
+    </div>*@
+
+}
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+@section Styles {
+    @Styles.Render("~/plugins/footableStyles")
+    @Styles.Render("~/plugins/clockpickerStyles")
+    @Styles.Render("~/plugins/dateRangeStyles")
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+    @Styles.Render("~/Content/plugins/chosen/chosenStyles")
+    @Styles.Render("~/plugins/switcheryStyles")
+    @Styles.Render("~/plugins/jasnyBootstrapStyles")
+    @Styles.Render("~/plugins/nouiSliderStyles")
+    @Styles.Render("~/plugins/dataPickerStyles")
+    @Styles.Render("~/Content/plugins/ionRangeSlider/ionRangeStyles")
+    @Styles.Render("~/plugins/imagecropperStyles")
+    @Styles.Render("~/Content/plugins/colorpicker/colorpickerStyles")
+    @Styles.Render("~/plugins/select2Styles")
+    @Styles.Render("~/plugins/touchSpinStyles")
+    @Styles.Render("~/plugins/tagInputsStyles")
+    @Styles.Render("~/plugins/duallistStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+    @Styles.Render("~/plugins/toastrStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/footable")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/dataPicker")
+    @Scripts.Render("~/plugins/ionRange")
+    @Scripts.Render("~/plugins/nouiSlider")
+    @Scripts.Render("~/plugins/jasnyBootstrap")
+    @Scripts.Render("~/plugins/switchery")
+    @Scripts.Render("~/plugins/chosen")
+    @Scripts.Render("~/plugins/knob")
+    @Scripts.Render("~/plugins/imagecropper")
+    @Scripts.Render("~/plugins/colorpicker")
+    @Scripts.Render("~/plugins/clockpicker")
+    @Scripts.Render("~/plugins/dateRange")
+    @Scripts.Render("~/plugins/select2")
+    @Scripts.Render("~/plugins/touchSpin")
+    @Scripts.Render("~/plugins/tagInputs")
+    @Scripts.Render("~/plugins/duallist")
+    @Scripts.Render("~/plugins/dataTables")
+    @Scripts.Render("~/plugins/toastr")
+
+    <script type="text/javascript">
+
+
+        $.fn.dataTable.ext.search.push(
+  function (settings, data, dataIndex) {
+      var min = parseInt($('#min').val(), 10);
+      var max = parseInt($('#max').val(), 10);
+      var fecha = parseFloat(data[3]) || 0; // use data for the age column
+
+      if ((isNaN(min) && isNaN(max)) ||
+           (isNaN(min) && fecha <= max) ||
+           (min <= fecha && isNaN(max)) ||
+           (min <= fecha && fecha <= max)) {
+          return true;
+      }
+      return false;
+  }
+);
+
+
+
+
+        $(document).ready(function () {
+            $('.footable').footable();
+            $('.footable2').footable();
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    @*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Idproyecto }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

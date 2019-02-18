@@ -1,0 +1,44 @@
+﻿@model Requerimientos.Models.Permisos
+
+@Html.HiddenFor(model => model.Permiso_Id)
+<fieldset style="padding: 1em; font: 100%; color: Black; border-color: Black; border-style: solid;
+    border-width: thin; border-color: Silver; width: 850px">
+    <legend><strong>Add Permission To Role</strong></legend>
+    <br />
+    <label>
+        Role:
+    </label>
+    @Html.DropDownList("RoleId", null, string.Empty, new { style = "width:350px" })
+    <input type="button" id="AddPermission" value="Add Permission" />    
+</fieldset>
+
+@section scripts {
+    
+
+
+<script>
+    $(document).ready(function () {
+        $('#AddPermission').click(function () {
+            var _roleId = $('#RoleId').val();
+            var _permisoId = $('#Permission_Id').val();
+
+
+            if (_permisoId == '') {
+                return false;
+            }
+
+            var _parameters = { permisoId: _permisoId, roleId: _roleId };
+            $.ajax({
+                url: "/Admin/AddRole2PermissionReturnPartialView",
+                type: "GET",
+                data: _parameters,
+                success: function (data, textStatus, jqXHR) {
+                    $('#RolesTable').html(data);
+                    $('#RoleId').val("");
+                }
+            });
+        });
+    });
+</script>
+
+}
