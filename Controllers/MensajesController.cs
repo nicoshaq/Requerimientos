@@ -12,6 +12,7 @@ using System.Web.Mvc;
 using System.Data;
 using log4net;
 using System.Net.Mail;
+using Requerimientos.Controllers;
 
 namespace Requerimientos.Models
 {
@@ -28,6 +29,9 @@ namespace Requerimientos.Models
         MailMessage mail = new MailMessage();
         private string proyecto;
 
+        ErrorController error = new ErrorController();
+
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
@@ -40,6 +44,7 @@ namespace Requerimientos.Models
 
         public ActionResult Index()
         {
+            log.InfoFormat("{0}", new SUIUsuarios(HttpContext.User.Identity.Name).Usuario);
 
               var fechainicio = DateTime.Today.AddDays(-365);
            
@@ -53,6 +58,7 @@ namespace Requerimientos.Models
             ViewData["Rechazado"] = db.Mensajes.Count(r => r.Status == "Rechazado");
             ViewData["Inconsistente"] = db.Mensajes.Count(r => r.Status == "Incosistente");
 
+            ViewBag.enviado = 0;
 
             ViewBag.IdCarpeta = this.CarpetasCombo();
 
@@ -67,6 +73,7 @@ namespace Requerimientos.Models
 
 //            this.hola();
           
+
 
 
 
@@ -211,6 +218,8 @@ namespace Requerimientos.Models
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
 
             RequerimientosConn db = new RequerimientosConn();
+
+            ViewBag.enviado = 0;
 
             switch (submit)
             {
@@ -653,7 +662,17 @@ namespace Requerimientos.Models
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             }
+
+
+
+
             Mensajes mensajes = db.Mensajes.Find(id);
+
+
+            if (mensajes == null)
+            {
+                return error.Error404();
+            }
 
             if (this.HasRole("Administrador"))
             {
@@ -685,6 +704,19 @@ namespace Requerimientos.Models
 
 
 
+            if (mensajes.Idusuariodestino != idusuario)
+            {
+                ViewBag.enviados = true;
+            }
+            else
+            {
+                
+                    ViewBag.enviados = false;
+                
+            }
+
+
+
             usuaridelegado = mensajes.Idusuariodelega;
 
           
@@ -711,10 +743,7 @@ namespace Requerimientos.Models
            
 
 
-            if (mensajes == null)
-            {
-                return HttpNotFound();
-            }
+         
             if (mensajes.Estado == "leido")
             {
                 return View(mensajes);
@@ -869,15 +898,175 @@ namespace Requerimientos.Models
 
         public ActionResult Enviados()
         {
-            
+
+
+            var fechainicio = DateTime.Today.AddDays(-365);
+
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
+            ViewData["contarmensajeentrada"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
+
+            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
+
+
+            ViewData["Aceptado"] = db.Mensajes.Count(r => r.Status == "Aceptado");
+            ViewData["Rechazado"] = db.Mensajes.Count(r => r.Status == "Rechazado");
+            ViewData["Inconsistente"] = db.Mensajes.Count(r => r.Status == "Incosistente");
+
+
+            ViewBag.IdCarpeta = this.CarpetasCombo();
+
+            var query = db.Mensajes//.Include(m => m.Usuarios)
+                .Include(p => p.Proyectos).AsQueryable();
+            //query = query.Where(r => r.Proyectos.Estado == "Inactivo");
+           // query = query.Where(r => r.IdCarpeta == 1 || r.IdCarpeta == null);
+            query = query.Where(r => r.Fecha >= fechainicio);
+            query = query.Where(r => r.Fecha <= DateTime.Now);
+            query = query.Where(r => r.Idusuariodestino != idusuario);
+            query = query.OrderByDescending(r => r.Fecha);
+
+            //            this.hola();
+
+
+
+
+
+            return View(query.ToList());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
+
+            //ViewData["contarmensajeentrada"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
+
+            //ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
+            ////var mensajes = db.Mensajes.Include(m => m.USERS);
+            //return View(db.Mensajes.Include(m => m.Usuarios).Where(r => r.Idusuariodestino == idusuario).ToList());
+            //// return View(db.Mensajes.ToList());
+        }
+
+
+        [HttpPost]
+        public ActionResult Enviados(Mensajes support, string start, string end, string submit)
+        {
+            idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
+
+            RequerimientosConn db = new RequerimientosConn();
+
+
+
+
+            ViewBag.enviado = 1;
+
+
+
+            //foreach (var item in )
+            //{
+
+            //}
+            //(int i = 0; i < Request.Files.Count; i++)
+            //{
+            //    var file = Request.Files[i];
+
+            //    if (file != null && file.ContentLength > 0)
+            //    {
+
+            //    }
+            //}
+            // var hola = deleteInputs;
+
+            //RequerimientosConn db = new RequerimientosConn();
 
             ViewData["contarmensajeentrada"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
 
             ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
-            //var mensajes = db.Mensajes.Include(m => m.USERS);
-            return View(db.Mensajes.Include(m => m.Usuarios).Where(r => r.Idusuariodestino != idusuario).ToList());
-            // return View(db.Mensajes.ToList());
+
+            ViewData["Aceptado"] = db.Mensajes.Count(r => r.Status == "Aceptado");
+                    ViewData["Rechazado"] = db.Mensajes.Count(r => r.Status == "Rechazado");
+                    ViewData["Inconsistente"] = db.Mensajes.Count(r => r.Status == "Incosistente");
+
+                //    ViewBag.IdCarpeta = this.CarpetasCombo();
+
+                    if (start == "")
+                    {
+                        TempData["error"] = "Debe seleccionar una fecha";
+                        return Index();
+
+                    }
+                    else if (end == "")
+                    {
+                        TempData["error"] = "Debe seleccionar una fecha";
+                        return Index();
+                    }
+                    else if (
+                        DateTime.ParseExact(start, "dd/MM/yyyy",
+                            System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat) >
+                        DateTime.ParseExact(end, "dd/MM/yyyy",
+                            System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat))
+                    {
+                        TempData["error"] = "Fecha Hasta debe ser mayor";
+                        return Index();
+                    }
+                    else
+                    {
+
+                        // var maniana = DateTime.Today.AddDays(-19);
+                        DateTime starter = DateTime.ParseExact(start, "dd/MM/yyyy",
+                            System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
+                        DateTime ender = DateTime.ParseExact(end, "dd/MM/yyyy",
+                            System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
+
+
+                        //TempData["warning"] = "mensaje de warning!!";
+                        //TempData["success"] = "mensaje de success!!";
+                        //TempData["info"] = "mensaje de informacion!!";
+                        //TempData["error"] = "mensaje de error!!";
+
+                        var query = db.Mensajes.Include(m => m.Usuarios).AsQueryable();
+                       // query = query.Where(r => r.IdCarpeta == 1);
+                        query = query.Where(r => r.Fecha >= starter);
+                        query = query.Where(r => r.Fecha <= ender);
+                query = query.Where(r => r.Idusuariodestino != idusuario);
+                query = query.OrderByDescending(r => r.Fecha);
+
+
+
+                        // return View(query.ToList());
+                        ViewData["Fechas"] = "Periodo entre: " + start + " y " + end;
+                        int count = (from row in db.Mensajes
+                                     where row.Fecha >= starter && row.Fecha <= ender && row.Idusuariodestino !=idusuario
+                                     select row).Count();
+                        TempData["info"] = "Se encontraron " + count + " registros";
+
+                        return View(query.ToList());
+
+                    }
+
+
+            
+
+
+
+           // return RedirectToAction("Index");
+
+
+
+
+
+
+
+
         }
 
 

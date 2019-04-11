@@ -147,6 +147,31 @@ namespace Requerimientos.Controllers
 
         }
 
+        public ActionResult Borrar(int id)
+        {
+            Estado_novedades estado_novedades = db.Estado_novedades.Find(id);
+            try
+            {
+
+
+
+                db.Estado_novedades.Remove(estado_novedades);
+                db.SaveChanges();
+                TempData["success"] = "El estado de novedad se eliminó correctamente";
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+                TempData["error"] = "El estado tiene asociado/as novedad/es";
+
+            }
+
+            return RedirectToAction("Index");
+
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

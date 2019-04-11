@@ -48,9 +48,9 @@
   line-height: 22px;
 }
 
-    input[type=checkbox], input[type=radio] {
-    margin: -18px -40% 23px;
-    margin-top: 1px\9;
+input[type=checkbox], input[type=radio] {
+    margin: -18px 40% 23px;
+        margin-top: -18px;
     line-height: normal;
 }
 </style>
@@ -181,18 +181,27 @@
 
 
 
-                            <div class="form-group pull-right check-mail">
+                            <div class="form-group pull-right ">
 
-                                <label for="checkbox3">
-                                    Enviar mail
-                                </label>
+                                
 
                                 @*@Html.EditorFor(modelItem => item.checkcarpeta, new { id = item.Id }, new {  htmlAttributes = new { @class = "checkbox i-checks" } })*@
                                 @*<input type="checkbox" class="i-checks" name="deleteInputs[]" value="@item.Id" />*@
 
-                                @Html.EditorFor(model => model.Enviamail, null, new {htmlAttributes = new {@class = "checkbox i-checks" } })
+                                <div>
+                                    <label for="checkbox3">
+                                        Enviar mail
+                                    </label>
+                                    @Html.EditorFor(model => model.Enviamail, null, new { htmlAttributes = new { @class = "checkbox i-checks" } })
 
-                                <input type="submit" value="Enviar" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Enviar" id="btngetdata"/>
+                                    @*<input type="submit" value="Enviar" class="btn btn-sm btn-primary"  id="load" data-toggle="tooltip"  data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando" data-placement="top" title="Enviar" id="btngetdata"/>*@
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary btn-sm " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando requerimiento">Enviar requerimiento</button>
+                                @*<br>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit Order</button>*@
 
                             </div>
 
@@ -292,6 +301,16 @@
 
 
             $(document).ready(function () {
+
+                $('.btn').on('click', function () {
+                    var $this = $(this);
+                    $this.button('loading');
+                    setTimeout(function () {
+                        $this.button('reset');
+                    }, 5000);
+                });
+
+
 
                 $('#btngetdata').on('click', function () {
 

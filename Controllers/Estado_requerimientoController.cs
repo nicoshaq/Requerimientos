@@ -153,6 +153,31 @@ namespace Requerimientos.Controllers
 
         }
 
+        public ActionResult Borrar(int id)
+        {
+            Estado_requerimiento estado_requerimiento = db.Estado_requerimiento.Find(id);
+            try
+            {
+
+
+
+                db.Estado_requerimiento.Remove(estado_requerimiento);
+                db.SaveChanges();
+                TempData["success"] = "El estado de requerimiento se eliminó correctamente";
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+                TempData["error"] = "El estado tiene asociado/s requerimiento/s";
+
+            }
+
+            return RedirectToAction("Index");
+
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

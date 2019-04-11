@@ -11,7 +11,8 @@ namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,19 +26,26 @@ namespace Requerimientos.Models
             this.Novedades = new HashSet<Novedades>();
             this.Carpetas = new HashSet<Carpetas>();
         }
-    
         public int User_Id { get; set; }
+        [Required(ErrorMessage = "El nombre de usuario es requerido")]
+        [MaxLength(100, ErrorMessage = "El nombre de usuario es demasiado largo")]
         public string Usuario { get; set; }
         public Nullable<System.DateTime> Modificado { get; set; }
         public Nullable<bool> Inactivo { get; set; }
+        [Required(ErrorMessage = "El nombre es requerido")]
+        [MaxLength(100, ErrorMessage = "El nombre es demasiado largo")]
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Titulo { get; set; }
         public string Inicial { get; set; }
+        [Required(ErrorMessage = "El Email es requerido")]
+        [MaxLength(50, ErrorMessage = "El Email es demasiado largo")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "El Email no es válido")]
         public string EMail { get; set; }
         public Nullable<int> Idproyectos { get; set; }
+        [Required(ErrorMessage = "El area es requerido")]
         public Nullable<int> Idarea { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mensajes> Mensajes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

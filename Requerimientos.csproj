@@ -2230,6 +2230,7 @@
     <Content Include="Views\Carpetas\Create.cshtml" />
     <Content Include="Views\Carpetas\Delete.cshtml" />
     <Content Include="Views\Admin\CrearArea.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

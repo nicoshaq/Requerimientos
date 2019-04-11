@@ -1,14 +1,15 @@
 ﻿
+@using Requerimientos.Models
 @model IEnumerable<Requerimientos.Models.Mensajes>
 
-@*@{
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_2.cshtml";
-}*@
+}
 
 <style>
     .Aceptado {
-        background-color:#1ab394;
+        background-color: #1ab394;
         color: #FFFFFF;
     }
 
@@ -21,12 +22,12 @@
         background-color: #ff0000;
         color: #FFFFFF;
     }
-        .mail-box{
-        
-    padding-left: 1%;
-    padding-right: 1%;
 
+    .mail-box {
+        padding-left: 1%;
+        padding-right: 1%;
     }
+
 
     .Noleido td a,
     .Noleido td {
@@ -41,13 +42,29 @@
     }
 
     .Noleido td {
-        background-color: #f9f8f8;
+        background-color: #e6e6e6;
+        color: black;
     }
 
     .footable-odd {
         background-color: #ffffff;
     }
 </style>
+<input type="hidden" id="success"
+       value="@TempData["success"]" />
+<input type="hidden" id="info"
+       value="@TempData["info"]" />
+<input type="hidden" id="warning"
+       value="@TempData["warning"]" />
+<input type="hidden" id="error"
+       value="@TempData["error"]" />
+
+
+
+
+
+
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
         <h2>Requerimientos</h2>
@@ -57,310 +74,74 @@
 
 
 
-
-
-@*<div class="wrapper wrapper-content">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content mailbox-content">
-                        <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="@Url.Action("ComposeEmail", "Mailbox")">Compose Mail</a>
-                            <div class="space-25"></div>
-                            <h5>Folders</h5>
-                            <ul class="folder-list m-b-md" style="padding: 0">
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-inbox "></i> Inbox <span class="label label-warning pull-right">16</span> </a></li>
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-envelope-o"></i> Send Mail</a></li>
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-certificate"></i> Important</a></li>
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-file-text-o"></i> Drafts <span class="label label-danger pull-right">2</span></a></li>
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-trash-o"></i> Trash</a></li>
-                            </ul>
-                            <h5>Categories</h5>
-                            <ul class="category-list" style="padding: 0">
-                                <li><a href="#"> <i class="fa fa-circle text-navy"></i> Work </a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-danger"></i> Documents</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-primary"></i> Social</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-info"></i> Advertising</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-warning"></i> Clients</a></li>
-                            </ul>
-                            <h5 class="tag-title">Labels</h5>
-                            <ul class="tag-list" style="padding: 0">
-                                <li><a href=""><i class="fa fa-tag"></i> Family</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Work</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Home</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Children</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Holidays</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Music</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Photography</a></li>
-                                <li><a href=""><i class="fa fa-tag"></i> Film</a></li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9 animated fadeInRight">
-                <div class="mail-box-header">
-                    <form method="get" action="#" class="pull-right mail-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm" name="search" placeholder="Search email">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <h2>
-                        Inbox (16)
-                    </h2>
-                    <div class="mail-tools tooltip-demo m-t-md">
-                        <div class="btn-group pull-right">
-                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
-                        </div>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
-                    </div>
-                </div>
-                <div class="mail-box">
-                    <table class="table table-hover table-mail">
-                        <tbody>
-                            <tr class="unread">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Anna Smith</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Lorem ipsum dolor noretek imit set.</a></td>
-                                <td class=""><i class="fa fa-paperclip"></i></td>
-                                <td class="text-right mail-date">6.10 AM</td>
-                            </tr>
-                            <tr class="unread">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks" checked>
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Jack Nowak</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Aldus PageMaker including versions of Lorem Ipsum.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">8.22 PM</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Facebook</a> <span class="label label-warning pull-right">Clients</span> </td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Many desktop publishing packages and web page editors.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Jan 16</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Mailchip</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">There are many variations of passages of Lorem Ipsum.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Mar 22</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Alex T.</a> <span class="label label-danger pull-right">Documents</span></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Lorem ipsum dolor noretek imit set.</a></td>
-                                <td class=""><i class="fa fa-paperclip"></i></td>
-                                <td class="text-right mail-date">December 22</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Monica Ryther</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">The standard chunk of Lorem Ipsum used.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Jun 12</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Sandra Derick</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Contrary to popular belief.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">May 28</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Patrick Pertners</a> <span class="label label-info pull-right">Adv</span></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">If you are going to use a passage of Lorem </a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">May 28</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Michael Fox</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Humour, or non-characteristic words etc.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Dec 9</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Damien Ritz</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Oor Lorem Ipsum is that it has a more-or-less normal.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Jun 11</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Anna Smith</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Lorem ipsum dolor noretek imit set.</a></td>
-                                <td class=""><i class="fa fa-paperclip"></i></td>
-                                <td class="text-right mail-date">6.10 AM</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Jack Nowak</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Aldus PageMaker including versions of Lorem Ipsum.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">8.22 PM</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Mailchip</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">There are many variations of passages of Lorem Ipsum.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Mar 22</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Alex T.</a> <span class="label label-warning pull-right">Clients</span></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Lorem ipsum dolor noretek imit set.</a></td>
-                                <td class=""><i class="fa fa-paperclip"></i></td>
-                                <td class="text-right mail-date">December 22</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Monica Ryther</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">The standard chunk of Lorem Ipsum used.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Jun 12</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Sandra Derick</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Contrary to popular belief.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">May 28</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Patrick Pertners</a> </td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">If you are going to use a passage of Lorem </a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">May 28</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Michael Fox</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Humour, or non-characteristic words etc.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Dec 9</td>
-                            </tr>
-                            <tr class="read">
-                                <td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                </td>
-                                <td class="mail-ontact"><a href="@Url.Action("EmailView", "Mailbox")">Damien Ritz</a></td>
-                                <td class="mail-subject"><a href="@Url.Action("EmailView", "Mailbox")">Oor Lorem Ipsum is that it has a more-or-less normal.</a></td>
-                                <td class=""></td>
-                                <td class="text-right mail-date">Jun 11</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>*@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="col-lg-2">
             <div class="ibox float-e-margins">
                 <div class="ibox-content mailbox-content">
                     <div class="file-manager">
-
+                        @*<div class="btn btn-block btn-primary compose-mail">@Html.ActionLink("Create New", "Create")</div>*@
                         <a class="btn btn-block btn-primary compose-mail" href="@Url.Action("Create", "Mensajes")">Nuevo Requerimiento</a>
                         <div class="space-25"></div>
                         <h5>Bandejas</h5>
                         <ul class="folder-list m-b-md" style="padding: 0">
+                            @*<a href="#" class="details">Details</a>*@
+
+                            @*<li><a href="#" class="enviados"> <i class="fa fa-inbox "></i> Recibidos <span class="label label-warning pull-right">@ViewData["contarmensajeentrada"]</span> </a></li>*@
                             <li><a href="@Url.Action("Index", "Mensajes")"> <i class="fa fa-inbox "></i> Recibidos <span class="label label-warning pull-right">@ViewData["contarmensajeentrada"]</span> </a></li>
-                            <li><a href="@Url.Action("Enviados", "Mensajes")"> <i class="fa fa-envelope-o"></i> Enviados <span class="label label-danger pull-right">@Model.Count()</span></a></li>
+                            <li><a href="@Url.Action("Enviados", "Mensajes")"> <i class="fa fa-envelope-o"></i> Enviados <span class="label label-danger pull-right">@ViewData["contarmensajesalida"]</span> </a></li>
+                            @*<li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-certificate"></i> Important</a></li>
+                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-file-text-o"></i> Drafts <span class="label label-danger pull-right">2</span></a></li>
+                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-trash-o"></i> Trash</a></li>*@
+                        </ul>
+
+                        <ul class="folder-list m-b-md" style="padding: 0">
+
+                            <li><a href="@Url.Action("Inicio", "Carpetas")"> <i class="fa fa-folder"></i>Lista de Carpetas </a></li>
+
 
                         </ul>
-                        @*<h5>Estados</h5>
-                        <ul class="category-list" style="padding: 0">
-                            <li><a href="#"> <i class="fa fa-circle text-navy"></i> Aprobados </a></li>
-                            <li><a href="#"> <i class="fa fa-circle text-danger"></i> Rechazados</a></li>
+                        @*<h5>Carpetas</h5>*@
 
-                            <li><a href="#"> <i class="fa fa-circle text-warning"></i> Inconsistentes</a></li>
-                        </ul>*@
+
+                        @*<ul>
+
+                                @foreach (var item in Model)
+                                {
+
+                                    <li>
+                                        @Html.DisplayFor(modelItem => item.Carpetas.Nombre)
+                                    </li>
+
+
+                                }
+
+                            </ul>*@
+
+
+
+                        @*<ul class="category-list" style="padding: 0">
+                                <li><a href="#"> <i class="fa fa-circle text-navy" style="color: black"></i> Delegados a mi <strong>@ViewData["Aceptado"] </strong></a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-danger"></i> Delegados por mi <strong>@ViewData["Rechazado"] </strong></a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-primary"></i> Social</a></li>
+                                    <li><a href="#"> <i class="fa fa-circle text-info"></i> Advertising</a></li>
+                                <li><a href="#"> <i class="fa fa-circle text-warning"></i> Inconsistentes <strong>@ViewData["Inconsistente"] </strong></a></li>
+
+
+
+
+
+
+                            </ul>*@
+
                         @{
                             Html.RenderAction("Inicios", "Mensajes");
                         }
+
+
+
+
+                        @*@Html.Partial("Inicios", Model);*@
 
                         <div class="clearfix"></div>
                     </div>
@@ -369,159 +150,280 @@
         </div>
 
 
+
         <div class="col-lg-10 animated fadeInRight">
 
-
             <div class="animated fadeInRight">
+
                 <div class="mail-box-header">
-                    <form method="get" action="#" class="pull-right mail-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm m-b-xs" id="filter"
-                                   placeholder="Buscar en toda la tabla">
+                    @*<form method="get" action="#" class="pull-right mail-search">
+                            <div class="input-group col-lg-12">
+                                <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                                       placeholder="Buscar en toda la tabla">
 
 
-                            @*<input type="text" class="form-control input-sm" name="search" placeholder="Search email">*@
-                            @*<div class="input-group-btn">
-                                    <button type="submit" class="btn btn-sm btn-primary">
-                                        Search
-                                    </button>
-                                </div>*@
-                        </div>
-                    </form>
-                    <h2>
-                        Enviados (@Model.Count())
-                    </h2>
+
+                            </div>
+                        </form>*@
+                    @*<h2>
+                            Recibidos (@Model.Count())
+                        </h2>*@
                     <div class="mail-tools tooltip-demo m-t-md">
                         @*<div class="btn-group pull-right">
                                 <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
                                 <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
                             </div>*@
-                        <a href="" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Volver a Cargar"><i class="fa fa-refresh"></i> Refresh</a>
+
+                        <div class="col-lg-1">
+                            <a href="" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Volver a Cargar"><i class="fa fa-refresh"></i> Refresh</a>
+
+                        </div>
+                        <div class="col-lg-3">
+                            <h2>
+                                Enviados (@Model.Count())
+                            </h2>
+
+                        </div>
+                        <br />
+                        <br />
+
+
                         @*<button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
                             <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
                             <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
                             <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>*@
                     </div>
+
+
+
+
+
                 </div>
-                <div class="mail-box">
-                    <table class="table footable table-hover table-stripped" data-page-size="15" data-filter=#filter>
-                        <tr style="background-color: #1ab394; color: #FFFFFF;">
-                            <th>
-                                Identificador
-                            </th>
-                            <th>
-                                Destinatario
-                            </th>
-                            <th>
-                                Asunto
-                            </th>
-                            <th>
-                                Estado/Proyecto
-                            </th>
-                            <th>
-                                Archivos
-                            </th>
-                            <th>
-                                Novedades
-                            </th>
-                            <th>Delegado</th>
-
-                            <th class="text-center">Fecha</th>
-                        </tr>
-                        @foreach (var item in Model.OrderByDescending(m => m.Fecha))
-                        {
-                            <tbody>
-                                <tr class="@Html.DisplayFor(modelItem => item.Estado)">
-
-                                    <td class="i-checks">@Html.DisplayFor(modelItem => item.Id)</td>
 
 
+                @using (Html.BeginForm())
+                {
 
-                                    <td class="mail-ontact"><a href="@Url.Action("Details", "Mensajes", new {id = item.Id})">@Html.DisplayFor(modelItem => item.Destinatario)</a></td>
-                                    <td class="mail-subject"><a href="@Url.Action("Details", "Mensajes", new {id = item.Id})">@Html.DisplayFor(modelItem => item.Asunto)</a> <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_requerimiento.color); color: #fff;" class="label pull-right">@Html.DisplayFor(modelItem => item.Estado_requerimiento.Descripcion)</span></td>
-                                    <td>@Html.DisplayFor(modelItem => item.Proyectos.Titulo)</td>
-                                    <td>
-                                        @if (item.Archivos.Count() == 0)
-                                        {
-                                            <span>Sin Archivos</span>
-                                        }
-                                        else
-                                        {
-                                            <span><i class="fa fa-paperclip"></i>@item.Archivos.Count() Archivos(s)</span>
-                                        }
-                                    </td>
-                                    @*<td>
-                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">Delete</a>
-                                        </td>*@
+                    <div class="col-sm-12">
+                        <div class="col-sm-6 form-group form-inline pull-left" id="data_5" style="width: 40%;">
+                   
+                            <div style="display: none;" class="btn-group">
+
+                                <input type="submit" value="Cambiar" name="submit" id="submit" class="btn btn-primary">
 
 
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 form-group form-inline pull-right" id="data_5" style="width: 40%;">
+
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" id="comienzo" class="input-sm form-control" name="start" placeholder="Fecha desde" />
+                                <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input type="text" id="final" class="input-sm form-control" name="end" placeholder="fecha hasta" />
+
+                            </div>
+                            <div class="btn-group">
+
+                                <input type="submit" value="Filtrar" class="btn btn-primary" id="btngetdata">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mail-box">
+                        <br />
+                        <br />
+
+                        <form method="get" action="#" class="pull-right mail-search">
+                            <div class="input-group col-lg-12">
+                                <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                                       placeholder="Buscar en toda la tabla">
 
 
+                                @*<input type="text" class="form-control input-sm" name="search" placeholder="Search email">*@
+                                @*<div class="input-group-btn">
+                                        <button type="submit" class="btn btn-sm btn-primary">
+                                            Search
+                                        </button>
+                                    </div>*@
+                            </div>
+                        </form>
+                        <br />
+                        <br />
 
 
+                        <b> @ViewData["Fechas"]</b>
+                        <table class="table footable table-hover table-stripped" data-page-size="20" data-filter=#filter>
+
+                            <tr style="background-color: #1ab394; color: #FFFFFF;">
+                                <th class="text-center"></th>
+                                <th>
+                                    Identificador
+                                </th>
+                                <th>
+                                    Remitente
+                                </th>
+                                <th>
+                                    Asunto
+                                </th>
+                                <th>
+                                    Estado
+                                </th>
+                                <th>
+                                    Proyecto
+                                </th>
+                                <th>
+                                    Archivos
+                                </th>
+                                <th>
+                                    Novedades
+                                </th>
+                                <th>Delegado</th>
+
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center"></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tbody>
 
 
+                                    <tr class="@Html.DisplayFor(modelItem => item.Estado)">
+                                        @*<td class="check-mail">
+                                            <input type="checkbox" class="i-checks">
+                                            </td>*@
 
+                                        <td class="check-mail">
 
-                                    <td class="">
-                                        @if (item.Novedades.Count() == 0)
-                                        {
-                                            <span>Sin Novedades</span>
-                                        }
-                                        else
-                                        {
-                                            <span>@item.Novedades.Count() Novedades</span>
-                                        }
+                                            @*@Html.EditorFor(modelItem => item.checkcarpeta, new { id = item.Id }, new {  htmlAttributes = new { @class = "checkbox i-checks" } })*@
+                                            <input type="checkbox" class="i-checks" name="deleteInputs[]" value="@item.Id" />
 
+                                        </td>
 
-
-
-                                    </td>
-
-                                    <td class="">
-                                        @if (item.Idusuariodelega == 0)
-                                        {
-                                            <span></span>
-                                        }
-                                        else
-                                        {
-                                            if (@User.Identity.Name == item.Usuariodelega)
+                                        <td class="i-checks">@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td><a href="@Url.Action("Details", "Mensajes", new {id = item.Id})">@Html.DisplayFor(modelItem => item.Usuarios.Nombre)</a></td>
+                                        <td class="mail-subject"><a href="@Url.Action("Details", "Mensajes", new {id = item.Id})">@Html.DisplayFor(modelItem => item.Asunto)</a></td>
+                                        <td><span style="background-color: @Html.DisplayFor(modelItem => item.Estado_requerimiento.color); color: #fff;" class="label">@Html.DisplayFor(modelItem => item.Estado_requerimiento.Descripcion)</span></td>
+                                        <td>@Html.DisplayFor(modelItem => item.Proyectos.Titulo)</td>
+                                        <td>
+                                            @if (item.Archivos.Count() == 0)
                                             {
-                                                <span>
-                                                    delegado a mí
-                                                </span>
+                                                <span>Sin Archivos</span>
                                             }
                                             else
                                             {
-                                                <span>@item.Usuariodelega</span>
+                                                <span><i class="fa fa-paperclip"></i>@item.Archivos.Count() Archivos(s)</span>
+                                            }
+                                        </td>
+                                        @*<td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">Delete</a>
+                                            </td>*@
+
+
+
+
+
+
+
+
+
+
+                                        <td class="">
+                                            @if (item.Novedades.Count() == 0)
+                                            {
+                                                <span>Sin Novedades</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@item.Novedades.Count() Novedades</span>
+                                            }
+
+
+
+
+                                        </td>
+
+
+                                        <td class="">
+                                            @if (item.Idusuariodelega == 0)
+                                            {
+                                                <span></span>
+                                            }
+                                            else
+                                            {
+                                                if (@User.Identity.Name == item.Usuariodelega)
+                                                {
+                                                    <span>
+                                                        delegado a mí
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>@item.Usuariodelega</span>
+
+                                                }
 
                                             }
 
-                                        }
+
+
+
+                                        </td>
+
+
+                                        <td class="text-right mail-date">@Html.DisplayFor(modelItem => item.Fecha)</td>
+
+
+                                        <td class="text-right mail-date">
+                                            <a href="@Url.Action("Create", "Novedades", new {id = item.Id, idproyecto = item.Proyectos.Idproyecto})" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Ingresar Novedad"><i class="fa fa-pencil"></i></a>
+                                        </td>
 
 
 
 
+
+
+
+                                    </tr>
+
+
+
+
+                                </tbody>
+                            }
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10">
+                                        <ul class="pagination pull-right"></ul>
                                     </td>
-                                    <td class="text-right mail-date">@Html.DisplayFor(modelItem => item.Fecha)</td>
                                 </tr>
-                            </tbody>
-                        }
-                        <tfoot>
-                            <tr>
-                                <td colspan="10">
-                                    <ul class="pagination pull-right"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
+                            </tfoot>
 
-                    </table>
+                        </table>
 
-                </div>
+                    </div>
+                }
             </div>
+
+            @*<div id="detailsPlace" style="display: none"></div>
+                @Html.Partial("entrada", Model)
+
+
+                <div id="entradas" style="display:none"></div>
+                @Html.Partial("entrada", Model)*@
+
         </div>
+
+
+
+
+
+
     </div>
 </div>
 
@@ -595,12 +497,27 @@
             }
         );
 
-       // ssd.init();
+        // ssd.init();
         $(document).ready(function() {
 
-         //   function (partialView) {
-            $(function(){
-             $.ajax({
+
+            $("#IdCarpeta").change(function () {
+                debugger;
+                if ($(this).val() == '') {
+
+                    alert("el combo de mensajes anda");
+
+                } else {
+
+                    $("#submit").click();
+                }
+
+            });
+
+
+//   function (partialView) {
+            $(function() {
+                $.ajax({
                     url: '@Url.Action("Entrada", "Mensajes")',
                     type: 'GET',
                     // data: { id: id },
@@ -612,7 +529,7 @@
                 });
             });
 
-          //  }
+            //  }
 
 
             $('.enviados').click(function() {
@@ -630,13 +547,13 @@
             });
 
 
-            $('.recibidos').click(function () {
+            $('.recibidos').click(function() {
 
                 $.ajax({
                     url: '@Url.Action("Entrada", "Mensajes")',
                     type: 'GET',
                     // data: { id: id },
-                    success: function (partialView) {
+                    success: function(partialView) {
                         $('#entradas').html(partialView);
                         $('#entradas').show();
                         $('#detailsPlace').hide();
@@ -647,133 +564,60 @@
 
 
 
-        $('.footable').footable();
-        $('.footable2').footable();
-        $('.i-checks').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
+
+
+
+
+            $('.footable').footable();
+            $('.footable2').footable();
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+
         });
-
-
-        $('#data_1 .input-group.date').datepicker({
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            calendarWeeks: true,
-            autoclose: true
-        });
-
-        $('#data_2 .input-group.date').datepicker({
-            startView: 1,
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            autoclose: true
-        });
-
-        $('#data_3 .input-group.date').datepicker({
-            startView: 2,
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            autoclose: true
-        });
-
-        $('#data_4 .input-group.date').datepicker({
-            minViewMode: 1,
-            keyboardNavigation: false,
-            forceParse: false,
-            autoclose: true,
-            todayHighlight: true
-        });
-
-        $('#data_5 .input-daterange').datepicker({
-            keyboardNavigation: false,
-            forceParse: false,
-            autoclose: true
-        });
-
-
-    });
     </script>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -11,7 +11,8 @@ namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Estado_novedades
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace Requerimientos.Models
         }
     
         public int idestadonovedad { get; set; }
+        [Required(ErrorMessage = "La Descripcion es requerida")]
+        //[MaxLength(100, ErrorMessage = "El nombre de usuario es demasiado largo")]
         public string Descripcion { get; set; }
         public Nullable<int> idusuario { get; set; }
         public string color { get; set; }

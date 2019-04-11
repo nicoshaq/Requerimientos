@@ -52,6 +52,93 @@
     .html5buttons {
         display: none;
     }
+
+    .modal-dialog {
+        width: 600px;
+        margin: 216px auto;
+    }
+
+    .sweet-alert .sa-icon.sa-warning {
+        border-color: #F8BB86;
+    }
+
+    .sweet-alert .sa-icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid gray;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+    }
+
+    .pulseWarning {
+        -webkit-animation: pulseWarning 0.75s infinite alternate;
+        animation: pulseWarning 0.75s infinite alternate;
+    }
+
+    .sweet-alert .sa-icon.sa-info {
+        border-color: #C9DAE1;
+    }
+
+    .sweet-alert .sa-icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid gray;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+    }
+
+    .sweet-alert {
+        background-color: white;
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        width: 478px;
+        padding: 17px;
+        border-radius: 5px;
+        text-align: center;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: -256px;
+        margin-top: -200px;
+        overflow: hidden;
+        display: none;
+        z-index: 99999;
+    }
+
+    .alerta {
+        color: #575757;
+        font-size: 30px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: none;
+        position: relative;
+        margin: 25px 0;
+        padding: 0;
+        line-height: 40px;
+        display: block;
+    }
+
+    .alerta_descripcion {
+        color: #797979;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 300;
+        position: relative;
+        text-align: inherit;
+        float: none;
+        margin: 0;
+        padding: 0;
+        line-height: normal;
+    }
 </style>
 <input type="hidden" id="success"
        value="@TempData["success"]" />
@@ -193,30 +280,66 @@
                         </thead>
 
                         <tbody id="fbody">
-@foreach (Requerimientos.Models.Estado_requerimiento item in Model)
-{
+                            @foreach (Requerimientos.Models.Estado_requerimiento item in Model)
+                            {
 
-                            <tr class="gradeX">
-<td>
-                            @Html.DisplayFor(modelItem => item.Descripcion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Usuarios.Usuario)
-                        </td>
+                                <tr class="gradeX">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Usuarios.Usuario)
+                                    </td>
 
-                                <td style="color:#fff;background-color: @Html.DisplayFor(modelItem => item.color)">
-                                    @Html.DisplayFor(modelItem => item.color)
-                                </td>
+                                    <td style="color:#fff;background-color: @Html.DisplayFor(modelItem => item.color)">
+                                        @Html.DisplayFor(modelItem => item.color)
+                                    </td>
 
 
-                        <td style="text-align:center;">
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Idestado }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Idestado }) |*@
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Idestado })|
-                            @*<img class="deleteUser" src="@Url.Content("~/Content/Images/bin.png")" alt="Borrar usuario" id="@item.Idestado" />*@
-                        </td>
-                              
-</tr>
+                                    <td style="text-align:center;">
+                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Idestado }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Idestado }) |*@
+                                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Idestado })|*@
+                                        @*<img class="deleteUser" src="@Url.Content("~/Content/Images/bin.png")" alt="Borrar usuario" id="@item.Idestado" />*@
+                                        <button class="btn btn-warning btn-sm demo3" data-toggle="modal" data-target="#myModal6" alt="Borrar Estado">Eliminar</button>
+                                    </td>
+
+                                </tr>
+
+
+                                <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="display: none;">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="sa-icon sa-warning pulseWarning" style="display: block; text-align: center;">
+                                                    <i class="fa fa-exclamation" style="font-size: 60px; color: red; text-align: center;"></i>
+                                                </div>
+                                                <span class="alerta"> <h2>Está seguro?</h2></span>
+                                                <span>
+                                                    <p class="alerta_descripcion" style="display: block; text-align: center;">Va a eliminar un estado de un requerimiento!</p>
+                                                </span>
+                                                @*<div class="sa-icon sa-warning pulseWarning" style="display: block;">
+                                    <span class="sa-body pulseWarningIns"></span>
+                                    <span class="sa-dot pulseWarningIns"></span>
+                                </div>*@
+
+                                            </div>
+                                            <div class="modal-footer">
+
+
+
+
+                                                @*<input type="button" class="btn btn-primary" value="Eliminar" onclick="location.href = '@Url.Action("borrar", "Carpetas", new {id = item.Id})'"/>*@
+                                                <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("borrar", "Estado_requerimiento", new {id = item.Idestado})'">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             }
                         </tbody>
 

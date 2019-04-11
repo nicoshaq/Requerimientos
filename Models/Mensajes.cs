@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Requerimientos.Models
 {
     using System;
@@ -21,10 +23,12 @@ namespace Requerimientos.Models
             this.Novedades = new HashSet<Novedades>();
             this.HistorialDelega = new HashSet<HistorialDelega>();
         }
-    
+
         public int Id { get; set; }
         public int User_Id { get; set; }
         public string Remitente { get; set; }
+        [Required(ErrorMessage = "El Asunto es requerido")]
+        [MaxLength(100, ErrorMessage = "El Asunto es demasiado largo")]
         public string Asunto { get; set; }
         public string Mensaje { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
@@ -35,6 +39,7 @@ namespace Requerimientos.Models
         public string Destinatario { get; set; }
         public string Email { get; set; }
         public Nullable<int> Idpadre { get; set; }
+        [Required(ErrorMessage = "El proyecto es requerido")]
         public Nullable<int> Idproyecto { get; set; }
         public Nullable<int> Idusuariodelega { get; set; }
         public string Usuariodelega { get; set; }

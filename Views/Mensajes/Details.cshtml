@@ -205,59 +205,78 @@
                     <h3>
                         <span class="font-normal">Asunto: </span>@Html.DisplayFor(model => model.Asunto)
                     </h3>
-                  
+
                     <h5>
                         <span class="pull-right font-normal">@Html.DisplayFor(model => model.Fecha)</span>
                       
                         <span class="font-normal">De: </span>@Html.DisplayFor(model => model.Remitente)
-                    
+
 
 
 
                     </h5>
 
-                   
+
                 </div>
 
-@if (ViewBag.ocultar == false)
+
+@if (ViewBag.enviados == false)
 {
+
+
+
+    if (ViewBag.ocultar == false)
+     {
+         if (ViewBag.estadodos == false)
+         {
+
+
+
+
+             //if (Model.Estado_requerimiento.Idestado != null)
+             //{
+             <div class="row" style="margin-bottom: 2%;">
+                 <div style="width: 100%">
+                     <div class="col-lg-1"><label class="control-label">Estado:</label>
+                     </div>
+                     <div class="col-lg-3"> @Html.DropDownList("CambioEstado", null, "--select--", htmlAttributes: new {@class = "form-control"})</div>
+                     <div class="col-lg-3">
+                         <input class="btn btn-primary btn-w-m" type="submit" value="Guardar"/>
+                     </div>
+                     @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
+                 </div>
+             </div>
+
+
+
+
+
+
+             //}
+         }
+     }
     if (ViewBag.estadodos == false)
-    {
-        //if (Model.Estado_requerimiento.Idestado != null)
-        //{
-        <div class="row" style="margin-bottom: 2%;">
-            <div style="width: 100%">
-                <div class="col-lg-1"><label class="control-label">Estado:</label></div>
-                <div class="col-lg-3">  @Html.DropDownList("CambioEstado", null, "--select--", htmlAttributes: new { @class = "form-control" })</div>
-                <div class="col-lg-3">
-                    <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" /></div>
-                    @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
-                </div>
+     {
+         <div class="row">
+             <div style="width: 100%">
+                 <div class="col-lg-1"><label class="control-label">Delegar:</label>
+                 </div>
+
+
+                 <div class="col-lg-3">@Html.DropDownList("userdelega", null, "--select--", htmlAttributes: new {@class = "form-control"})</div>
+
+                 <div class="col-lg-3"><input class="btn btn-primary btn-w-m" type="submit" value="Guardar"/>
+                 </div>
+             </div>
+         </div>
+
+     }
+
+
+}
+
+
             </div>
-
-
-
-
-
-
-            //}
-            }
-            }
-            @if (ViewBag.estadodos == false)
-            {
-                <div class="row">
-                    <div style="width: 100%">
-                        <div class="col-lg-1"><label class="control-label">Delegar:</label></div>
-
-
-                        <div class="col-lg-3">@Html.DropDownList("userdelega", null, "--select--", htmlAttributes: new { @class = "form-control" })</div>
-
-                        <div class="col-lg-3"><input class="btn btn-primary btn-w-m" type="submit" value="Guardar" /></div>
-                    </div>
-                </div>
-
-            }
-        </div>
 
 
 

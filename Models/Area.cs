@@ -11,7 +11,8 @@ namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Area
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace Requerimientos.Models
         }
     
         public int Idarea { get; set; }
+        [Required(ErrorMessage = "El nombre de area es requerido")]
+        [MaxLength(100, ErrorMessage = "El nombre de area es demasiado largo")]
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

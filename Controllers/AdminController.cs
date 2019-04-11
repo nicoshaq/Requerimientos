@@ -103,13 +103,13 @@ namespace Requerimientos.Models
                         _user.Titulo = user.Titulo;
                         _user.Inicial = user.Inicial;
                         _user.EMail = user.EMail;
-                      //  _user.Idarea = user.Idarea;
+                        _user.Idarea = user.Idarea;
                         _user.Inactivo = false;
                       
 
                         if (ModelState.IsValid)
                         {
-                           //_user.Idarea = Idearea;
+                            _user.Idarea = idearea;
                             _user.Inactivo = false;
                             _user.Modificado = System.DateTime.Now;
 

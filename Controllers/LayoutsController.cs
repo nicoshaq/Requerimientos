@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,11 +10,13 @@ namespace Requerimientos.Models
     [RBAC]
     public class LayoutsController : Controller
     {
-
+        ILog log = LogManager.GetLogger(typeof(MensajesController));
         public ActionResult Index()
         {
             string userName = System.Web.HttpContext.Current.Request.LogonUserIdentity.Name;
             ViewBag.usuario = userName;
+            log.Info(userName);
+
             return View();
         }
 

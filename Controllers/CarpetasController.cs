@@ -16,8 +16,8 @@ namespace Requerimientos.Models
         // GET: Mensajes
         private RequerimientosConn db = new RequerimientosConn();
         private int idusuario;
-        private int? usuaridelegado;
-        private int? estado;
+     //   private int? usuaridelegado;
+     //   private int? estado;
         // GET: Carpetas
         public PartialViewResult Inicio()
         {

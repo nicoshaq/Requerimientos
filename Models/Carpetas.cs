@@ -11,7 +11,8 @@ namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Carpetas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace Requerimientos.Models
         }
     
         public int Id { get; set; }
+        [Required(ErrorMessage = "El nombre de la Carpeta es requerido")]
+        [MaxLength(100, ErrorMessage = "El nombre de la Carpeta es demasiado largo")]
         public string Nombre { get; set; }
         public Nullable<int> User_Id { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
