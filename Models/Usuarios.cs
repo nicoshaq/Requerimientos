@@ -18,14 +18,15 @@ namespace Requerimientos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuarios()
         {
-            this.Mensajes = new HashSet<Mensajes>();
             this.ROLES = new HashSet<ROLES>();
             this.Proyectos = new HashSet<Proyectos>();
             this.Estado_novedades = new HashSet<Estado_novedades>();
             this.Estado_requerimiento = new HashSet<Estado_requerimiento>();
             this.Novedades = new HashSet<Novedades>();
             this.Carpetas = new HashSet<Carpetas>();
+            this.Mensajes = new HashSet<Mensajes>();
         }
+    
         public int User_Id { get; set; }
         [Required(ErrorMessage = "El nombre de usuario es requerido")]
         [MaxLength(100, ErrorMessage = "El nombre de usuario es demasiado largo")]
@@ -45,9 +46,7 @@ namespace Requerimientos.Models
         public Nullable<int> Idproyectos { get; set; }
         [Required(ErrorMessage = "El area es requerido")]
         public Nullable<int> Idarea { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mensajes> Mensajes { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ROLES> ROLES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -61,5 +60,7 @@ namespace Requerimientos.Models
         public virtual ICollection<Novedades> Novedades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Carpetas> Carpetas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mensajes> Mensajes { get; set; }
     }
 }

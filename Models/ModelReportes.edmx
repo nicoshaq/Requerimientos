@@ -100,6 +100,89 @@
           <Property Name="Usuariodelega" Type="varchar" MaxLength="150" />
           <Property Name="Idestado" Type="int" />
           <Property Name="IdCarpeta" Type="int" />
+          <Property Name="Prioridad" Type="varchar" MaxLength="50" />
+          <Property Name="Naturaleza" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Objetivo" Type="varchar(max)" />
+          <Property Name="Alcance" Type="varchar(max)" />
+          <Property Name="Func1" Type="varchar" MaxLength="250" />
+          <Property Name="Func2" Type="varchar" MaxLength="250" />
+          <Property Name="Func3" Type="varchar" MaxLength="250" />
+          <Property Name="Func4" Type="varchar" MaxLength="250" />
+          <Property Name="Func5" Type="varchar" MaxLength="250" />
+          <Property Name="Func6" Type="varchar" MaxLength="250" />
+          <Property Name="Impresa1" Type="varchar" MaxLength="250" />
+          <Property Name="Impresa2" Type="varchar" MaxLength="250" />
+          <Property Name="Impresa3" Type="varchar" MaxLength="250" />
+          <Property Name="Pantalla1" Type="varchar" MaxLength="250" />
+          <Property Name="Pantalla2" Type="varchar" MaxLength="250" />
+          <Property Name="Pantalla3" Type="varchar" MaxLength="250" />
+          <Property Name="Porarchivo1" Type="varchar" MaxLength="250" />
+          <Property Name="Porarchivo2" Type="varchar" MaxLength="250" />
+          <Property Name="Porarchivo3" Type="varchar" MaxLength="250" />
+          <Property Name="Ventaja" Type="varchar" MaxLength="250" />
+          <Property Name="Arearelacion" Type="varchar" MaxLength="100" />
+          <Property Name="Afectado" Type="varchar" MaxLength="250" />
+          <Property Name="Fechadeseada" Type="varchar" MaxLength="50" />
+          <Property Name="Normas" Type="varchar" MaxLength="250" />
+          <Property Name="Docadjunta" Type="varchar" MaxLength="250" />
+          <Property Name="Area1" Type="varchar" MaxLength="100" />
+          <Property Name="Area2" Type="varchar" MaxLength="100" />
+          <Property Name="Area3" Type="varchar" MaxLength="100" />
+          <Property Name="Gerente1" Type="varchar" MaxLength="100" />
+          <Property Name="Gerente2" Type="varchar" MaxLength="100" />
+          <Property Name="Gerente3" Type="varchar" MaxLength="100" />
+          <Property Name="Firma1" Type="varchar" MaxLength="100" />
+          <Property Name="Firma2" Type="varchar" MaxLength="100" />
+          <Property Name="Firma3" Type="varchar" MaxLength="100" />
+          <Property Name="Confeccionado" Type="varchar" MaxLength="100" />
+          <Property Name="Gerentearea" Type="varchar" MaxLength="100" />
+          <Property Name="Recepcionado" Type="varchar" MaxLength="100" />
+          <Property Name="Nueva1" Type="bit" Nullable="false" />
+          <Property Name="Nueva2" Type="bit" Nullable="false" />
+          <Property Name="Nueva3" Type="bit" Nullable="false" />
+          <Property Name="Nueva4" Type="bit" Nullable="false" />
+          <Property Name="Nueva5" Type="bit" Nullable="false" />
+          <Property Name="Nueva6" Type="bit" Nullable="false" />
+          <Property Name="Modif1" Type="bit" Nullable="false" />
+          <Property Name="Modif2" Type="bit" Nullable="false" />
+          <Property Name="Modif3" Type="bit" Nullable="false" />
+          <Property Name="Modif4" Type="bit" Nullable="false" />
+          <Property Name="Modif5" Type="bit" Nullable="false" />
+          <Property Name="Modif6" Type="bit" Nullable="false" />
+          <Property Name="Eliminar1" Type="bit" Nullable="false" />
+          <Property Name="Eliminar2" Type="bit" Nullable="false" />
+          <Property Name="Eliminar3" Type="bit" Nullable="false" />
+          <Property Name="Eliminar4" Type="bit" Nullable="false" />
+          <Property Name="Eliminar5" Type="bit" Nullable="false" />
+          <Property Name="Eliminar6" Type="bit" Nullable="false" />
+          <Property Name="Modifimp1" Type="bit" Nullable="false" />
+          <Property Name="Modifimp2" Type="bit" Nullable="false" />
+          <Property Name="Modifimp3" Type="bit" Nullable="false" />
+          <Property Name="Modifpant1" Type="bit" Nullable="false" />
+          <Property Name="Modifpant2" Type="bit" Nullable="false" />
+          <Property Name="Modifpant3" Type="bit" Nullable="false" />
+          <Property Name="Modifarch1" Type="bit" Nullable="false" />
+          <Property Name="Modifarch2" Type="bit" Nullable="false" />
+          <Property Name="Modifarch3" Type="bit" Nullable="false" />
+          <Property Name="Eliminaimp1" Type="bit" Nullable="false" />
+          <Property Name="Eliminaimp2" Type="bit" Nullable="false" />
+          <Property Name="Eliminaimp3" Type="bit" Nullable="false" />
+          <Property Name="Eliminapant1" Type="bit" Nullable="false" />
+          <Property Name="Eliminapant2" Type="bit" Nullable="false" />
+          <Property Name="Eliminapant3" Type="bit" Nullable="false" />
+          <Property Name="Eliminarch1" Type="bit" Nullable="false" />
+          <Property Name="Eliminarch2" Type="bit" Nullable="false" />
+          <Property Name="Eliminarch3" Type="bit" Nullable="false" />
+          <Property Name="Nuevaimp1" Type="bit" Nullable="false" />
+          <Property Name="Nuevaimp2" Type="bit" Nullable="false" />
+          <Property Name="Nuevaimp3" Type="bit" Nullable="false" />
+          <Property Name="Nuevapant1" Type="bit" Nullable="false" />
+          <Property Name="Nuevapant2" Type="bit" Nullable="false" />
+          <Property Name="Nuevapant3" Type="bit" Nullable="false" />
+          <Property Name="Nuevarch1" Type="bit" Nullable="false" />
+          <Property Name="Nuevarch2" Type="bit" Nullable="false" />
+          <Property Name="Nuevarch3" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Novedades">
           <Key>
@@ -551,18 +634,9 @@
           </FunctionImport>
           <FunctionImport Name="updateidloteReportes" />
           <EntitySet Name="Archivos" EntityType="pruebaModel.Archivos" />
-          <EntitySet Name="Mensajes" EntityType="pruebaModel.Mensajes" />
-          <AssociationSet Name="FK_Archivos_Mensajes" Association="pruebaModel.FK_Archivos_Mensajes">
-            <End Role="Mensajes" EntitySet="Mensajes" />
-            <End Role="Archivos" EntitySet="Archivos" />
-          </AssociationSet>
           <EntitySet Name="Permisos" EntityType="pruebaModel.Permisos" />
           <EntitySet Name="ROLES" EntityType="pruebaModel.ROLES" />
           <EntitySet Name="Usuarios" EntityType="pruebaModel.Usuarios" />
-          <AssociationSet Name="FK_Mensajes_Usuarios" Association="pruebaModel.FK_Mensajes_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Mensajes" EntitySet="Mensajes" />
-          </AssociationSet>
           <AssociationSet Name="LNK_ROL_Permiso" Association="pruebaModel.LNK_ROL_Permiso">
             <End Role="Permisos" EntitySet="Permisos" />
             <End Role="ROLES" EntitySet="ROLES" />
@@ -573,22 +647,14 @@
           </AssociationSet>
           <FunctionImport Name="Mensajeria" ReturnType="Collection(pruebaModel.Mensajeria_Result)">
           </FunctionImport>
-          <FunctionImport Name="Mensajerias" EntitySet="Mensajes" ReturnType="Collection(pruebaModel.Mensajes)">
+          <FunctionImport Name="Mensajerias">
           </FunctionImport>
           <EntitySet Name="Novedades" EntityType="pruebaModel.Novedades" />
           <AssociationSet Name="FK_Archivos_Novedades" Association="pruebaModel.FK_Archivos_Novedades">
             <End Role="Novedades" EntitySet="Novedades" />
             <End Role="Archivos" EntitySet="Archivos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Novedades_Mensajes" Association="pruebaModel.FK_Novedades_Mensajes">
-            <End Role="Mensajes" EntitySet="Mensajes" />
-            <End Role="Novedades" EntitySet="Novedades" />
-          </AssociationSet>
           <EntitySet Name="Proyectos" EntityType="pruebaModel.Proyectos" />
-          <AssociationSet Name="FK_Mensajes_Proyectos" Association="pruebaModel.FK_Mensajes_Proyectos">
-            <End Role="Proyectos" EntitySet="Proyectos" />
-            <End Role="Mensajes" EntitySet="Mensajes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Proyectos_Usuarios" Association="pruebaModel.FK_Proyectos_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Proyectos" EntitySet="Proyectos" />
@@ -620,10 +686,6 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mensajes_Estado_requerimiento" Association="pruebaModel.FK_Mensajes_Estado_requerimiento">
-            <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
-            <End Role="Mensajes" EntitySet="Mensajes" />
-          </AssociationSet>
           <EntitySet Name="HistorialDelega" EntityType="pruebaModel.HistorialDelega" />
           <FunctionImport Name="historialDelegacion">
             <Parameter Name="Idmensaje" Mode="In" Type="Int32" />
@@ -631,10 +693,6 @@
             <Parameter Name="Usuariodelega" Mode="In" Type="String" />
             <Parameter Name="Usuariodelegado" Mode="In" Type="String" />
           </FunctionImport>
-          <AssociationSet Name="FK_HistorialDelega_Mensajes" Association="pruebaModel.FK_HistorialDelega_Mensajes">
-            <End Role="Mensajes" EntitySet="Mensajes" />
-            <End Role="HistorialDelega" EntitySet="HistorialDelega" />
-          </AssociationSet>
           <AssociationSet Name="FK_HistorialDelega_Proyectos" Association="pruebaModel.FK_HistorialDelega_Proyectos">
             <End Role="Proyectos" EntitySet="Proyectos" />
             <End Role="HistorialDelega" EntitySet="HistorialDelega" />
@@ -648,13 +706,38 @@
             <Parameter Name="Idcarpeta" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Carpetas" EntityType="pruebaModel.Carpetas" />
+          <AssociationSet Name="FK_Carpetas_Usuarios" Association="pruebaModel.FK_Carpetas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Carpetas" EntitySet="Carpetas" />
+          </AssociationSet>
+          <EntitySet Name="Mensajes" EntityType="pruebaModel.Mensajes" />
+          <AssociationSet Name="FK_Archivos_Mensajes" Association="pruebaModel.FK_Archivos_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="Archivos" EntitySet="Archivos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Carpetas_Mensajes" Association="pruebaModel.FK_Carpetas_Mensajes">
             <End Role="Carpetas" EntitySet="Carpetas" />
             <End Role="Mensajes" EntitySet="Mensajes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Carpetas_Usuarios" Association="pruebaModel.FK_Carpetas_Usuarios">
+          <AssociationSet Name="FK_Mensajes_Estado_requerimiento" Association="pruebaModel.FK_Mensajes_Estado_requerimiento">
+            <End Role="Estado_requerimiento" EntitySet="Estado_requerimiento" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialDelega_Mensajes" Association="pruebaModel.FK_HistorialDelega_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="HistorialDelega" EntitySet="HistorialDelega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mensajes_Proyectos" Association="pruebaModel.FK_Mensajes_Proyectos">
+            <End Role="Proyectos" EntitySet="Proyectos" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mensajes_Usuarios" Association="pruebaModel.FK_Mensajes_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Carpetas" EntitySet="Carpetas" />
+            <End Role="Mensajes" EntitySet="Mensajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Novedades_Mensajes" Association="pruebaModel.FK_Novedades_Mensajes">
+            <End Role="Mensajes" EntitySet="Mensajes" />
+            <End Role="Novedades" EntitySet="Novedades" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Archivos">
@@ -667,54 +750,12 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Idmensaje" Type="Int32" />
           <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Archivos_Mensajes" FromRole="Archivos" ToRole="Mensajes" />
           <Property Name="Idnovedad" Type="Int32" />
           <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Archivos_Novedades" FromRole="Archivos" ToRole="Novedades" />
           <Property Name="Idproyecto" Type="Int32" />
           <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Archivos_Proyectos" FromRole="Archivos" ToRole="Proyectos" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Archivos_Mensajes" FromRole="Archivos" ToRole="Mensajes" />
         </EntityType>
-        <EntityType Name="Mensajes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_Id" Type="Int32" Nullable="false" />
-          <Property Name="Remitente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Asunto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Idusuariodestino" Type="Int32" />
-          <Property Name="Maildestino" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Destinatario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Idpadre" Type="Int32" />
-          <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Mensajes" FromRole="Mensajes" ToRole="Archivos" />
-          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Mensajes" ToRole="Usuarios" />
-          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Mensajes" ToRole="Novedades" />
-          <Property Name="Idproyecto" Type="Int32" />
-          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Mensajes" ToRole="Proyectos" />
-          <Property Name="Idusuariodelega" Type="Int32" />
-          <Property Name="Usuariodelega" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Idestado" Type="Int32" />
-          <NavigationProperty Name="Estado_requerimiento" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Mensajes" ToRole="Estado_requerimiento" />
-          <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Mensajes" FromRole="Mensajes" ToRole="HistorialDelega" />
-          <Property Name="IdCarpeta" Type="Int32" />
-          <NavigationProperty Name="Carpetas" Relationship="pruebaModel.FK_Carpetas_Mensajes" FromRole="Mensajes" ToRole="Carpetas" />
-        </EntityType>
-        <Association Name="FK_Archivos_Mensajes">
-          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
-          <End Type="pruebaModel.Archivos" Role="Archivos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mensajes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Archivos">
-              <PropertyRef Name="Idmensaje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Permisos">
           <Key>
             <PropertyRef Name="Permiso_Id" />
@@ -748,7 +789,6 @@
           <Property Name="Titulo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Inicial" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Usuarios" ToRole="Mensajes" />
           <NavigationProperty Name="ROLES" Relationship="pruebaModel.LNK_Usuario_Rol" FromRole="Usuarios" ToRole="ROLES" />
           <Property Name="Idproyectos" Type="Int32" />
           <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Proyectos_Usuarios" FromRole="Usuarios" ToRole="Proyectos" />
@@ -758,19 +798,8 @@
           <NavigationProperty Name="Estado_requerimiento" Relationship="pruebaModel.FK_Estado_requerimiento_Usuarios" FromRole="Usuarios" ToRole="Estado_requerimiento" />
           <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Usuarios" FromRole="Usuarios" ToRole="Novedades" />
           <NavigationProperty Name="Carpetas" Relationship="pruebaModel.FK_Carpetas_Usuarios" FromRole="Usuarios" ToRole="Carpetas" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Usuarios" ToRole="Mensajes" />
         </EntityType>
-        <Association Name="FK_Mensajes_Usuarios">
-          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="User_Id" />
-            </Principal>
-            <Dependent Role="Mensajes">
-              <PropertyRef Name="User_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="LNK_ROL_Permiso">
           <End Type="pruebaModel.Permisos" Role="Permisos" Multiplicity="*" />
           <End Type="pruebaModel.ROLES" Role="ROLES" Multiplicity="*" />
@@ -794,7 +823,6 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Idmensaje" Type="Int32" />
           <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Novedades" FromRole="Novedades" ToRole="Archivos" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Novedades" ToRole="Mensajes" />
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Usuario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Titulo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -805,6 +833,7 @@
           <Property Name="User_Id" Type="Int32" />
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Novedades_Usuarios" FromRole="Novedades" ToRole="Usuarios" />
           <Property Name="Privado" Type="Boolean" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Novedades" ToRole="Mensajes" />
         </EntityType>
         <Association Name="FK_Archivos_Novedades">
           <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="0..1" />
@@ -818,18 +847,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Novedades_Mensajes">
-          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
-          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mensajes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Novedades">
-              <PropertyRef Name="Idmensaje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Proyectos">
           <Key>
             <PropertyRef Name="Idproyecto" />
@@ -840,7 +857,6 @@
           <Property Name="Idmensaje" Type="Int32" />
           <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="User_Id" Type="Int32" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Proyectos" ToRole="Mensajes" />
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Proyectos_Usuarios" FromRole="Proyectos" ToRole="Usuarios" />
           <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Proyectos" FromRole="Proyectos" ToRole="Novedades" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
@@ -848,19 +864,8 @@
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Proyectos" FromRole="Proyectos" ToRole="Archivos" />
           <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Proyectos" FromRole="Proyectos" ToRole="HistorialDelega" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Proyectos" ToRole="Mensajes" />
         </EntityType>
-        <Association Name="FK_Mensajes_Proyectos">
-          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
-          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proyectos">
-              <PropertyRef Name="Idproyecto" />
-            </Principal>
-            <Dependent Role="Mensajes">
-              <PropertyRef Name="Idproyecto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Proyectos_Usuarios">
           <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
           <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="*" />
@@ -936,8 +941,8 @@
           <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="idusuario" Type="Int32" />
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_requerimiento_Usuarios" FromRole="Estado_requerimiento" ToRole="Usuarios" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Estado_requerimiento" ToRole="Mensajes" />
           <Property Name="color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Estado_requerimiento" ToRole="Mensajes" />
         </EntityType>
         <Association Name="FK_Estado_novedades_Usuarios">
           <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
@@ -975,18 +980,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mensajes_Estado_requerimiento">
-          <End Type="pruebaModel.Estado_requerimiento" Role="Estado_requerimiento" Multiplicity="0..1" />
-          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estado_requerimiento">
-              <PropertyRef Name="Idestado" />
-            </Principal>
-            <Dependent Role="Mensajes">
-              <PropertyRef Name="Idestado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="HistorialDelega">
           <Key>
             <PropertyRef Name="Idhistorial" />
@@ -996,21 +989,9 @@
           <Property Name="Idmensaje" Type="Int32" />
           <Property Name="Usuariodelega" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Usuariodelegado" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_HistorialDelega_Mensajes" FromRole="HistorialDelega" ToRole="Mensajes" />
           <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_HistorialDelega_Proyectos" FromRole="HistorialDelega" ToRole="Proyectos" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_HistorialDelega_Mensajes" FromRole="HistorialDelega" ToRole="Mensajes" />
         </EntityType>
-        <Association Name="FK_HistorialDelega_Mensajes">
-          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
-          <End Type="pruebaModel.HistorialDelega" Role="HistorialDelega" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mensajes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="HistorialDelega">
-              <PropertyRef Name="Idmensaje" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HistorialDelega_Proyectos">
           <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
           <End Type="pruebaModel.HistorialDelega" Role="HistorialDelega" Multiplicity="*" />
@@ -1043,9 +1024,146 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="User_Id" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Carpetas_Mensajes" FromRole="Carpetas" ToRole="Mensajes" />
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Carpetas_Usuarios" FromRole="Carpetas" ToRole="Usuarios" />
+          <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Carpetas_Mensajes" FromRole="Carpetas" ToRole="Mensajes" />
         </EntityType>
+        <Association Name="FK_Carpetas_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="pruebaModel.Carpetas" Role="Carpetas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Carpetas">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Mensajes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Remitente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Asunto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Idusuariodestino" Type="Int32" />
+          <Property Name="Maildestino" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Destinatario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Idpadre" Type="Int32" />
+          <Property Name="Idproyecto" Type="Int32" />
+          <Property Name="Idusuariodelega" Type="Int32" />
+          <Property Name="Usuariodelega" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Idestado" Type="Int32" />
+          <Property Name="IdCarpeta" Type="Int32" />
+          <Property Name="Prioridad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Naturaleza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Objetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Alcance" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Func1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Func2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Func3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Func4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Func5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Func6" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Impresa1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Impresa2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Impresa3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pantalla1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pantalla2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Pantalla3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Porarchivo1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Porarchivo2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Porarchivo3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Ventaja" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Arearelacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Afectado" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fechadeseada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Normas" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Docadjunta" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Area1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Area2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Area3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gerente1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gerente2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gerente3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Firma1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Firma2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Firma3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Confeccionado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gerentearea" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Recepcionado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nueva1" Type="Boolean" Nullable="false" />
+          <Property Name="Nueva2" Type="Boolean" Nullable="false" />
+          <Property Name="Nueva3" Type="Boolean" Nullable="false" />
+          <Property Name="Nueva4" Type="Boolean" Nullable="false" />
+          <Property Name="Nueva5" Type="Boolean" Nullable="false" />
+          <Property Name="Nueva6" Type="Boolean" Nullable="false" />
+          <Property Name="Modif1" Type="Boolean" Nullable="false" />
+          <Property Name="Modif2" Type="Boolean" Nullable="false" />
+          <Property Name="Modif3" Type="Boolean" Nullable="false" />
+          <Property Name="Modif4" Type="Boolean" Nullable="false" />
+          <Property Name="Modif5" Type="Boolean" Nullable="false" />
+          <Property Name="Modif6" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminar1" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminar2" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminar3" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminar4" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminar5" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminar6" Type="Boolean" Nullable="false" />
+          <Property Name="Modifimp1" Type="Boolean" Nullable="false" />
+          <Property Name="Modifimp2" Type="Boolean" Nullable="false" />
+          <Property Name="Modifimp3" Type="Boolean" Nullable="false" />
+          <Property Name="Modifpant1" Type="Boolean" Nullable="false" />
+          <Property Name="Modifpant2" Type="Boolean" Nullable="false" />
+          <Property Name="Modifpant3" Type="Boolean" Nullable="false" />
+          <Property Name="Modifarch1" Type="Boolean" Nullable="false" />
+          <Property Name="Modifarch2" Type="Boolean" Nullable="false" />
+          <Property Name="Modifarch3" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminaimp1" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminaimp2" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminaimp3" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminapant1" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminapant2" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminapant3" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminarch1" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminarch2" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminarch3" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevaimp1" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevaimp2" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevaimp3" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevapant1" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevapant2" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevapant3" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevarch1" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevarch2" Type="Boolean" Nullable="false" />
+          <Property Name="Nuevarch3" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Mensajes" FromRole="Mensajes" ToRole="Archivos" />
+          <NavigationProperty Name="Carpetas" Relationship="pruebaModel.FK_Carpetas_Mensajes" FromRole="Mensajes" ToRole="Carpetas" />
+          <NavigationProperty Name="Estado_requerimiento" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Mensajes" ToRole="Estado_requerimiento" />
+          <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Mensajes" FromRole="Mensajes" ToRole="HistorialDelega" />
+          <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Mensajes" ToRole="Proyectos" />
+          <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Mensajes" ToRole="Usuarios" />
+          <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Mensajes" ToRole="Novedades" />
+        </EntityType>
+        <Association Name="FK_Archivos_Mensajes">
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
+          <End Type="pruebaModel.Archivos" Role="Archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archivos">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Carpetas_Mensajes">
           <End Type="pruebaModel.Carpetas" Role="Carpetas" Multiplicity="0..1" />
           <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
@@ -1058,15 +1176,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Carpetas_Usuarios">
-          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
-          <End Type="pruebaModel.Carpetas" Role="Carpetas" Multiplicity="*" />
+        <Association Name="FK_Mensajes_Estado_requerimiento">
+          <End Type="pruebaModel.Estado_requerimiento" Role="Estado_requerimiento" Multiplicity="0..1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_requerimiento">
+              <PropertyRef Name="Idestado" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="Idestado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialDelega_Mensajes">
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
+          <End Type="pruebaModel.HistorialDelega" Role="HistorialDelega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialDelega">
+              <PropertyRef Name="Idmensaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mensajes_Proyectos">
+          <End Type="pruebaModel.Proyectos" Role="Proyectos" Multiplicity="0..1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyectos">
+              <PropertyRef Name="Idproyecto" />
+            </Principal>
+            <Dependent Role="Mensajes">
+              <PropertyRef Name="Idproyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mensajes_Usuarios">
+          <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="User_Id" />
             </Principal>
-            <Dependent Role="Carpetas">
+            <Dependent Role="Mensajes">
               <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Novedades_Mensajes">
+          <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
+          <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mensajes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Novedades">
+              <PropertyRef Name="Idmensaje" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1086,30 +1252,6 @@
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Idusuario" ColumnName="Idusuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Mensajes">
-            <EntityTypeMapping TypeName="pruebaModel.Mensajes">
-              <MappingFragment StoreEntitySet="Mensajes">
-                <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
-                <ScalarProperty Name="Idestado" ColumnName="Idestado" />
-                <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
-                <ScalarProperty Name="Idusuariodelega" ColumnName="Idusuariodelega" />
-                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
-                <ScalarProperty Name="Idpadre" ColumnName="Idpadre" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
-                <ScalarProperty Name="Maildestino" ColumnName="Maildestino" />
-                <ScalarProperty Name="Idusuariodestino" ColumnName="Idusuariodestino" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
-                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
-                <ScalarProperty Name="Remitente" ColumnName="Remitente" />
-                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1245,6 +1387,113 @@
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mensajes">
+            <EntityTypeMapping TypeName="pruebaModel.Mensajes">
+              <MappingFragment StoreEntitySet="Mensajes">
+                <ScalarProperty Name="Nuevarch3" ColumnName="Nuevarch3" />
+                <ScalarProperty Name="Nuevarch2" ColumnName="Nuevarch2" />
+                <ScalarProperty Name="Nuevarch1" ColumnName="Nuevarch1" />
+                <ScalarProperty Name="Nuevapant3" ColumnName="Nuevapant3" />
+                <ScalarProperty Name="Nuevapant2" ColumnName="Nuevapant2" />
+                <ScalarProperty Name="Nuevapant1" ColumnName="Nuevapant1" />
+                <ScalarProperty Name="Nuevaimp3" ColumnName="Nuevaimp3" />
+                <ScalarProperty Name="Nuevaimp2" ColumnName="Nuevaimp2" />
+                <ScalarProperty Name="Nuevaimp1" ColumnName="Nuevaimp1" />
+                <ScalarProperty Name="Eliminarch3" ColumnName="Eliminarch3" />
+                <ScalarProperty Name="Eliminarch2" ColumnName="Eliminarch2" />
+                <ScalarProperty Name="Eliminarch1" ColumnName="Eliminarch1" />
+                <ScalarProperty Name="Eliminapant3" ColumnName="Eliminapant3" />
+                <ScalarProperty Name="Eliminapant2" ColumnName="Eliminapant2" />
+                <ScalarProperty Name="Eliminapant1" ColumnName="Eliminapant1" />
+                <ScalarProperty Name="Eliminaimp3" ColumnName="Eliminaimp3" />
+                <ScalarProperty Name="Eliminaimp2" ColumnName="Eliminaimp2" />
+                <ScalarProperty Name="Eliminaimp1" ColumnName="Eliminaimp1" />
+                <ScalarProperty Name="Modifarch3" ColumnName="Modifarch3" />
+                <ScalarProperty Name="Modifarch2" ColumnName="Modifarch2" />
+                <ScalarProperty Name="Modifarch1" ColumnName="Modifarch1" />
+                <ScalarProperty Name="Modifpant3" ColumnName="Modifpant3" />
+                <ScalarProperty Name="Modifpant2" ColumnName="Modifpant2" />
+                <ScalarProperty Name="Modifpant1" ColumnName="Modifpant1" />
+                <ScalarProperty Name="Modifimp3" ColumnName="Modifimp3" />
+                <ScalarProperty Name="Modifimp2" ColumnName="Modifimp2" />
+                <ScalarProperty Name="Modifimp1" ColumnName="Modifimp1" />
+                <ScalarProperty Name="Eliminar6" ColumnName="Eliminar6" />
+                <ScalarProperty Name="Eliminar5" ColumnName="Eliminar5" />
+                <ScalarProperty Name="Eliminar4" ColumnName="Eliminar4" />
+                <ScalarProperty Name="Eliminar3" ColumnName="Eliminar3" />
+                <ScalarProperty Name="Eliminar2" ColumnName="Eliminar2" />
+                <ScalarProperty Name="Eliminar1" ColumnName="Eliminar1" />
+                <ScalarProperty Name="Modif6" ColumnName="Modif6" />
+                <ScalarProperty Name="Modif5" ColumnName="Modif5" />
+                <ScalarProperty Name="Modif4" ColumnName="Modif4" />
+                <ScalarProperty Name="Modif3" ColumnName="Modif3" />
+                <ScalarProperty Name="Modif2" ColumnName="Modif2" />
+                <ScalarProperty Name="Modif1" ColumnName="Modif1" />
+                <ScalarProperty Name="Nueva6" ColumnName="Nueva6" />
+                <ScalarProperty Name="Nueva5" ColumnName="Nueva5" />
+                <ScalarProperty Name="Nueva4" ColumnName="Nueva4" />
+                <ScalarProperty Name="Nueva3" ColumnName="Nueva3" />
+                <ScalarProperty Name="Nueva2" ColumnName="Nueva2" />
+                <ScalarProperty Name="Nueva1" ColumnName="Nueva1" />
+                <ScalarProperty Name="Recepcionado" ColumnName="Recepcionado" />
+                <ScalarProperty Name="Gerentearea" ColumnName="Gerentearea" />
+                <ScalarProperty Name="Confeccionado" ColumnName="Confeccionado" />
+                <ScalarProperty Name="Firma3" ColumnName="Firma3" />
+                <ScalarProperty Name="Firma2" ColumnName="Firma2" />
+                <ScalarProperty Name="Firma1" ColumnName="Firma1" />
+                <ScalarProperty Name="Gerente3" ColumnName="Gerente3" />
+                <ScalarProperty Name="Gerente2" ColumnName="Gerente2" />
+                <ScalarProperty Name="Gerente1" ColumnName="Gerente1" />
+                <ScalarProperty Name="Area3" ColumnName="Area3" />
+                <ScalarProperty Name="Area2" ColumnName="Area2" />
+                <ScalarProperty Name="Area1" ColumnName="Area1" />
+                <ScalarProperty Name="Docadjunta" ColumnName="Docadjunta" />
+                <ScalarProperty Name="Normas" ColumnName="Normas" />
+                <ScalarProperty Name="Fechadeseada" ColumnName="Fechadeseada" />
+                <ScalarProperty Name="Afectado" ColumnName="Afectado" />
+                <ScalarProperty Name="Arearelacion" ColumnName="Arearelacion" />
+                <ScalarProperty Name="Ventaja" ColumnName="Ventaja" />
+                <ScalarProperty Name="Porarchivo3" ColumnName="Porarchivo3" />
+                <ScalarProperty Name="Porarchivo2" ColumnName="Porarchivo2" />
+                <ScalarProperty Name="Porarchivo1" ColumnName="Porarchivo1" />
+                <ScalarProperty Name="Pantalla3" ColumnName="Pantalla3" />
+                <ScalarProperty Name="Pantalla2" ColumnName="Pantalla2" />
+                <ScalarProperty Name="Pantalla1" ColumnName="Pantalla1" />
+                <ScalarProperty Name="Impresa3" ColumnName="Impresa3" />
+                <ScalarProperty Name="Impresa2" ColumnName="Impresa2" />
+                <ScalarProperty Name="Impresa1" ColumnName="Impresa1" />
+                <ScalarProperty Name="Func6" ColumnName="Func6" />
+                <ScalarProperty Name="Func5" ColumnName="Func5" />
+                <ScalarProperty Name="Func4" ColumnName="Func4" />
+                <ScalarProperty Name="Func3" ColumnName="Func3" />
+                <ScalarProperty Name="Func2" ColumnName="Func2" />
+                <ScalarProperty Name="Func1" ColumnName="Func1" />
+                <ScalarProperty Name="Alcance" ColumnName="Alcance" />
+                <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Naturaleza" ColumnName="Naturaleza" />
+                <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+                <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
+                <ScalarProperty Name="Idestado" ColumnName="Idestado" />
+                <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
+                <ScalarProperty Name="Idusuariodelega" ColumnName="Idusuariodelega" />
+                <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+                <ScalarProperty Name="Idpadre" ColumnName="Idpadre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+                <ScalarProperty Name="Maildestino" ColumnName="Maildestino" />
+                <ScalarProperty Name="Idusuariodestino" ColumnName="Idusuariodestino" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Remitente" ColumnName="Remitente" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

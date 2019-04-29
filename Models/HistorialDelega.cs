@@ -20,7 +20,7 @@ namespace Requerimientos.Models
         public string Usuariodelega { get; set; }
         public string Usuariodelegado { get; set; }
     
-        public virtual Mensajes Mensajes { get; set; }
         public virtual Proyectos Proyectos { get; set; }
+        public virtual Mensajes Mensajes { get; set; }
     }
 }

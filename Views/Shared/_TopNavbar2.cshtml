@@ -1,4 +1,8 @@
-﻿<style type="text/css">
+﻿@using Requerimientos.Models
+
+
+
+<style type="text/css">
     /*Added css for design notification area, you can design by your self*/
     /* COPY css content from youtube video description*/
     .noti-content {
@@ -49,6 +53,27 @@
         position: relative;
         top: -3px;
     }
+
+    #contributors {
+        margin-bottom: 0;
+        width: 15%;
+        /* padding-left: 84%; */
+        margin-left: 70%;
+    }
+
+
+
+    @@media only screen and (max-width : 1634px) {
+        #contributors {
+            margin-bottom: 0;
+            width: 15%;
+            /* padding-left: 84%; */
+            margin-left: 63%;
+        }
+    }
+
+
+
 </style>
 
 
@@ -239,8 +264,51 @@
                     </a>
                 </li>
             </ul>
-        </div>
+
+            @*@{
+        Html.RenderAction("Avisomensaje", "Shared");
+    }*@
+
+            <div id="contributors">
+                @{
+                    Html.RenderAction("Index", "Aviso");
+                }
+            </div>
 
 
     </nav>
 </div>
+
+<script type="text/javascript">
+
+
+
+    //$(document).ready(function () {
+
+        var timer = null;
+        function startSetInterval() {
+           // timer = setInterval("$('#contributors').load('/aviso/Index') ", 3000);
+           // alert("sdsadasda");
+        }
+        // start function on page load
+        startSetInterval();
+
+        // hover behaviour
+        $('#contributors').hover(function () {
+            clearInterval(timer);
+        }, function () {
+            startSetInterval();
+        });
+
+    //});
+
+    //setInterval("$('#contributors').load('/aviso/Index') ", 3000);
+    //$(function () {
+
+    //    setInterval(function () { $('#contributors').load('/Aviso/Index'); }, 3000); // every 3 sec
+
+    //});
+
+
+
+</script>

@@ -14,6 +14,21 @@ using log4net;
 using System.Net.Mail;
 using Requerimientos.Controllers;
 
+
+
+using System.Collections;
+using System.ComponentModel;
+
+using System.Drawing;
+using System.Text;
+
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.xml;
+using System.Security.Cryptography.X509Certificates;
+using FirmarPDF;
+
 namespace Requerimientos.Models
 {
     [RBAC]
@@ -71,11 +86,12 @@ namespace Requerimientos.Models
             query = query.Where(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
             query = query.OrderByDescending(r => r.Fecha);
 
-//            this.hola();
-          
+
+            //            this.hola();
 
 
 
+            //Response.AddHeader("Refresh", "15");
 
 
             return View(query.ToList());
@@ -501,6 +517,8 @@ namespace Requerimientos.Models
         public ActionResult Create(Mensajes support, int User_Id, int Idproyecto, string txtTo, string txtSubject, string txtMessage, string txtTipoproyecto, string txtRemitente, string txtDestinatario)
         {
 
+            
+            
 
             try
             {
@@ -586,8 +604,8 @@ namespace Requerimientos.Models
                     db.SaveChanges();
 
                     //Para enviar mail al destinatario avisando que recibio un nuevo requerimiento
-                    if (support.Enviamail)
-                    {
+                   // if (support.Enviamail)
+                    //{
                         //declaro los datos que se van a enviar al mail
 
                         //string asunto = support.Asunto + " - Requerimientos";
@@ -621,7 +639,7 @@ namespace Requerimientos.Models
                         }
                        
 
-                    }
+                   // }
 
                  
 
@@ -726,7 +744,7 @@ namespace Requerimientos.Models
             }
             else
             {
-                ViewBag.userdelega = new SelectList(db.Usuarios, "User_Id", "Nombre");
+                ViewBag.userdelega = this.Lista();
             }
 
 
@@ -768,7 +786,7 @@ namespace Requerimientos.Models
         [HttpPost]
         [ValidateInput(false)]
         //[ValidateAntiForgeryToken]
-        public ActionResult Details(Mensajes support, int? userdelega, int? CambioEstado)
+        public ActionResult Details(Mensajes support, int? userdelega, int? CambioEstado, string txtTo, string txtSubject, string txtMessage, string txtTipoproyecto, string txtRemitente, string txtDestinatario)
         {
 
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
@@ -805,18 +823,45 @@ namespace Requerimientos.Models
                                     select new
                                     {
 
-                                        c.Nombre
+                                        c.Nombre,
+                                        c.EMail
 
                                     };
                     foreach (var c in query_ne1)
                     {
-                        support.Usuariodelega = c.Nombre;
+                            txtTo = c.EMail;
+                            support.Usuariodelega = c.Nombre;
                         TempData["success"] = "Ha delegado el mensaje a " + c.Nombre;
                         support.Idusuariodelega = userdelega;
                             log.Info("la delegacion de usuario se realizo con exito");
                     }
                    // db.Entry(support).State = EntityState.Modified;
                     support.User_Id = idusuario;
+
+
+                        string asunto = "Requerimiento - " + support.Asunto + " - Delegado";
+                        string remitente = support.Remitente;
+                        string tipoproyecto = proyecto;
+                        string mensaje = support.Mensaje;
+                        string destinatario = support.Destinatario;
+
+                        string[] to = txtTo.Split(';');
+                        txtSubject = asunto; //"alalalalal";
+                        //txtMessage = remitente + tipoproyecto + mensaje; //"jajajaajajajaj";
+
+                        txtTipoproyecto = tipoproyecto;
+                        txtRemitente = remitente;
+                        txtDestinatario = destinatario;
+                        txtMessage = mensaje;
+                        foreach (string emailAdd in to)
+                        {
+
+                            if (!string.IsNullOrEmpty(emailAdd))
+                                SendEmail(emailAdd, txtSubject, txtMessage, txtTipoproyecto, txtRemitente, txtDestinatario);
+
+                            //  this.SendHtmlFormattedEmail("New article published!", SendEmail);
+                        }
+
 
 
                         HistorialDelega historico = new HistorialDelega()
@@ -1102,6 +1147,522 @@ namespace Requerimientos.Models
         }
 
 
+
+
+
+        //private void Form1_Load(object sender, EventArgs e)
+        //{
+        //    ListFieldNames();
+        //    FillForm();
+        //}
+
+
+        /// <summary>
+        /// List all of the form fields into a textbox.  The
+        /// form fields identified can be used to map each of the
+        /// fields in a PDF.
+        /// </summary>
+        private void ListFieldNames()
+        {
+            string pdfTemplate = @"C:\log\prueba.pdf";
+            // title the form  
+            //this.Text += " - " + pdfTemplate;
+            // create a new PDF reader based on the PDF template document  
+            PdfReader pdfReader = new PdfReader(pdfTemplate);
+            // create and populate a string builder with each of the  
+            // field names available in the subject PDF  
+            StringBuilder sb = new StringBuilder();
+            foreach (DictionaryEntry de in pdfReader.AcroFields.Fields)
+            {
+                sb.Append(de.Key.ToString() + Environment.NewLine);
+            }
+            // Write the string builder's content to the form's textbox  
+          //  textBox1.Text = sb.ToString();
+           // textBox1.SelectionStart = 0;
+        }
+
+
+
+
+
+
+        public void FillForm(int? id)
+        {
+
+
+            Mensajes support = db.Mensajes.Include(u => u.Usuarios).SingleOrDefault(x => x.Id == id);
+
+            string pdfTemplate = Server.MapPath("~/pdf/" + "requerimiento.pdf");
+
+
+            string newFile = Server.MapPath("~/pdf/" + support.Id+ "_"+ support.Asunto +".pdf");
+
+
+            //ListFieldNames();
+
+
+
+            //string newFile = @"c:\log\jjajajaajajaajajajjajaajjaajajajajajaja.pdf";
+
+
+
+            PdfReader pdfReader = new PdfReader(pdfTemplate);
+
+            PdfReader pdfReader2 = new PdfReader(pdfTemplate);
+
+            PdfStamper pdfStamper = new PdfStamper(pdfReader, new FileStream(newFile, FileMode.Create));
+            AcroFields pdfFormFields = pdfStamper.AcroFields;
+
+
+            var outputpdfStream = new MemoryStream();
+
+            var stampler = new PdfStamper(pdfReader2, outputpdfStream)
+            {
+                FormFlattening = false,
+                FreeTextFlattening = false
+            };
+
+
+
+       
+            // set form pdfFormFields  
+            // The first worksheet and W-4 form  
+            pdfFormFields.SetField("Id", (support.Id).ToString());
+            pdfFormFields.SetField("Asunto", support.Asunto);
+            pdfFormFields.SetField("Areasolicitante", support.Asunto);
+            pdfFormFields.SetField("Usuariosolicitante", support.Usuarios.Nombre);
+            pdfFormFields.SetField("Prioridad", support.Prioridad);
+            pdfFormFields.SetField("Naturaleza", support.Naturaleza);
+            pdfFormFields.SetField("Descripcion", support.Descripcion);
+            pdfFormFields.SetField("Objetivo", support.Objetivo);
+            pdfFormFields.SetField("Alcance", support.Alcance);
+            //pdfFormFields.SetField("Func1", support.Func1);
+
+            pdfFormFields.SetField("Func1", support.Func1);
+            pdfFormFields.SetField("Func2", support.Func2);
+            pdfFormFields.SetField("Func3", support.Func3);
+            pdfFormFields.SetField("Func4", support.Func4);
+            pdfFormFields.SetField("Func5", support.Func5);
+            pdfFormFields.SetField("Func6", support.Func6);
+
+            pdfFormFields.SetField("Impresa1", support.Impresa1);
+            pdfFormFields.SetField("Impresa2", support.Impresa2);
+            pdfFormFields.SetField("Impresa3", support.Impresa3);
+
+            pdfFormFields.SetField("Pantalla1", support.Pantalla1);
+            pdfFormFields.SetField("Pantalla2", support.Pantalla2);
+            pdfFormFields.SetField("Pantalla3", support.Pantalla3);
+
+
+            pdfFormFields.SetField("Porarchivo1", support.Porarchivo1);
+            pdfFormFields.SetField("Porarchivo2", support.Porarchivo2);
+            pdfFormFields.SetField("Porarchivo3", support.Porarchivo3);
+
+
+
+            pdfFormFields.SetField("Nueva1", (support.Nueva1).ToString());
+            pdfFormFields.SetField("Nueva2", (support.Nueva2).ToString());
+            pdfFormFields.SetField("Nueva3", (support.Nueva3).ToString());
+            pdfFormFields.SetField("Nueva4", (support.Nueva4).ToString());
+            pdfFormFields.SetField("Nueva5", (support.Nueva5).ToString());
+            pdfFormFields.SetField("Nueva6", (support.Nueva6).ToString());
+
+
+            pdfFormFields.SetField("Modif1", (support.Modif1).ToString());
+            pdfFormFields.SetField("Modif2", (support.Modif2).ToString());
+            pdfFormFields.SetField("Modif3", (support.Modif3).ToString());
+            pdfFormFields.SetField("Modif4", (support.Modif4).ToString());
+            pdfFormFields.SetField("Modif5", (support.Modif5).ToString());
+            pdfFormFields.SetField("Modif6", (support.Modif6).ToString());
+
+            pdfFormFields.SetField("Eliminar1", (support.Eliminar1).ToString());
+            pdfFormFields.SetField("Eliminar2", (support.Eliminar2).ToString());
+            pdfFormFields.SetField("Eliminar3", (support.Eliminar3).ToString());
+            pdfFormFields.SetField("Eliminar4", (support.Eliminar4).ToString());
+            pdfFormFields.SetField("Eliminar5", (support.Eliminar5).ToString());
+            pdfFormFields.SetField("Eliminar6", (support.Eliminar6).ToString());
+
+
+            pdfFormFields.SetField("Nuevaimp1", (support.Nuevaimp1).ToString());
+            pdfFormFields.SetField("Nuevaimp2", (support.Nuevaimp2).ToString());
+            pdfFormFields.SetField("Nuevaimp3", (support.Nuevaimp3).ToString());
+
+            pdfFormFields.SetField("Modifimp1", (support.Modifimp1).ToString());
+            pdfFormFields.SetField("Modifimp2", (support.Modifimp2).ToString());
+            pdfFormFields.SetField("Modifimp3", (support.Modifimp3).ToString());
+
+            pdfFormFields.SetField("Eliminaimp1", (support.Eliminaimp1).ToString());
+            pdfFormFields.SetField("Eliminaimp2", (support.Eliminaimp2).ToString());
+            pdfFormFields.SetField("Eliminaimp3", (support.Eliminaimp3).ToString());
+
+
+
+
+            pdfFormFields.SetField("Nuevapant1", (support.Nuevapant1).ToString());
+            pdfFormFields.SetField("Nuevapant2", (support.Nuevapant2).ToString());
+            pdfFormFields.SetField("Nuevapant3", (support.Nuevapant3).ToString());
+
+            pdfFormFields.SetField("Modifpant1", (support.Modifpant1).ToString());
+            pdfFormFields.SetField("Modifpant2", (support.Modifpant2).ToString());
+            pdfFormFields.SetField("Modifpant3", (support.Modifpant3).ToString());
+
+            pdfFormFields.SetField("Eliminapant1", (support.Eliminapant1).ToString());
+            pdfFormFields.SetField("Eliminapant2", (support.Eliminapant2).ToString());
+            pdfFormFields.SetField("Eliminapant3", (support.Eliminapant3).ToString());
+
+
+
+
+            pdfFormFields.SetField("Nuevarch1", (support.Nuevarch1).ToString());
+            pdfFormFields.SetField("Nuevarch2", (support.Nuevarch2).ToString());
+            pdfFormFields.SetField("Nuevarch3", (support.Nuevarch3).ToString());
+
+            pdfFormFields.SetField("Modifarch1", (support.Modifarch1).ToString());
+            pdfFormFields.SetField("Modifarch2", (support.Modifarch2).ToString());
+            pdfFormFields.SetField("Modifarch3", (support.Modifarch3).ToString());
+
+            pdfFormFields.SetField("Eliminarch1", (support.Eliminarch1).ToString());
+            pdfFormFields.SetField("Eliminarch2", (support.Eliminarch2).ToString());
+            pdfFormFields.SetField("Eliminarch3", (support.Eliminarch3).ToString());
+
+
+
+
+
+            pdfFormFields.SetField("Ventaja", support.Ventaja);
+            pdfFormFields.SetField("Arearelacion", support.Arearelacion);
+            pdfFormFields.SetField("Afectado", support.Afectado);
+            pdfFormFields.SetField("Normas", support.Normas);
+
+            pdfFormFields.SetField("Area1", support.Area1);
+            pdfFormFields.SetField("Area2", support.Area2);
+            pdfFormFields.SetField("Area3", support.Area3);
+
+            pdfFormFields.SetField("Gerente1", support.Gerente1);
+            pdfFormFields.SetField("Gerente2", support.Gerente2);
+            pdfFormFields.SetField("Gerente3", support.Gerente3);
+
+            pdfFormFields.SetField("Firma1", support.Firma1);
+            pdfFormFields.SetField("Firma2", support.Firma2);
+            pdfFormFields.SetField("Firma3", support.Firma3);
+
+            pdfFormFields.SetField("Confeccionado", support.Usuarios.Nombre);
+            pdfFormFields.SetField("Recepcionado", support.Recepcionado);
+
+          //  pdfStamper.SetFullCompression();
+
+            // report by reading values from completed PDF  
+            //string sTmp = "W-4 Completed for " + pdfFormFields.GetField("f1_09(0)") + " " + pdfFormFields.GetField("f1_10(0)");
+            // MessageBox.Show(sTmp, "Finished");
+            // flatten the form to remove editting options, set it to false  
+            // to leave the form open to subsequent manual edits  
+            pdfStamper.FormFlattening = false;
+            pdfStamper.FreeTextFlattening = false;
+            // close the pdf  
+            pdfStamper.Close();
+
+            byte[] bytes = outputpdfStream.ToArray();
+            outputpdfStream.Close();
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename = " + support.Asunto + ".pdf");
+            Response.ContentType = "application/pdf";
+            Response.Buffer = true;
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.BinaryWrite(bytes);
+            Response.End();
+            Response.Close();
+
+            //var file = outputpdfStream.ToArray();
+            //var output = new MemoryStream();
+            //output.Write(file, 0, file.Length);
+            //output.Position = 0;
+
+            //var cd = new System.Net.Mime.ContentDisposition
+            //{
+
+            //    FileName = support.Asunto + "_" + DateTime.Today + ".pdf",
+            //    Inline = false,
+            //    Size = file.Length,
+            //    CreationDate = DateTime.Now
+
+            //};
+
+            support.Status = "check";
+
+            db.Entry(support).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            this.Details(id);
+
+            //  return RedirectToAction("Details", "Mensajes", new { id = id });
+           // return File(output, System.Net.Mime.MediaTypeNames.Application.Pdf);
+        }
+
+
+        public virtual ActionResult Pdfdowload(int? id, HttpPostedFileBase photo)
+        {
+
+           // string pdfTemplate = @"C:\log\prueba.pdf";
+
+
+            string pdfTemplate = Server.MapPath("~/pdf/" + "requerimiento.pdf");
+
+
+            //ListFieldNames();
+
+            // string newFile = @"c:\log\completed_prueba.pdf";
+
+            PdfReader pdfReader = new PdfReader(pdfTemplate);
+
+            var outputpdfStream = new MemoryStream();
+
+            var stampler = new PdfStamper(pdfReader, outputpdfStream)
+            {
+                FormFlattening = false,
+                FreeTextFlattening = false
+            };
+
+            AcroFields pdfFormFields = stampler.AcroFields;
+
+            Mensajes support = db.Mensajes.Include(u => u.Usuarios).SingleOrDefault(x => x.Id == id);
+
+
+            // set form pdfFormFields
+
+            // The first worksheet and W-4 form
+            pdfFormFields.SetField("Id",  (support.Id).ToString());
+            pdfFormFields.SetField("Asunto", support.Asunto);
+            pdfFormFields.SetField("Areasolicitante", support.Asunto);
+            pdfFormFields.SetField("Usuariosolicitante", support.Usuarios.Nombre);
+            pdfFormFields.SetField("Prioridad", support.Prioridad);
+            pdfFormFields.SetField("Naturaleza", support.Naturaleza);
+            pdfFormFields.SetField("Descripcion", support.Descripcion);
+            pdfFormFields.SetField("Objetivo", support.Objetivo);
+            pdfFormFields.SetField("Alcance", support.Alcance);
+            //pdfFormFields.SetField("Func1", support.Func1);
+
+            pdfFormFields.SetField("Func1", support.Func1);
+            pdfFormFields.SetField("Func2", support.Func2);
+            pdfFormFields.SetField("Func3", support.Func3);
+            pdfFormFields.SetField("Func4", support.Func4);
+            pdfFormFields.SetField("Func5", support.Func5);
+            pdfFormFields.SetField("Func6", support.Func6);
+
+            pdfFormFields.SetField("Impresa1", support.Impresa1);
+            pdfFormFields.SetField("Impresa2", support.Impresa2);
+            pdfFormFields.SetField("Impresa3", support.Impresa3);
+
+            pdfFormFields.SetField("Pantalla1", support.Pantalla1);
+            pdfFormFields.SetField("Pantalla2", support.Pantalla2);
+            pdfFormFields.SetField("Pantalla3", support.Pantalla3);
+
+
+            pdfFormFields.SetField("Porarchivo1", support.Porarchivo1);
+            pdfFormFields.SetField("Porarchivo2", support.Porarchivo2);
+            pdfFormFields.SetField("Porarchivo3", support.Porarchivo3);
+
+
+
+            pdfFormFields.SetField("Nueva1", (support.Nueva1).ToString());
+            pdfFormFields.SetField("Nueva2", (support.Nueva2).ToString());
+            pdfFormFields.SetField("Nueva3", (support.Nueva3).ToString());
+            pdfFormFields.SetField("Nueva4", (support.Nueva4).ToString());
+            pdfFormFields.SetField("Nueva5", (support.Nueva5).ToString());
+            pdfFormFields.SetField("Nueva6", (support.Nueva6).ToString());
+
+
+            pdfFormFields.SetField("Modif1", (support.Modif1).ToString());
+            pdfFormFields.SetField("Modif2", (support.Modif2).ToString());
+            pdfFormFields.SetField("Modif3", (support.Modif3).ToString());
+            pdfFormFields.SetField("Modif4", (support.Modif4).ToString());
+            pdfFormFields.SetField("Modif5", (support.Modif5).ToString());
+            pdfFormFields.SetField("Modif6", (support.Modif6).ToString());
+
+            pdfFormFields.SetField("Eliminar1", (support.Eliminar1).ToString());
+            pdfFormFields.SetField("Eliminar2", (support.Eliminar2).ToString());
+            pdfFormFields.SetField("Eliminar3", (support.Eliminar3).ToString());
+            pdfFormFields.SetField("Eliminar4", (support.Eliminar4).ToString());
+            pdfFormFields.SetField("Eliminar5", (support.Eliminar5).ToString());
+            pdfFormFields.SetField("Eliminar6", (support.Eliminar6).ToString());
+
+
+            pdfFormFields.SetField("Nuevaimp1", (support.Nuevaimp1).ToString());
+            pdfFormFields.SetField("Nuevaimp2", (support.Nuevaimp2).ToString());
+            pdfFormFields.SetField("Nuevaimp3", (support.Nuevaimp3).ToString());
+
+            pdfFormFields.SetField("Modifimp1", (support.Modifimp1).ToString());
+            pdfFormFields.SetField("Modifimp2", (support.Modifimp2).ToString());
+            pdfFormFields.SetField("Modifimp3", (support.Modifimp3).ToString());
+
+            pdfFormFields.SetField("Eliminaimp1", (support.Eliminaimp1).ToString());
+            pdfFormFields.SetField("Eliminaimp2", (support.Eliminaimp2).ToString());
+            pdfFormFields.SetField("Eliminaimp3", (support.Eliminaimp3).ToString());
+
+
+
+
+            pdfFormFields.SetField("Nuevapant1", (support.Nuevapant1).ToString());
+            pdfFormFields.SetField("Nuevapant2", (support.Nuevapant2).ToString());
+            pdfFormFields.SetField("Nuevapant3", (support.Nuevapant3).ToString());
+
+            pdfFormFields.SetField("Modifpant1", (support.Modifpant1).ToString());
+            pdfFormFields.SetField("Modifpant2", (support.Modifpant2).ToString());
+            pdfFormFields.SetField("Modifpant3", (support.Modifpant3).ToString());
+
+            pdfFormFields.SetField("Eliminapant1", (support.Eliminapant1).ToString());
+            pdfFormFields.SetField("Eliminapant2", (support.Eliminapant2).ToString());
+            pdfFormFields.SetField("Eliminapant3", (support.Eliminapant3).ToString());
+
+
+
+
+            pdfFormFields.SetField("Nuevarch1", (support.Nuevarch1).ToString());
+            pdfFormFields.SetField("Nuevarch2", (support.Nuevarch2).ToString());
+            pdfFormFields.SetField("Nuevarch3", (support.Nuevarch3).ToString());
+
+            pdfFormFields.SetField("Modifarch1", (support.Modifarch1).ToString());
+            pdfFormFields.SetField("Modifarch2", (support.Modifarch2).ToString());
+            pdfFormFields.SetField("Modifarch3", (support.Modifarch3).ToString());
+
+            pdfFormFields.SetField("Eliminarch1", (support.Eliminarch1).ToString());
+            pdfFormFields.SetField("Eliminarch2", (support.Eliminarch2).ToString());
+            pdfFormFields.SetField("Eliminarch3", (support.Eliminarch3).ToString());
+
+
+
+
+
+            pdfFormFields.SetField("Ventaja", support.Ventaja);
+            pdfFormFields.SetField("Arearelacion", support.Arearelacion);
+            pdfFormFields.SetField("Afectado", support.Afectado);
+            pdfFormFields.SetField("Normas", support.Normas);
+
+            pdfFormFields.SetField("Area1", support.Area1);
+            pdfFormFields.SetField("Area2", support.Area2);
+            pdfFormFields.SetField("Area3", support.Area3);
+
+            pdfFormFields.SetField("Gerente1", support.Gerente1);
+            pdfFormFields.SetField("Gerente2", support.Gerente2);
+            pdfFormFields.SetField("Gerente3", support.Gerente3);
+
+            pdfFormFields.SetField("Firma1", support.Firma1);
+            pdfFormFields.SetField("Firma2", support.Firma2);
+            pdfFormFields.SetField("Firma3", support.Firma3);
+
+            pdfFormFields.SetField("Confeccionado", support.Usuarios.Nombre);
+            pdfFormFields.SetField("Recepcionado", support.Recepcionado);
+
+            stampler.SetFullCompression();
+
+            stampler.Close();
+
+            //byte[] bytes = outputpdfStream.ToArray();
+            //outputpdfStream.Close();
+            //Response.Clear();
+            //Response.ContentType = "application/pdf";
+            //Response.AddHeader("Content-Disposition", "attachment; filename = " + support.Asunto + ".pdf");
+            //Response.ContentType = "application/pdf";
+            //Response.Buffer = true;
+            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            //Response.BinaryWrite(bytes);
+            //Response.End();
+            //Response.Close();
+
+            
+
+            var file = outputpdfStream.ToArray();
+            var output = new MemoryStream();
+            output.Write(file, 0, file.Length);
+            output.Position = 0;
+
+            var cd = new System.Net.Mime.ContentDisposition
+            {
+
+                FileName = support.Asunto +"_"+ DateTime.Today + ".pdf",
+                Inline = false,
+                Size = file.Length,
+                CreationDate = DateTime.Now
+
+            };
+
+
+
+          
+
+
+            // List<Archivos> fileDetails = new List<Archivos>();
+
+
+            // //var file = Request.Files[i];
+            //// HttpPostedFileBase filess = null;
+
+            // string directory = @"C:\Users\Nicolás Vega\Downloads\";
+
+            // var fileName = support.Asunto + ".pdf";
+            // Archivos fileDetail = new Archivos()
+            // {
+            //     Nombre = DateTime.Now + "_" + fileName,
+            //     Extension = Path.GetExtension(fileName),
+            //     Id = Guid.NewGuid(),
+            //     Fecha = DateTime.Now,
+            //     Idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id,
+            //     Idproyecto = support.Idproyecto,
+            //     Idmensaje = support.Id
+
+
+
+            // };
+            // fileDetails.Add(fileDetail);
+
+
+
+
+
+
+
+            //var fileName = Path.GetFileName(photo.FileName);
+
+
+
+
+            //var path = Path.Combine(Server.MapPath("~/Content/Upload/"), fileDetail.Id + fileDetail.Extension);
+            //filess.SaveAs(path);
+
+            //support.Archivos = fileDetails;
+            //db.Mensajes.Add(support);
+            //db.SaveChanges();
+
+
+
+
+
+
+            //Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(output, System.Net.Mime.MediaTypeNames.Application.Pdf);
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public List<SelectListItem> CambioEstado()
         {
 
@@ -1148,6 +1709,28 @@ namespace Requerimientos.Models
 
 
 
+        public List<SelectListItem> Listadelegado(int? usuaridelegado)
+        {
+            idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
+            var content = from p in db.Usuarios
+                          where p.Inactivo == false || p.User_Id != idusuario
+                          select new { p.User_Id, p.Nombre };
+
+            ViewBag.usuario = content
+               .Where(c => c.User_Id != usuaridelegado)
+                .Select(c => new SelectListItem
+                {
+                    Text = c.Nombre,
+                    Value = c.User_Id.ToString()
+                })
+                .ToList();
+
+            return ViewBag.usuario;
+        }
+
+
+
+
 
         public List<SelectListItem> ProyectoCombo()
         {
@@ -1186,6 +1769,10 @@ namespace Requerimientos.Models
 
 
         }
+
+
+
+        
 
 
 
@@ -1707,6 +2294,165 @@ namespace Requerimientos.Models
             ////  smtp.EnableSsl = true;
             //smtp.Send(mail);
 
+        }
+
+
+
+
+
+
+
+
+
+
+        public virtual ActionResult Firmar(int? id)
+        {
+
+
+
+            Mensajes support = db.Mensajes.Include(u => u.Usuarios).SingleOrDefault(x => x.Id == id);
+
+            if(support.Firma1 == null)
+            {
+
+
+                try {
+             
+
+                string pdfTemplate = Server.MapPath("~/pdf/" + support.Id + "_" + support.Asunto + ".pdf");
+
+
+               // string pdfTemplatesalida = Server.MapPath("~/pdf/" + support.Id + "_completo_" + support.Asunto + ".pdf");
+                // if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                //  {
+                //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                // {
+                //Acá tomamos el primer certificado de mi repositorio personal
+                //En producción debería elegir el certificado a utilizar
+
+                X509Store objStore = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+                objStore.Open(OpenFlags.ReadOnly);
+                X509Certificate2 objCert = null;
+                if (objStore.Certificates != null)
+                    foreach (X509Certificate2 objCertTemp in objStore.Certificates)
+                        if (objCertTemp.HasPrivateKey)
+                        {
+                            objCert = objCertTemp;
+                            break;
+                        }
+
+                //if (objCert == null) ;
+                // MessageBox.Show("No posee certificados personal con clave privada");
+                //else
+                //{
+               
+                string hola = "algosss";
+                    //MessageBox.Show("Proceso finalizado");
+                    // }
+                    //}
+                    // }
+
+                    List<Archivos> fileDetails = new List<Archivos>();
+
+
+
+                    Archivos fileDetail = new Archivos()
+                    {
+
+                        //support.Id + "_completo_" + support.Asunto + ".pdf");
+
+                        Nombre = DateTime.Now + "_" + support.Asunto +".pdf",
+                        Extension = ".pdf",
+                        Id = Guid.NewGuid(),
+                        Fecha = DateTime.Now,
+                        Idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id,
+                        Idproyecto = support.Proyectos.Idproyecto,
+                        Idmensaje = support.Id,
+
+
+
+                    };
+                    fileDetails.Add(fileDetail);
+
+                    string pdfTemplatesalida = Path.Combine(Server.MapPath("~/Content/Upload/"), fileDetail.Id + fileDetail.Extension);
+
+                    PDF.SignHashed(
+                   pdfTemplate,
+                   pdfTemplatesalida,
+                   objCert,
+                   "Autorizacion "+support.Asunto,
+                   "Argentina",
+                   true);
+
+
+                    if (System.IO.File.Exists(Server.MapPath("~/pdf/" + support.Id + "_" + support.Asunto + ".pdf")))
+                    {
+                        // Use a try block to catch IOExceptions, to
+                        // handle the case of the file already being
+                        // opened by another process.
+                        try
+                        {
+                            System.IO.File.Delete(Server.MapPath("~/pdf/" + support.Id + "_" + support.Asunto + ".pdf"));
+                        }
+                        catch (IOException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            // return;
+                        }
+
+                    }
+
+                        // var path = Path.Combine(Server.MapPath("~/Content/Upload/"), fileDetail.Id + fileDetail.Extension);
+
+
+
+                        db.Entry(fileDetail).State = EntityState.Added;
+
+
+
+
+                    db.SaveChanges();
+
+                    
+
+                    support.Firma1 = objCert.Subject;
+
+                db.Entry(support).State = EntityState.Modified;
+
+                db.SaveChanges();
+                    return RedirectToAction("Details", new { id = id });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex.ToString());
+                }
+
+            }
+            else
+            {
+
+                log.Info("firma completasssss");
+            }
+
+
+
+            return RedirectToAction("Details", new { id = id });
         }
 
 

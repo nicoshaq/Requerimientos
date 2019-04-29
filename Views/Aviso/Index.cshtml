@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Requerimientos.Models.Mensajes>
+
+
+
+<style>
+    .white-bg .navbar-fixed-top, .white-bg .navbar-static-top {
+        background: none;
+    }
+
+    .margen {
+        margin-bottom: 0;
+        width: 15%;
+        /* padding-left: 84%; */
+        margin-left: 70%;
+    }
+
+    a {
+        color: #676a6c;
+        text-decoration: none;
+    }
+    @@media only screen and (max-width : 960px) {
+        .white-bg .navbar-fixed-top, .white-bg .navbar-static-top {
+            /*background-color: lightblue;*/
+        } 
+   
+  }
+
+
+</style>
+
+
+@*<meta http-equiv="refresh" content="5"; />*@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top margen" role="navigation" style="margin-bottom: 0">
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope fa-2x"></i>  <span class="label label-warning">@ViewData["sinleer"]</span> @*@ViewData["sinleer"]*@
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+
+
+@foreach (var item in Model)
+{
+
+
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="@Url.Action("Details", "Mensajes", new {id = item.Id})" class="pull-left">
+                                <i class="fa fa-envelope-open fa-2x"></i>
+</a>
+                            <div class="media-body">
+                                <small class="pull-right">@Html.DisplayFor(modelItem => item.Fecha)</small>
+                                <strong>@Html.DisplayFor(modelItem => item.Usuarios.Nombre)</strong><br />
+                                
+@if (item.Idusuariodelega == item.Usuarios.User_Id)
+{
+    <span>te delegó el requerimiento</span>
+
+}
+else
+{
+
+    <span>te envió el requerimiento</span>
+}
+
+
+
+
+
+
+
+        <strong>@Html.DisplayFor(modelItem => item.Asunto)</strong>. <br>
+        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+</div>
+                        </div>
+                    </li>
+                      <li class="divider"></li>
+
+}
+
+
+
+
+
+
+
+
+                    @*<li class="divider"></li>
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="#" class="pull-left">
+                                <img alt="image" class="img-circle" src="~/Images/a4.jpg">
+                            </a>
+                            <div class="media-body ">
+                                <small class="pull-right text-navy">5h ago</small>
+                                <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="#" class="pull-left">
+                                <img alt="image" class="img-circle" src="~/Images/profile.jpg">
+                            </a>
+                            <div class="media-body ">
+                                <small class="pull-right">23h ago</small>
+                                <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>*@
+                    <li>
+                        <div class="text-center link-block">
+                            <a href="@Url.Action("Index", "Mensajes")">
+                                <i class="fa fa-envelope"></i> <strong>Ver todos</strong>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+
+
+        </ul>
+    </nav>
+</div>
+

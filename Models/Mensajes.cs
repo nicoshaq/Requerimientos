@@ -7,23 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Mensajes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Mensajes()
         {
             this.Archivos = new HashSet<Archivos>();
-            this.Novedades = new HashSet<Novedades>();
             this.HistorialDelega = new HashSet<HistorialDelega>();
+            this.Novedades = new HashSet<Novedades>();
         }
-
+    
         public int Id { get; set; }
         public int User_Id { get; set; }
         public string Remitente { get; set; }
@@ -34,28 +33,113 @@ namespace Requerimientos.Models
         public Nullable<System.DateTime> Fecha { get; set; }
         public string Status { get; set; }
         public string Estado { get; set; }
+        //[Required(ErrorMessage = "El destinatario es requerido")]
         public Nullable<int> Idusuariodestino { get; set; }
         public string Maildestino { get; set; }
         public string Destinatario { get; set; }
         public string Email { get; set; }
         public Nullable<int> Idpadre { get; set; }
-        [Required(ErrorMessage = "El proyecto es requerido")]
+        [Required(ErrorMessage = "El Asunto es requerido")]
         public Nullable<int> Idproyecto { get; set; }
         public Nullable<int> Idusuariodelega { get; set; }
         public string Usuariodelega { get; set; }
         public Nullable<int> Idestado { get; set; }
         public Nullable<int> IdCarpeta { get; set; }
-        public virtual bool Enviamail { get; set; }
+        public string Prioridad { get; set; }
+        public string Naturaleza { get; set; }
+        public string Descripcion { get; set; }
+        public string Objetivo { get; set; }
+        public string Alcance { get; set; }
+        public string Func1 { get; set; }
+        public string Func2 { get; set; }
+        public string Func3 { get; set; }
+        public string Func4 { get; set; }
+        public string Func5 { get; set; }
+        public string Func6 { get; set; }
+        public string Impresa1 { get; set; }
+        public string Impresa2 { get; set; }
+        public string Impresa3 { get; set; }
+        public string Pantalla1 { get; set; }
+        public string Pantalla2 { get; set; }
+        public string Pantalla3 { get; set; }
+        public string Porarchivo1 { get; set; }
+        public string Porarchivo2 { get; set; }
+        public string Porarchivo3 { get; set; }
+        public string Ventaja { get; set; }
+        public string Arearelacion { get; set; }
+        public string Afectado { get; set; }
+        public string Fechadeseada { get; set; }
+        public string Normas { get; set; }
+        public string Docadjunta { get; set; }
+        public string Area1 { get; set; }
+        public string Area2 { get; set; }
+        public string Area3 { get; set; }
+        public string Gerente1 { get; set; }
+        public string Gerente2 { get; set; }
+        public string Gerente3 { get; set; }
+        public string Firma1 { get; set; }
+        public string Firma2 { get; set; }
+        public string Firma3 { get; set; }
+        public string Confeccionado { get; set; }
+        public string Gerentearea { get; set; }
+        public string Recepcionado { get; set; }
+        public bool Nueva1 { get; set; }
+        public bool Nueva2 { get; set; }
+        public bool Nueva3 { get; set; }
+        public bool Nueva4 { get; set; }
+        public bool Nueva5 { get; set; }
+        public bool Nueva6 { get; set; }
+        public bool Modif1 { get; set; }
+        public bool Modif2 { get; set; }
+        public bool Modif3 { get; set; }
+        public bool Modif4 { get; set; }
+        public bool Modif5 { get; set; }
+        public bool Modif6 { get; set; }
+        public bool Eliminar1 { get; set; }
+        public bool Eliminar2 { get; set; }
+        public bool Eliminar3 { get; set; }
+        public bool Eliminar4 { get; set; }
+        public bool Eliminar5 { get; set; }
+        public bool Eliminar6 { get; set; }
+        public bool Modifimp1 { get; set; }
+        public bool Modifimp2 { get; set; }
+        public bool Modifimp3 { get; set; }
+        public bool Modifpant1 { get; set; }
+        public bool Modifpant2 { get; set; }
+        public bool Modifpant3 { get; set; }
+        public bool Modifarch1 { get; set; }
+        public bool Modifarch2 { get; set; }
+        public bool Modifarch3 { get; set; }
+        public bool Eliminaimp1 { get; set; }
+        public bool Eliminaimp2 { get; set; }
+        public bool Eliminaimp3 { get; set; }
+        public bool Eliminapant1 { get; set; }
+        public bool Eliminapant2 { get; set; }
+        public bool Eliminapant3 { get; set; }
+        public bool Eliminarch1 { get; set; }
+        public bool Eliminarch2 { get; set; }
+        public bool Eliminarch3 { get; set; }
+        public bool Nuevaimp1 { get; set; }
+        public bool Nuevaimp2 { get; set; }
+        public bool Nuevaimp3 { get; set; }
+        public bool Nuevapant1 { get; set; }
+        public bool Nuevapant2 { get; set; }
+        public bool Nuevapant3 { get; set; }
+        public bool Nuevarch1 { get; set; }
+        public bool Nuevarch2 { get; set; }
+        public bool Nuevarch3 { get; set; }
+
+        public bool Enviamail { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archivos> Archivos { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Novedades> Novedades { get; set; }
-        public virtual Proyectos Proyectos { get; set; }
+        public virtual Carpetas Carpetas { get; set; }
         public virtual Estado_requerimiento Estado_requerimiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorialDelega> HistorialDelega { get; set; }
-        public virtual Carpetas Carpetas { get; set; }
+        public virtual Proyectos Proyectos { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Novedades> Novedades { get; set; }
     }
 }

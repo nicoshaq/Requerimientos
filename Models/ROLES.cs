@@ -11,7 +11,8 @@ namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ROLES
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,8 @@ namespace Requerimientos.Models
         }
     
         public int Rol_Id { get; set; }
+        [Required(ErrorMessage = "El nombre de rol es requerido")]
+        [MaxLength(100, ErrorMessage = "El nombre de rol es demasiado largo")]
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public bool EsAdmin { get; set; }

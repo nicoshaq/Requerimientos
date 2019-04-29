@@ -95,6 +95,89 @@
     <Property Name="Usuariodelega" Type="varchar" MaxLength="150" />
     <Property Name="Idestado" Type="int" />
     <Property Name="IdCarpeta" Type="int" />
+    <Property Name="Prioridad" Type="varchar" MaxLength="50" />
+    <Property Name="Naturaleza" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="Objetivo" Type="varchar(max)" />
+    <Property Name="Alcance" Type="varchar(max)" />
+    <Property Name="Func1" Type="varchar" MaxLength="250" />
+    <Property Name="Func2" Type="varchar" MaxLength="250" />
+    <Property Name="Func3" Type="varchar" MaxLength="250" />
+    <Property Name="Func4" Type="varchar" MaxLength="250" />
+    <Property Name="Func5" Type="varchar" MaxLength="250" />
+    <Property Name="Func6" Type="varchar" MaxLength="250" />
+    <Property Name="Impresa1" Type="varchar" MaxLength="250" />
+    <Property Name="Impresa2" Type="varchar" MaxLength="250" />
+    <Property Name="Impresa3" Type="varchar" MaxLength="250" />
+    <Property Name="Pantalla1" Type="varchar" MaxLength="250" />
+    <Property Name="Pantalla2" Type="varchar" MaxLength="250" />
+    <Property Name="Pantalla3" Type="varchar" MaxLength="250" />
+    <Property Name="Porarchivo1" Type="varchar" MaxLength="250" />
+    <Property Name="Porarchivo2" Type="varchar" MaxLength="250" />
+    <Property Name="Porarchivo3" Type="varchar" MaxLength="250" />
+    <Property Name="Ventaja" Type="varchar" MaxLength="250" />
+    <Property Name="Arearelacion" Type="varchar" MaxLength="100" />
+    <Property Name="Afectado" Type="varchar" MaxLength="250" />
+    <Property Name="Fechadeseada" Type="varchar" MaxLength="50" />
+    <Property Name="Normas" Type="varchar" MaxLength="250" />
+    <Property Name="Docadjunta" Type="varchar" MaxLength="250" />
+    <Property Name="Area1" Type="varchar" MaxLength="100" />
+    <Property Name="Area2" Type="varchar" MaxLength="100" />
+    <Property Name="Area3" Type="varchar" MaxLength="100" />
+    <Property Name="Gerente1" Type="varchar" MaxLength="100" />
+    <Property Name="Gerente2" Type="varchar" MaxLength="100" />
+    <Property Name="Gerente3" Type="varchar" MaxLength="100" />
+    <Property Name="Firma1" Type="varchar" MaxLength="100" />
+    <Property Name="Firma2" Type="varchar" MaxLength="100" />
+    <Property Name="Firma3" Type="varchar" MaxLength="100" />
+    <Property Name="Confeccionado" Type="varchar" MaxLength="100" />
+    <Property Name="Gerentearea" Type="varchar" MaxLength="100" />
+    <Property Name="Recepcionado" Type="varchar" MaxLength="100" />
+    <Property Name="Nueva1" Type="bit" Nullable="false" />
+    <Property Name="Nueva2" Type="bit" Nullable="false" />
+    <Property Name="Nueva3" Type="bit" Nullable="false" />
+    <Property Name="Nueva4" Type="bit" Nullable="false" />
+    <Property Name="Nueva5" Type="bit" Nullable="false" />
+    <Property Name="Nueva6" Type="bit" Nullable="false" />
+    <Property Name="Modif1" Type="bit" Nullable="false" />
+    <Property Name="Modif2" Type="bit" Nullable="false" />
+    <Property Name="Modif3" Type="bit" Nullable="false" />
+    <Property Name="Modif4" Type="bit" Nullable="false" />
+    <Property Name="Modif5" Type="bit" Nullable="false" />
+    <Property Name="Modif6" Type="bit" Nullable="false" />
+    <Property Name="Eliminar1" Type="bit" Nullable="false" />
+    <Property Name="Eliminar2" Type="bit" Nullable="false" />
+    <Property Name="Eliminar3" Type="bit" Nullable="false" />
+    <Property Name="Eliminar4" Type="bit" Nullable="false" />
+    <Property Name="Eliminar5" Type="bit" Nullable="false" />
+    <Property Name="Eliminar6" Type="bit" Nullable="false" />
+    <Property Name="Modifimp1" Type="bit" Nullable="false" />
+    <Property Name="Modifimp2" Type="bit" Nullable="false" />
+    <Property Name="Modifimp3" Type="bit" Nullable="false" />
+    <Property Name="Modifpant1" Type="bit" Nullable="false" />
+    <Property Name="Modifpant2" Type="bit" Nullable="false" />
+    <Property Name="Modifpant3" Type="bit" Nullable="false" />
+    <Property Name="Modifarch1" Type="bit" Nullable="false" />
+    <Property Name="Modifarch2" Type="bit" Nullable="false" />
+    <Property Name="Modifarch3" Type="bit" Nullable="false" />
+    <Property Name="Eliminaimp1" Type="bit" Nullable="false" />
+    <Property Name="Eliminaimp2" Type="bit" Nullable="false" />
+    <Property Name="Eliminaimp3" Type="bit" Nullable="false" />
+    <Property Name="Eliminapant1" Type="bit" Nullable="false" />
+    <Property Name="Eliminapant2" Type="bit" Nullable="false" />
+    <Property Name="Eliminapant3" Type="bit" Nullable="false" />
+    <Property Name="Eliminarch1" Type="bit" Nullable="false" />
+    <Property Name="Eliminarch2" Type="bit" Nullable="false" />
+    <Property Name="Eliminarch3" Type="bit" Nullable="false" />
+    <Property Name="Nuevaimp1" Type="bit" Nullable="false" />
+    <Property Name="Nuevaimp2" Type="bit" Nullable="false" />
+    <Property Name="Nuevaimp3" Type="bit" Nullable="false" />
+    <Property Name="Nuevapant1" Type="bit" Nullable="false" />
+    <Property Name="Nuevapant2" Type="bit" Nullable="false" />
+    <Property Name="Nuevapant3" Type="bit" Nullable="false" />
+    <Property Name="Nuevarch1" Type="bit" Nullable="false" />
+    <Property Name="Nuevarch2" Type="bit" Nullable="false" />
+    <Property Name="Nuevarch3" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Novedades">
     <Key>

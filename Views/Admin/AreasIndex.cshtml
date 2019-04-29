@@ -13,12 +13,96 @@
     });
 </script>
 <style>
-
-    .html5buttons{
-
-        display:none;
+    .html5buttons {
+        display: none;
     }
 
+    .modal-dialog {
+        width: 600px;
+        margin: 216px auto;
+    }
+
+    .sweet-alert .sa-icon.sa-warning {
+        border-color: #F8BB86;
+    }
+
+    .sweet-alert .sa-icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid gray;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+    }
+
+    .pulseWarning {
+        -webkit-animation: pulseWarning 0.75s infinite alternate;
+        animation: pulseWarning 0.75s infinite alternate;
+    }
+
+    .sweet-alert .sa-icon.sa-info {
+        border-color: #C9DAE1;
+    }
+
+    .sweet-alert .sa-icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid gray;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+    }
+
+    .sweet-alert {
+        background-color: white;
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        width: 478px;
+        padding: 17px;
+        border-radius: 5px;
+        text-align: center;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-left: -256px;
+        margin-top: -200px;
+        overflow: hidden;
+        display: none;
+        z-index: 99999;
+    }
+
+    .alerta {
+        color: #575757;
+        font-size: 30px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: none;
+        position: relative;
+        margin: 25px 0;
+        padding: 0;
+        line-height: 40px;
+        display: block;
+    }
+
+    .alerta_descripcion {
+        color: #797979;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 300;
+        position: relative;
+        text-align: inherit;
+        float: none;
+        margin: 0;
+        padding: 0;
+        line-height: normal;
+    }
 </style>
 
 <input type="hidden" id="success"
@@ -45,7 +129,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Permisos del sistema</h5>
+                    <h5>Areas del sistema</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -104,7 +188,7 @@
                         <form role="form" class="form-inline">
                             <div class="form-group">
                                 <label for="exampleInputEmail2" class="sr-only">Email address</label>
-                                <input type="email" placeholder="Permisos" id="exampleInputEmail2" class="form-control filter">
+                                <input type="email" placeholder="Areas" id="exampleInputEmail2" class="form-control filter">
                             </div>
 
                             @*<div class="form-group">
@@ -213,7 +297,7 @@
                         @*<a href="@Url.Action("CrearPermiso", "Admin")" class="btn btn-primary btn-w-m"> Crear Permisos</a>*@
                         @*<a href="@Url.Action("PermissionsImport", "Admin")" class="btn btn-primary btn-w-m"> Importar Permisos</a>
                         <a href="@Url.Action("RolIndex", "Admin")" class="btn btn-primary btn-w-m pull-right"> Ir a Roles</a>*@
-                        <input type="button" value="Crear Area" onclick="location.href='@Url.Action("CrearArea", "Admin")'" />
+                        <input type="button" class="btn btn-primary btn-w-m" value="Crear Area" onclick="location.href='@Url.Action("CrearArea", "Admin")'" />
                         @*<input type="button" id="importPermissions2" name="importPermissions2" value="Import Permissions" onclick="location.href='@Url.Action("PermissionsImport", "Admin")'" />*@
                         <br />
                     </div>
@@ -295,41 +379,41 @@
         $(document).ready(function () {
 
 
-            $(function () {
-                var displayMessage = function (message, msgType) {
-                    toastr.options = {
-                        "closeButton": true,
-                        "debug": false,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "5000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    };
-                    toastr[msgType](message);
-                };
+            //$(function () {
+            //    var displayMessage = function (message, msgType) {
+            //        toastr.options = {
+            //            "closeButton": true,
+            //            "debug": false,
+            //            "newestOnTop": false,
+            //            "progressBar": true,
+            //            "positionClass": "toast-top-right",
+            //            "preventDuplicates": false,
+            //            "onclick": null,
+            //            "showDuration": "300",
+            //            "hideDuration": "1000",
+            //            "timeOut": "5000",
+            //            "extendedTimeOut": "1000",
+            //            "showEasing": "swing",
+            //            "hideEasing": "linear",
+            //            "showMethod": "fadeIn",
+            //            "hideMethod": "fadeOut"
+            //        };
+            //        toastr[msgType](message);
+            //    };
 
-                if ($('#success').val()) {
-                    displayMessage($('#success').val(), 'success');
-                }
-                if ($('#info').val()) {
-                    displayMessage($('#info').val(), 'info');
-                }
-                if ($('#warning').val()) {
-                    displayMessage($('#warning').val(), 'warning');
-                }
-                if ($('#error').val()) {
-                    displayMessage($('#error').val(), 'error');
-                }
-            });
+            //    if ($('#success').val()) {
+            //        displayMessage($('#success').val(), 'success');
+            //    }
+            //    if ($('#info').val()) {
+            //        displayMessage($('#info').val(), 'info');
+            //    }
+            //    if ($('#warning').val()) {
+            //        displayMessage($('#warning').val(), 'warning');
+            //    }
+            //    if ($('#error').val()) {
+            //        displayMessage($('#error').val(), 'error');
+            //    }
+            //});
 
 
 

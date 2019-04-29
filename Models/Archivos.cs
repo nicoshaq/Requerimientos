@@ -23,8 +23,8 @@ namespace Requerimientos.Models
         public Nullable<int> Idnovedad { get; set; }
         public Nullable<int> Idproyecto { get; set; }
     
-        public virtual Mensajes Mensajes { get; set; }
         public virtual Novedades Novedades { get; set; }
         public virtual Proyectos Proyectos { get; set; }
+        public virtual Mensajes Mensajes { get; set; }
     }
 }

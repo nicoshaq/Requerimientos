@@ -22,10 +22,11 @@ namespace Requerimientos.Models
         }
     
         public int idestadonovedad { get; set; }
-        [Required(ErrorMessage = "La Descripcion es requerida")]
-        //[MaxLength(100, ErrorMessage = "El nombre de usuario es demasiado largo")]
+
+        [Required(ErrorMessage = "La Descripcion es requerida")]     
         public string Descripcion { get; set; }
         public Nullable<int> idusuario { get; set; }
+        [Required(ErrorMessage = "El color es requerido")]
         public string color { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }

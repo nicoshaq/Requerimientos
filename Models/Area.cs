@@ -22,8 +22,7 @@ namespace Requerimientos.Models
         }
     
         public int Idarea { get; set; }
-        [Required(ErrorMessage = "El nombre de area es requerido")]
-        [MaxLength(100, ErrorMessage = "El nombre de area es demasiado largo")]
+        [Required(ErrorMessage = "La descripcion es requerida")]
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

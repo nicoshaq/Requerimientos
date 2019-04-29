@@ -15,30 +15,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Mensajes">
-      <EntityTypeMapping TypeName="pruebaModel.Mensajes">
-        <MappingFragment StoreEntitySet="Mensajes">
-          <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
-          <ScalarProperty Name="Idestado" ColumnName="Idestado" />
-          <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
-          <ScalarProperty Name="Idusuariodelega" ColumnName="Idusuariodelega" />
-          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
-          <ScalarProperty Name="Idpadre" ColumnName="Idpadre" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
-          <ScalarProperty Name="Maildestino" ColumnName="Maildestino" />
-          <ScalarProperty Name="Idusuariodestino" ColumnName="Idusuariodestino" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
-          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
-          <ScalarProperty Name="Remitente" ColumnName="Remitente" />
-          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Permisos">
       <EntityTypeMapping TypeName="pruebaModel.Permisos">
         <MappingFragment StoreEntitySet="Permisos">
@@ -170,6 +146,113 @@
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mensajes">
+      <EntityTypeMapping TypeName="pruebaModel.Mensajes">
+        <MappingFragment StoreEntitySet="Mensajes">
+          <ScalarProperty Name="Nuevarch3" ColumnName="Nuevarch3" />
+          <ScalarProperty Name="Nuevarch2" ColumnName="Nuevarch2" />
+          <ScalarProperty Name="Nuevarch1" ColumnName="Nuevarch1" />
+          <ScalarProperty Name="Nuevapant3" ColumnName="Nuevapant3" />
+          <ScalarProperty Name="Nuevapant2" ColumnName="Nuevapant2" />
+          <ScalarProperty Name="Nuevapant1" ColumnName="Nuevapant1" />
+          <ScalarProperty Name="Nuevaimp3" ColumnName="Nuevaimp3" />
+          <ScalarProperty Name="Nuevaimp2" ColumnName="Nuevaimp2" />
+          <ScalarProperty Name="Nuevaimp1" ColumnName="Nuevaimp1" />
+          <ScalarProperty Name="Eliminarch3" ColumnName="Eliminarch3" />
+          <ScalarProperty Name="Eliminarch2" ColumnName="Eliminarch2" />
+          <ScalarProperty Name="Eliminarch1" ColumnName="Eliminarch1" />
+          <ScalarProperty Name="Eliminapant3" ColumnName="Eliminapant3" />
+          <ScalarProperty Name="Eliminapant2" ColumnName="Eliminapant2" />
+          <ScalarProperty Name="Eliminapant1" ColumnName="Eliminapant1" />
+          <ScalarProperty Name="Eliminaimp3" ColumnName="Eliminaimp3" />
+          <ScalarProperty Name="Eliminaimp2" ColumnName="Eliminaimp2" />
+          <ScalarProperty Name="Eliminaimp1" ColumnName="Eliminaimp1" />
+          <ScalarProperty Name="Modifarch3" ColumnName="Modifarch3" />
+          <ScalarProperty Name="Modifarch2" ColumnName="Modifarch2" />
+          <ScalarProperty Name="Modifarch1" ColumnName="Modifarch1" />
+          <ScalarProperty Name="Modifpant3" ColumnName="Modifpant3" />
+          <ScalarProperty Name="Modifpant2" ColumnName="Modifpant2" />
+          <ScalarProperty Name="Modifpant1" ColumnName="Modifpant1" />
+          <ScalarProperty Name="Modifimp3" ColumnName="Modifimp3" />
+          <ScalarProperty Name="Modifimp2" ColumnName="Modifimp2" />
+          <ScalarProperty Name="Modifimp1" ColumnName="Modifimp1" />
+          <ScalarProperty Name="Eliminar6" ColumnName="Eliminar6" />
+          <ScalarProperty Name="Eliminar5" ColumnName="Eliminar5" />
+          <ScalarProperty Name="Eliminar4" ColumnName="Eliminar4" />
+          <ScalarProperty Name="Eliminar3" ColumnName="Eliminar3" />
+          <ScalarProperty Name="Eliminar2" ColumnName="Eliminar2" />
+          <ScalarProperty Name="Eliminar1" ColumnName="Eliminar1" />
+          <ScalarProperty Name="Modif6" ColumnName="Modif6" />
+          <ScalarProperty Name="Modif5" ColumnName="Modif5" />
+          <ScalarProperty Name="Modif4" ColumnName="Modif4" />
+          <ScalarProperty Name="Modif3" ColumnName="Modif3" />
+          <ScalarProperty Name="Modif2" ColumnName="Modif2" />
+          <ScalarProperty Name="Modif1" ColumnName="Modif1" />
+          <ScalarProperty Name="Nueva6" ColumnName="Nueva6" />
+          <ScalarProperty Name="Nueva5" ColumnName="Nueva5" />
+          <ScalarProperty Name="Nueva4" ColumnName="Nueva4" />
+          <ScalarProperty Name="Nueva3" ColumnName="Nueva3" />
+          <ScalarProperty Name="Nueva2" ColumnName="Nueva2" />
+          <ScalarProperty Name="Nueva1" ColumnName="Nueva1" />
+          <ScalarProperty Name="Recepcionado" ColumnName="Recepcionado" />
+          <ScalarProperty Name="Gerentearea" ColumnName="Gerentearea" />
+          <ScalarProperty Name="Confeccionado" ColumnName="Confeccionado" />
+          <ScalarProperty Name="Firma3" ColumnName="Firma3" />
+          <ScalarProperty Name="Firma2" ColumnName="Firma2" />
+          <ScalarProperty Name="Firma1" ColumnName="Firma1" />
+          <ScalarProperty Name="Gerente3" ColumnName="Gerente3" />
+          <ScalarProperty Name="Gerente2" ColumnName="Gerente2" />
+          <ScalarProperty Name="Gerente1" ColumnName="Gerente1" />
+          <ScalarProperty Name="Area3" ColumnName="Area3" />
+          <ScalarProperty Name="Area2" ColumnName="Area2" />
+          <ScalarProperty Name="Area1" ColumnName="Area1" />
+          <ScalarProperty Name="Docadjunta" ColumnName="Docadjunta" />
+          <ScalarProperty Name="Normas" ColumnName="Normas" />
+          <ScalarProperty Name="Fechadeseada" ColumnName="Fechadeseada" />
+          <ScalarProperty Name="Afectado" ColumnName="Afectado" />
+          <ScalarProperty Name="Arearelacion" ColumnName="Arearelacion" />
+          <ScalarProperty Name="Ventaja" ColumnName="Ventaja" />
+          <ScalarProperty Name="Porarchivo3" ColumnName="Porarchivo3" />
+          <ScalarProperty Name="Porarchivo2" ColumnName="Porarchivo2" />
+          <ScalarProperty Name="Porarchivo1" ColumnName="Porarchivo1" />
+          <ScalarProperty Name="Pantalla3" ColumnName="Pantalla3" />
+          <ScalarProperty Name="Pantalla2" ColumnName="Pantalla2" />
+          <ScalarProperty Name="Pantalla1" ColumnName="Pantalla1" />
+          <ScalarProperty Name="Impresa3" ColumnName="Impresa3" />
+          <ScalarProperty Name="Impresa2" ColumnName="Impresa2" />
+          <ScalarProperty Name="Impresa1" ColumnName="Impresa1" />
+          <ScalarProperty Name="Func6" ColumnName="Func6" />
+          <ScalarProperty Name="Func5" ColumnName="Func5" />
+          <ScalarProperty Name="Func4" ColumnName="Func4" />
+          <ScalarProperty Name="Func3" ColumnName="Func3" />
+          <ScalarProperty Name="Func2" ColumnName="Func2" />
+          <ScalarProperty Name="Func1" ColumnName="Func1" />
+          <ScalarProperty Name="Alcance" ColumnName="Alcance" />
+          <ScalarProperty Name="Objetivo" ColumnName="Objetivo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Naturaleza" ColumnName="Naturaleza" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
+          <ScalarProperty Name="Idestado" ColumnName="Idestado" />
+          <ScalarProperty Name="Usuariodelega" ColumnName="Usuariodelega" />
+          <ScalarProperty Name="Idusuariodelega" ColumnName="Idusuariodelega" />
+          <ScalarProperty Name="Idproyecto" ColumnName="Idproyecto" />
+          <ScalarProperty Name="Idpadre" ColumnName="Idpadre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Destinatario" ColumnName="Destinatario" />
+          <ScalarProperty Name="Maildestino" ColumnName="Maildestino" />
+          <ScalarProperty Name="Idusuariodestino" ColumnName="Idusuariodestino" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Remitente" ColumnName="Remitente" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

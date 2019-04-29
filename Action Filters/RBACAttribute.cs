@@ -17,6 +17,8 @@ public class RBACAttribute : AuthorizeAttribute
 
         //Cree una instancia de nuestro objeto de autorización de usuario personalizado que pasa solicitando al usuario 'Nombre de usuario de Windows' en el constructor
         SUIUsuarios requestingUser = new SUIUsuarios(filterContext.RequestContext.HttpContext.User.Identity.Name);
+
+        log.InfoFormat("{0} {1}",requiredPermission, requestingUser.Usuario);
         //Check si el usuario tiene los permisos sobre los controladores o tiene el perfil admin
         if (!requestingUser.HasPermission(requiredPermission) & !requestingUser.EsAdmin)
         {

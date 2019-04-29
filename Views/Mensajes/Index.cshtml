@@ -74,7 +74,7 @@
 
 
 
-<div class="wrapper wrapper-content">
+<div class="wrapper wrapper-content" id="hola">
     <div class="row">
         <div class="col-lg-2">
             <div class="ibox float-e-margins">
@@ -295,7 +295,7 @@
                         <th class="text-center"></th>
                     </tr>
 
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.OrderByDescending( r =>r.Estado=="Noleido"))
                     {
                         <tbody>
 
@@ -490,6 +490,9 @@
     <script type="text/javascript">
 
 
+        //setInterval("$('#hola').load('Mensajes/Index') ", 2000);
+
+
         $.fn.dataTable.ext.search.push(
             function(settings, data, dataIndex) {
                 var min = parseInt($('#min').val(), 10);
@@ -508,6 +511,8 @@
 
         // ssd.init();
         $(document).ready(function() {
+
+            //setTimeout("Refresh()", 30000); //30 sec.
 
 
             $("#IdCarpeta").change(function () {

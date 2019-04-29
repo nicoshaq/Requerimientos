@@ -22,14 +22,14 @@ namespace Requerimientos.Models
         }
     
         public int Id { get; set; }
-        [Required(ErrorMessage = "El nombre de la Carpeta es requerido")]
-        [MaxLength(100, ErrorMessage = "El nombre de la Carpeta es demasiado largo")]
+        [Required(ErrorMessage = "El Nombre es requerido")]
+        [MaxLength(100, ErrorMessage = "El Nombre es demasiado largo")]
         public string Nombre { get; set; }
         public Nullable<int> User_Id { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
     
+        public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mensajes> Mensajes { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
     }
 }

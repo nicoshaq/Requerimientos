@@ -166,11 +166,11 @@
                               
                                 <tr>
                                     <td style='text-align: center; width: 10%; font-weight: bold' class='userTable'>
-                                        @Html.LabelFor(model => model.Usuario)
+                                        @Html.LabelFor(model => model.Usuario) ej: SANTAFE\usuario
                                     </td>
                                     <td style='width: 28%' class='userTable'>
                                         <div class="form-group">
-                                            @Html.TextBoxFor(model => model.Usuario, new { @class = "singlelinetextinput form-control" })
+                                            @Html.TextBoxFor(model => model.Usuario, new { @class = "singlelinetextinput form-control", @placeholder = "" })
                                             @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
                                         </div>
                                     </td>

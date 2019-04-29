@@ -195,11 +195,26 @@
 
                         <div class="media-body ">
                             <small class="pull-right"></small>
+                            <strong>Nro de Requerimiento: @item.Id</strong><br>
                             <strong>@item.Usuarios.Usuario</strong> envio un Requerimiento a <strong>@item.Destinatario</strong><br>
                             <small class="text-muted">@item.Fecha</small>
                             <div class="well">
                                 @Html.Raw(item.Mensaje)
+
+@if (item.Descripcion != null)
+{
+
+                                <a class="title" href="/Mensajes/Pdfdowload/@item.Id" target="_blank">
+                                    Visualizar requerimiento
+
+                                </a>
+}
                             </div>
+
+                           
+
+                                
+                          
                         </div>
                     </div>
 
@@ -237,8 +252,9 @@
                                                             <th>Estado</th>
                                                             <th>Titulo</th>
                                                             <th>Fecha</th>
-                                                            <th>End Time</th>
+                                                            <th>Usuario</th>
                                                             <th>Comentario</th>
+                                                            <th>Requerimiento</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -264,6 +280,11 @@
                                                                 <td>
                                                                     <p class="small">
                                                                         @Html.Raw(item.Descripcion)
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="small">
+                                                                        @Html.Raw(item.Mensajes.Asunto)
                                                                     </p>
                                                                 </td>
 

@@ -174,25 +174,27 @@
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
                     @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                    @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
-                    @Html.ActionLink("Back to List", "Index")
-                    @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)*@
+                @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)*@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">
                         Usuarios delegados
                     </button>
-                    @if (ViewBag.estadodos == false) {
+                    @if (ViewBag.estadodos == false)
+                    {
 
-                    <a href="@Url.Action("Create", "Novedades", new { id = Model.Id, idproyecto = Model.Idproyecto })" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Ingresar Novedad"><i class="fa fa-pencil"></i> Novedades</a>
+                        <a href="@Url.Action("Create", "Novedades", new { id = Model.Id, idproyecto = Model.Idproyecto })" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Ingresar Novedad"><i class="fa fa-pencil"></i> Novedades</a>
                     }
                     <a href="@Url.Action("Index", "Mensajes")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Volver"><i class="fa fa-reply"></i> Volver</a>
-                   
+
                     @*<a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
-                    <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>*@
-                   <div><p><span style="background-color: @Html.DisplayFor(modelItem => Model.Estado_requerimiento.color); color:#fff;" class="pull-right font-normal label pull-right">@Html.DisplayFor(modelItem => Model.Estado_requerimiento.Descripcion)</span></p></div>
-                   
-@if (Model.Idusuariodelega != null) { 
-                    <div style="padding-top:9%;"><p><strong>Delegado a:</strong><span class="pull-right font-normal label Delegado"> @Html.DisplayFor(modelItem => Model.Usuariodelega)</span></p></div>
-}
+                <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>*@
+                    <div><p><span style="background-color: @Html.DisplayFor(modelItem => Model.Estado_requerimiento.color); color:#fff;" class="pull-right font-normal label pull-right">@Html.DisplayFor(modelItem => Model.Estado_requerimiento.Descripcion)</span></p></div>
+
+                    @if (Model.Idusuariodelega != null)
+                    {
+                        <div style="padding-top:9%;"><p><strong>Delegado a:</strong><span class="pull-right font-normal label Delegado"> @Html.DisplayFor(modelItem => Model.Usuariodelega)</span></p></div>
+                    }
                 </div>
                 <h2>
                     Requerimiento
@@ -208,7 +210,7 @@
 
                     <h5>
                         <span class="pull-right font-normal">@Html.DisplayFor(model => model.Fecha)</span>
-                      
+
                         <span class="font-normal">De: </span>@Html.DisplayFor(model => model.Remitente)
 
 
@@ -220,290 +222,393 @@
                 </div>
 
 
-@if (ViewBag.enviados == false)
-{
+                @if (ViewBag.enviados == false)
+                {
 
 
 
-    if (ViewBag.ocultar == false)
-     {
-         if (ViewBag.estadodos == false)
-         {
-
-
-
-
-             //if (Model.Estado_requerimiento.Idestado != null)
-             //{
-             <div class="row" style="margin-bottom: 2%;">
-                 <div style="width: 100%">
-                     <div class="col-lg-1"><label class="control-label">Estado:</label>
-                     </div>
-                     <div class="col-lg-3"> @Html.DropDownList("CambioEstado", null, "--select--", htmlAttributes: new {@class = "form-control"})</div>
-                     <div class="col-lg-3">
-                         <input class="btn btn-primary btn-w-m" type="submit" value="Guardar"/>
-                     </div>
-                     @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
-                 </div>
-             </div>
+                    if (ViewBag.ocultar == false)
+                    {
+                        if (ViewBag.estadodos == false)
+                        {
 
 
 
 
-
-
-             //}
-         }
-     }
-    if (ViewBag.estadodos == false)
-     {
-         <div class="row">
-             <div style="width: 100%">
-                 <div class="col-lg-1"><label class="control-label">Delegar:</label>
-                 </div>
-
-
-                 <div class="col-lg-3">@Html.DropDownList("userdelega", null, "--select--", htmlAttributes: new {@class = "form-control"})</div>
-
-                 <div class="col-lg-3"><input class="btn btn-primary btn-w-m" type="submit" value="Guardar"/>
-                 </div>
-             </div>
-         </div>
-
-     }
-
-
-}
-
-
-            </div>
-
-
-
-            <div class="mail-box">
-         
-
-                <div class="mail-body mensaje">
-                    
-                        @Html.Raw(Model.Mensaje)
-                    <div style="display:none">
-                    @Html.TextAreaFor(model => model.Mensaje, new { @readonly = "readonly" })
-                        @Html.TextAreaFor(model => model.User_Id, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Asunto, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Fecha, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Remitente, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Estado, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Idusuariodestino, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Maildestino, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Destinatario, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Idproyecto, new { @readonly = "readonly" })
-                        @Html.EditorFor(model => model.Status, new { @readonly = "readonly" })
-                    
-                    </div>
-                    
-                    
-                </div>
-
-                <div class="mail-attachment">
-
-                        @*<li>
-                          
-                            <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>
-                        </li>*@
-
-
-
-                    @*<p>
-                        <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
-                        <a href="#">Download all</a>
-                        |
-                        <a href="#">View all images</a>
-                    </p>*@
-                    <div class="attachment">
-@foreach (var item in Model.Archivos)
-{
-                        <div class="file-box">
-
-
-
-
-                            <div class="file">
-
-                                <a class="title" href="/Mensajes/Descarga/?p=@(item.Id + item.Extension)&d=@item.Nombre">
-                                    <span class="corner"></span>
-                                    <div class="icon">
-                                        <i class="fa fa-file"></i>
+                            //if (Model.Estado_requerimiento.Idestado != null)
+                            //{
+                            <div class="row" style="margin-bottom: 2%;">
+                                <div style="width: 100%">
+                                    <div class="col-lg-1">
+                                        <label class="control-label">Estado:</label>
                                     </div>
-                                    <div class="file-name">
-                                        @item.Nombre
-                                
-                                        <br />
-                                        @*<small>Added: Jan 11, 2014</small>*@
+                                    <div class="col-lg-3"> @Html.DropDownList("CambioEstado", null, "--select--", htmlAttributes: new { @class = "form-control" })</div>
+                                    <div class="col-lg-3">
+                                        <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" />
                                     </div>
-                                </a>
-                            </div>
-
-                        </div>
-}
-                     
-                        <div class="clearfix"></div>
-                    </div>
-                  
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>Novedades</h5>
-                                <div class="ibox-tools">
-                                    <a class="collapse-link">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-user">
-                                        <li>
-                                            <a href="#">Config option 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Config option 2</a>
-                                        </li>
-                                    </ul>
-                                    <a class="close-link">
-                                        <i class="fa fa-times"></i>
-                                    </a>
+                                    @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
                                 </div>
                             </div>
-                            <div class="ibox-content">
-                                <input type="text" class="form-control input-sm m-b-xs" id="filter"
-                                       placeholder="Buscar en toda la tabla">
-                                <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
-                                    <thead>
-                                        <tr style="background-color: rgb(26, 179, 148);color: rgb(255, 255, 255);display: table-row;">
-                                            <th>Estado</th>
-                                            <th>Titulo/Descripcion</th>
-                                            <th data-hide="phone,tablet">Usuario</th>
-                                            <th data-hide="phone,tablet">Proyecto</th>
-                                         <th data-hide="phone,tablet">Fecha</th>
-                                            @*<th data-hide="phone,tablet">CSS grade</th>*@
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-@foreach (var item in Model.Novedades.Where(m =>m.Privado && m.User_Id == Model.Usuarios.User_Id || !m.Privado).OrderByDescending(n => n.Fecha))
-{
 
 
-    <tr>
-        <td>
-@if (item.Privado == true)
-{
-  //  @item.Privado;
-    @Html.DisplayName("Privado");
-}
-
-            <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_novedades.color); color: #fff;" class="label pull-right">@Html.DisplayFor(modelItem => item.Estado_novedades.Descripcion)</span>
-        </td>
-        <td class="issue-info">
-            <a href="@Url.Action("Details", "Novedades", new { id = item.Idnovedad })">
-                @item.Titulo
-
-                <small>
-                    @Html.Raw(item.Descripcion)
-                </small>
-            </a>
-        </td>
-        <td>
-            @item.Usuario
-        </td>
-        <td>
-            @item.Mensajes.Proyectos.Titulo
-        </td>
-        <td>
-            @item.Fecha
-        </td>
 
 
-        @*<td style="cursor:pointer;" data-toggle="modal"  data-target="#myModal6">
-            @item.Fecha
-        </td>*@
-        @*<td>
 
 
-            <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h4 class="modal-title">@item.Titulo</h4>
+                            //}
+                        }
+                    }
+                    if (ViewBag.estadodos == false)
+                    {
+                        <div class="row">
+                            <div style="width: 100%">
+                                <div class="col-lg-1">
+                                    <label class="control-label">Delegar:</label>
+                                </div>
+
+
+                                <div class="col-lg-3">@Html.DropDownList("userdelega", null, "--select--", htmlAttributes: new { @class = "form-control" })</div>
+
+                                <div class="col-lg-3">
+                                    <button type="submit" class="btn btn-primary btn-w-m " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Delegando usuario">Guardar</button>
+                                </div>
+
+                                @*<div class="col-lg-3">
+                                <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" />
+                            </div>*@
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <p>
-                                <strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged.
-                            </p>
+
+                    }
+                    <br />
+
+                    if (Model.Status == "check")
+                    {
+                        <div class="row">
+                            <div style="width: 100%">
+                                <div class="col-lg-3">
+                                    <a class="btn btn-primary btn-w-m" href="@Url.Action("Firmar", "Mensajes",new {id = Model.Id})">Autorizar</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+
+
+
+
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div style="width: 100%">
+                                <div class="col-lg-3">
+                                    <a class="btn btn-default btn-w-m" data-toggle="tooltip" data-placement="left" title="Debe visualizar el requerimiento">Autorizar</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    }
+
+
+                }
+
+
             </div>
-        </td>*@
-    </tr>
-   
 
-}
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="5">
-                                                <ul class="pagination pull-right"></ul>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+
+
+                <div class="mail-box">
+
+
+                    <div class="mail-body mensaje">
+
+                        @Html.Raw(Model.Mensaje)
+                        <div style="display:none">
+                            @Html.TextAreaFor(model => model.Mensaje, new { @readonly = "readonly" })
+                            @Html.TextAreaFor(model => model.User_Id, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Asunto, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Fecha, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Remitente, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Estado, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Idusuariodestino, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Maildestino, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Destinatario, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Idproyecto, new { @readonly = "readonly" })
+                            @Html.EditorFor(model => model.Status, new { @readonly = "readonly" })
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="mail-attachment">
+
+                        @*<li>
+
+                                <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>
+                            </li>*@
+
+
+
+                        @*<p>
+                                <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
+                                <a href="#">Download all</a>
+                                |
+                                <a href="#">View all images</a>
+                            </p>*@
+
+                        <div class="col-lg-6">
+                            <div class="attachment">
+
+
+                                @if (Model.Descripcion != null)
+                                {
+                                    if (Model.Firma1 == null)
+                                    {
+
+                                        <div class="file-box">
+
+
+
+
+                                            <div class="file">
+
+                                                <a class="title" href="/Mensajes/FillForm/@Html.DisplayFor(model => model.Id)" target="_blank">
+                                                    <span class="corner"></span>
+                                                    <div class="icon">
+                                                        <i class="fa fa-file-pdf-o"></i>
+                                                    </div>
+                                                    <div class="file-name text-center">
+                                                        @Html.DisplayFor(model => model.Asunto)
+
+                                                        <br />
+                                                        @*<small>Added: Jan 11, 2014</small>*@
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    }
+                                }
+
+                                @foreach (var item in Model.Archivos)
+                                {
+                                    <div class="file-box">
+
+
+
+
+                                        <div class="file">
+
+                                            <a class="title" href="/Mensajes/Descarga/?p=@(item.Id + item.Extension)&d=@item.Nombre">
+                                                <span class="corner"></span>
+                                                <div class="icon">
+                                                    <i class="fa fa-file"></i>
+                                                </div>
+                                                <div class="file-name">
+                                                    @item.Nombre
+
+                                                    <br />
+                                                    @*<small>Added: Jan 11, 2014</small>*@
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+
+
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        @*<div class="col-lg-6">
+                                <div class="attachment">
+
+                                        <div class="file-box">
+
+
+
+
+                                            <div class="file">
+
+                                                <a class="title" href="/Mensajes/Pdfdowload/@Html.DisplayFor(model => model.Id)" target="_blank">
+                                                    <span class="corner"></span>
+                                                    <div class="icon">
+                                                        <i class="fa fa-file-pdf-o"></i>
+                                                    </div>
+                                                    <div class="file-name text-center">
+                                                        @Html.DisplayFor(model => model.Asunto)
+
+                                                        <br />
+
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>*@
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Novedades</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <i class="fa fa-wrench"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-user">
+                                            <li>
+                                                <a href="#">Config option 1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Config option 2</a>
+                                            </li>
+                                        </ul>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                                           placeholder="Buscar en toda la tabla">
+                                    <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                                        <thead>
+                                            <tr style="background-color: rgb(26, 179, 148);color: rgb(255, 255, 255);display: table-row;">
+                                                <th>Estado</th>
+                                                <th>Titulo/Descripcion</th>
+                                                <th data-hide="phone,tablet">Usuario</th>
+                                                <th data-hide="phone,tablet">Proyecto</th>
+                                                <th data-hide="phone,tablet">Fecha</th>
+                                                @*<th data-hide="phone,tablet">CSS grade</th>*@
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (var item in Model.Novedades.Where(m => m.Privado && m.User_Id == Model.Usuarios.User_Id || !m.Privado).OrderByDescending(n => n.Fecha))
+                                            {
+
+
+                                                <tr>
+                                                    <td>
+                                                        @if (item.Privado == true)
+                                                        {
+                                                            //  @item.Privado;
+                                                            @Html.DisplayName("Privado");
+                                                        }
+
+                                                        <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_novedades.color); color: #fff;" class="label pull-right">@Html.DisplayFor(modelItem => item.Estado_novedades.Descripcion)</span>
+                                                    </td>
+                                                    <td class="issue-info">
+                                                        <a href="@Url.Action("Details", "Novedades", new { id = item.Idnovedad })">
+                                                            @item.Titulo
+
+                                                            <small>
+                                                                @Html.Raw(item.Descripcion)
+                                                            </small>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        @item.Usuario
+                                                    </td>
+                                                    <td>
+                                                        @item.Mensajes.Proyectos.Titulo
+                                                    </td>
+                                                    <td>
+                                                        @item.Fecha
+                                                    </td>
+
+
+                                                    @*<td style="cursor:pointer;" data-toggle="modal"  data-target="#myModal6">
+                                                            @item.Fecha
+                                                        </td>*@
+                                                    @*<td>
+
+
+                                                            <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog modal-sm">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                                            <h4 class="modal-title">@item.Titulo</h4>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>
+                                                                                <strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                                                                remaining essentially unchanged.
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>*@
+                                                </tr>
+
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <ul class="pagination pull-right"></ul>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    @*<div class="mail-body text-right tooltip-demo">
+                            <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-reply"></i> Reply</a>
+                            <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-arrow-right"></i> Forward</a>
+                            <button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Print" class="btn btn-sm btn-white"><i class="fa fa-print"></i> Print</button>
+                            <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</button>
+                        </div>
+                        <div class="clearfix"></div>*@
+
                 </div>
-
-
-
-
-
-
-             
-
-
-
-
-
-
-
-
-
-
-
-
-
-                @*<div class="mail-body text-right tooltip-demo">
-                    <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-reply"></i> Reply</a>
-                    <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-arrow-right"></i> Forward</a>
-                    <button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Print" class="btn btn-sm btn-white"><i class="fa fa-print"></i> Print</button>
-                    <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</button>
-                </div>
-                <div class="clearfix"></div>*@
-
             </div>
+
+
+
         </div>
-
-
-
-    </div>
 </div>
 
 
@@ -594,7 +699,17 @@
 
 
 
-        $(document).ready(function () {
+    $(document).ready(function () {
+
+        $('.btn').on('click', function () {
+            var $this = $(this);
+            $this.button('loading');
+            setTimeout(function () {
+                $this.button('reset');
+            }, 5000);
+        });
+
+
             $('.footable').footable();
             $('.footable2').footable();
             $('.i-checks').iCheck({

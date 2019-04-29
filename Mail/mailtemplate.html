@@ -98,7 +98,7 @@ h5 { font-size: 16px; }
 
 p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
 
-.container { display: block !important; clear: both !important; margin: 0 auto !important; max-width: 680px !important; }
+.container { display: block !important; clear: both !important; margin: 0 auto !important; max-width: 580px !important; }
 
 .container table { width: 100% !important; border-collapse: collapse; }
 
@@ -106,7 +106,7 @@ p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
 
 .container .masthead h1 { margin: 0 auto !important; max-width: 90%; text-transform: uppercase; }
 
-.container .content { background-image:url(BSF_Mailing_Bienvenida_Nuevos_Clientes_medium.jpg); padding: 30px 35px; background-repeat:no-repeat; background-size:cover; }
+.container .content { background: white; padding: 30px 35px; }
 
 .container .content.footer { background: none; }
 
@@ -115,14 +115,6 @@ p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
 .container .content.footer a { color: #888; text-decoration: none; font-weight: bold; }
 
 .container .content.footer a:hover { text-decoration: underline; }
-
-.imagenfondo{height:3000px;}
-
-@media only screen and (max-width: 600px) {
-  .imagenfondo {
-    height:1580px;
-  }
-}
 
     </style>
 </head>
@@ -135,6 +127,13 @@ p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
                 <table>
                     <tr>
                         <td align="center" class="masthead">
+
+                            <h1>Sistema de Requerimientos</h1>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content">
 
                             <h2>Hola, {txtDestinatario}</h2>
 
@@ -165,47 +164,9 @@ p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
                                 </tr>
                             </table>-->
 
-                            <p>Favor de no responder este mail. Para ver el requerimiento, dirigirse al  <a href="{Url}">siguiente link</a>.</p>
+                            <p>Favor de no responder este mail. Para ver el requerimiento, dirigirse al  <a href="#">siguiente link</a>.</p>
 
                             <p><em>Muchas gracias – Sistema Requerimientos</em></p>
-
-                        </td>
-                    </tr>
-                    <tr class="imagenfondo">
-                        <td align="center" class="content">
-
-                           <!-- <h2>Hola, {txtDestinatario}</h2>
-
-                            <p> <strong> recibiste un requerimiento de:</strong> {txtRemitente}
-                            </p>
-
-                            <br/>
-                            <br/>
-
-                            <p>
-                               <strong>Proyecto:</strong> {txtTipoproyecto}
-                            </p>
-                            <br />
-                            <br />
-
-                            <p>
-                               <strong>Mensaje:</strong> {message}
-                            </p>
-                            <br />
-                            <br />
-                            <!--<table>
-                                <tr>
-                                    <td align="center">
-                                        <p>
-                                            <a href="#" class="button">Ver el requerimiento completo</a>
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <p>Favor de no responder este mail. Para ver el requerimiento, dirigirse al  <a href="{Url}">siguiente link</a>.</p>
-
-                            <p><em>Muchas gracias – Sistema Requerimientos</em></p>-->
 
                         </td>
                     </tr>
@@ -220,7 +181,7 @@ p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
                 <table>
                     <tr>
                         <td class="content footer" align="center">
-                            <p>Enviado desde la app de <a href="{Url}">Requerimientos</a></p>
+                            <p>Enviado desde la app de <a href="#">Requerimientos</a></p>
                             <!--<p><a href="mailto:">hello@company.com</a> | <a href="#">Unsubscribe</a></p>-->
                         </td>
                     </tr>

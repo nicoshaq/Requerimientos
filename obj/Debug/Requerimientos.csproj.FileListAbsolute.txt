@@ -231,4 +231,3 @@ C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\pl\System.Web.Optimization.
 C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\bin\pl\System.Web.Razor.resources.dll
 C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\obj\Debug\SUI_Reportes.dll
 C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\obj\Debug\SUI_Reportes.pdb
-C:\inetpub\wwwroot\REQUERIMIENTOS\Requerimientos\obj\Debug\Requerimientos.csprojResolveAssemblyReference.cache

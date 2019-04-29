@@ -28,7 +28,6 @@ namespace Requerimientos.Models
         }
     
         public virtual DbSet<Archivos> Archivos { get; set; }
-        public virtual DbSet<Mensajes> Mensajes { get; set; }
         public virtual DbSet<Permisos> Permisos { get; set; }
         public virtual DbSet<ROLES> ROLES { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
@@ -39,6 +38,7 @@ namespace Requerimientos.Models
         public virtual DbSet<Estado_requerimiento> Estado_requerimiento { get; set; }
         public virtual DbSet<HistorialDelega> HistorialDelega { get; set; }
         public virtual DbSet<Carpetas> Carpetas { get; set; }
+        public virtual DbSet<Mensajes> Mensajes { get; set; }
     
         public virtual int updateidlote()
         {
@@ -55,14 +55,9 @@ namespace Requerimientos.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Mensajeria_Result>("Mensajeria");
         }
     
-        public virtual ObjectResult<Mensajes> Mensajerias()
+        public virtual int Mensajerias()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Mensajes>("Mensajerias");
-        }
-    
-        public virtual ObjectResult<Mensajes> Mensajerias(MergeOption mergeOption)
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Mensajes>("Mensajerias", mergeOption);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Mensajerias");
         }
     
         public virtual int historialDelegacion(Nullable<int> idmensaje, Nullable<int> idproyecto, string usuariodelega, string usuariodelegado)

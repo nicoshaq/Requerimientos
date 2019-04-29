@@ -22,14 +22,13 @@ namespace Requerimientos.Models
         }
     
         public int Idnovedad { get; set; }
-        [Required(ErrorMessage = "La Descripcion es requerida")]
+        [Required(ErrorMessage = "La descripcion es requerida")]
         public string Descripcion { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<int> Idmensaje { get; set; }
         public string Estado { get; set; }
         public string Usuario { get; set; }
-        [Required(ErrorMessage = "El titulo es requerida")]
-       [MaxLength(100, ErrorMessage = "El titulo es demasiado largo")]
+        [Required(ErrorMessage = "El titulo es requerido")]
         public string Titulo { get; set; }
         public Nullable<int> Idproyecto { get; set; }
         public Nullable<int> Idestadonovedad { get; set; }
@@ -38,9 +37,9 @@ namespace Requerimientos.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archivos> Archivos { get; set; }
-        public virtual Mensajes Mensajes { get; set; }
         public virtual Proyectos Proyectos { get; set; }
         public virtual Estado_novedades Estado_novedades { get; set; }
         public virtual Usuarios Usuarios { get; set; }
+        public virtual Mensajes Mensajes { get; set; }
     }
 }
