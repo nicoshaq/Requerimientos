@@ -31,7 +31,7 @@ using FirmarPDF;
 
 namespace Requerimientos.Models
 {
-    [RBAC]
+   // [RBAC]
     public class MensajesController : Controller
     {
         
