@@ -1,8 +1,5 @@
 ﻿@model List<Requerimientos.Models.Carpetas>
-@*@model List<Requerimientos.Models.Carpetas>*@
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+
 
 <style>
     
@@ -40,8 +37,6 @@
 
 </style>
 
-@*<h5>Carpetas</h5>*@
-
 <div class="ibox collapsed">
     <div class="ibox-title">
         <h5>  Carpetas</h5>
@@ -73,9 +68,7 @@
             {
 
                 <li>
-                    @*@Html.DisplayFor(modelItem => item.Nombre)*@
-
-
+                  
                     <a href="@Url.Action("Carpetadetalle", "Mensajes", new {id = item.Id})">
                         <i class="fa fa-folder-open text-navy" style="color: black"></i>
                         @Html.DisplayFor(modelItem => item.Nombre) ( @item.Mensajes.Count())
@@ -90,26 +83,6 @@
         <a href="@Url.Action("Create", "Carpetas")"><i class="fa fa-plus text-navy" style="color: black"></i>  Nueva Carpeta</a>
     </div>
 </div>
-
-@*<ul class="category-list" style="padding: 0">
-    
-
-    @foreach (var item in Model.Where(r => r.Id > 1))
-    {
-
-        <li>
-            @Html.DisplayFor(modelItem => item.Nombre)
-
-
-            <a href="@Url.Action("Carpetadetalle", "Mensajes", new {id = item.Id})"><i class="fa fa-folder-open text-navy" style="color: black"></i>
-                @Html.DisplayFor(modelItem => item.Nombre) ( @item.Mensajes.Count())
-            </a>
-        </li>
-
-
-
-    }
-</ul>*@
 
 
 

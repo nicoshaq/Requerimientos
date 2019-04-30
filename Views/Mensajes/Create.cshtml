@@ -65,18 +65,8 @@ input[type=checkbox], input[type=radio] {
 </div>
 
 
-
-@*@using (Html.BeginForm("Edit", "Mensajes", null, FormMethod.Post, new { enctype = "multipart/form-data" }))*@
-
 @using (Html.BeginForm(null, null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
-
-
-
-
-   
-
 
     @Html.AntiForgeryToken()
 
@@ -92,8 +82,7 @@ input[type=checkbox], input[type=radio] {
                     <div class="mail-box-header">
 
                         <div class="pull-right tooltip-demo">
-                            @*<a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>*@
-                            <a href="@Url.Action("Index", "Mensajes")" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Descartar requerimiento"><i class="fa fa-times"></i> Descartar</a>
+                             <a href="@Url.Action("Index", "Mensajes")" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Descartar requerimiento"><i class="fa fa-times"></i> Descartar</a>
                         </div>
                         <h2>
                             Nuevo Requerimiento
@@ -105,14 +94,6 @@ input[type=checkbox], input[type=radio] {
                             <form class="form-horizontal" method="get">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Para:</label>
-
-                                    @*@if (ViewBag.disable == true)
-                                        {
-
-                                                                     <div>@Html.DropDownList("User_Id", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly", @disabled = "disabled" })
-                                                                    @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })</div>
-                                        }
-                                        else {*@
 
                                     <div>
                                         @Html.DropDownList("User_Id", null, htmlAttributes: new {@class = "form-control"})
@@ -148,7 +129,7 @@ input[type=checkbox], input[type=radio] {
                         </div>
 
                         <div class="form-group" style="margin-bottom: 0px;">
-                            @*@Html.LabelFor(model => model.Archivos, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                           
                             <div class="col-md-10" >
                                 <input class="btn btn-sm btn-primary" type="file" name="files[]" id="file" multiple="multiple"/>
 
@@ -163,6 +144,7 @@ input[type=checkbox], input[type=radio] {
                                 <div class="ibox collapsed">
                                     <div class="ibox-title">
                                         <h5>Formulario de Requerimientos <small>Complete los campos que considere necesarios.</small></h5>
+                                        <h5><small>Si solo desea enviar un adjunto o una notificacion, omita completar el formulario.</small></h5>
                                         <div class="ibox-tools">
                                             <a class="collapse-link">
                                                 <i class="fa fa-chevron-up"></i>
@@ -197,7 +179,7 @@ input[type=checkbox], input[type=radio] {
                                                         @Html.ValidationMessageFor(model => model.Prioridad, "", new { @class = "text-danger" })</div>
                                                         <div class="col-md-4">@Html.EditorFor(model => model.Naturaleza, new { htmlAttributes = new { @class = "panel-body form-control", @placeholder = "Naturaleza" } } )
                                                         @Html.ValidationMessageFor(model => model.Naturaleza, "", new { @class = "text-danger" })</div>
-                                                        @*<div class="col-md-2"><input type="text" placeholder=".col-md-2" class="form-control"></div>*@
+                                                   
                                                     </div>
                                                 </div>
                                             </div>
@@ -678,80 +660,22 @@ input[type=checkbox], input[type=radio] {
                         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="mail-body text-right tooltip-demo">
 
-
-                            @*<div class="col-md-3">
-
-
-                    <ul class="list-group clear-list m-t">
-                        <li class="list-group-item fist-item" id="selectedFiles">
-
-
-                        </li>
-
-                    </ul>
-                </div>*@
-
-
-
-
-
-
-
                             <div class="form-group pull-right ">
-
-                                
-
-                                @*@Html.EditorFor(modelItem => item.checkcarpeta, new { id = item.Id }, new {  htmlAttributes = new { @class = "checkbox i-checks" } })*@
-                                @*<input type="checkbox" class="i-checks" name="deleteInputs[]" value="@item.Id" />*@
-
-                                <div>
+@*<div>
                                     <label for="checkbox3">
                                         Enviar mail
                                     </label>
                                     @Html.EditorFor(model => model.Enviamail, null, new { htmlAttributes = new { @class = "checkbox i-checks" } })
 
-                                    @*<input type="submit" value="Enviar" class="btn btn-sm btn-primary"  id="load" data-toggle="tooltip"  data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando" data-placement="top" title="Enviar" id="btngetdata"/>*@
-                                </div>
+                                 </div>*@
 
 
                                 <button type="submit" class="btn btn-primary btn-sm " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando requerimiento">Enviar requerimiento</button>
-                                @*<br>
-                                <br>
-                                <button type="button" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order">Submit Order</button>*@
-
+                             
                             </div>
-
-
-
-
-
-
-                            @*<a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Send</a>*@
-                            @*<a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
-                <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>*@
-                        </div>
-
-
-
+                     </div>
 
 
                     </div>
@@ -762,13 +686,13 @@ input[type=checkbox], input[type=radio] {
                                 <div>
                                     <div class="file-manager">
 
-                                        @*<h5>Folders</h5>*@
+                                    
                                         <ul class="folder-list">
                                             <li id="selectedFiles"></li>
 
                                         </ul>
 
-                                        @*<div class="clearfix"></div>*@
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -783,9 +707,6 @@ input[type=checkbox], input[type=radio] {
 }
    
 
-    @*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
     @section Styles {
         @Styles.Render("~/plugins/summernoteStyles")
 

@@ -71,35 +71,22 @@
                         <input type="text" class="form-control input-sm m-b-xs" id="filter"
                                placeholder="Buscar en toda la tabla">
 
-
-                        @*<input type="text" class="form-control input-sm" name="search" placeholder="Search email">*@
-                        @*<div class="input-group-btn">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    Search
-                                </button>
-                            </div>*@
                     </div>
                 </form>
                 <h2>
                     Recibidos (@Model.Count())
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
-                    @*<div class="btn-group pull-right">
-                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
-                        </div>*@
+                  
                     <a href="" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Volver a Cargar"><i class="fa fa-refresh"></i> Refresh</a>
-                    @*<button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
-                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>*@
+                  
                 </div>
 
 
                 @using (Html.BeginForm())
             {
                     <div class="form-group form-inline pull-right" id="data_5">
-                        @*<label class="font-normal">Range select</label>*@
+                    
                         <div class="input-daterange input-group" id="datepicker">
                             <input type="text" id="comienzo" class="input-sm form-control" name="start" placeholder="Fecha desde" />
                             <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -149,11 +136,7 @@
 
 
                             <tr class="@Html.DisplayFor(modelItem => item.Estado)">
-                                @*<td class="check-mail">
-                                    <input type="checkbox" class="i-checks">
-                                    </td>*@
-
-
+                             
                                 <td class="i-checks">@Html.DisplayFor(modelItem => item.Id)</td>
                                 <td><a href="@Url.Action("Details", "Mensajes", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Usuarios.Nombre)</a></td>
                                 <td class="mail-subject"><a href="@Url.Action("Details", "Mensajes", new { id = item.Id })">@Html.DisplayFor(modelItem => item.Asunto)</a> <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_requerimiento.color); color:#fff;" class="label pull-right">@Html.DisplayFor(modelItem => item.Estado_requerimiento.Descripcion)</span></td>
@@ -168,21 +151,7 @@
                                         <span><i class="fa fa-paperclip"></i>@item.Archivos.Count() Archivos(s)</span>
                                     }
                                 </td>
-                                @*<td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">Delete</a>
-                                    </td>*@
-
-
-
-
-
-
-
-
-
-
+                             
                                 <td class="">
                                     @if (item.Novedades.Count() == 0)
                 {
@@ -234,15 +203,7 @@
                                 </td>
 
 
-
-
-
-
-
                             </tr>
-
-
-
 
                         </tbody>
                     }

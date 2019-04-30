@@ -90,8 +90,7 @@
                                 <th data-hide="phone,tablet">Usuario</th>
                                 <th data-hide="phone,tablet">Proyecto</th>
                                 <th data-hide="phone,tablet">Fecha</th>
-                                @*<th data-hide="phone,tablet">CSS grade</th>
-                                    <th data-hide="phone,tablet">CSS grade</th>*@
+                              
                             </tr>
                         </thead>
 
@@ -104,7 +103,6 @@
                                     <td>
                                         <span style="background-color: @Html.DisplayFor(modelItem => item.Estado_novedades.color); color:#fff;" class="label pull-right">@Html.DisplayFor(modelItem => item.Estado_novedades.Descripcion)</span>
 
-                                        @*span class="label @Html.DisplayFor(modelItem => item.Estado)">@Html.DisplayFor(modelItem => item.Estado)</span>*@
                                     </td>
                                     <td class="issue-info">
                                         <a href="@Url.Action("Details", "Novedades", new { id = item.Idnovedad })">

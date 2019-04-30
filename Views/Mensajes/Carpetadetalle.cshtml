@@ -80,61 +80,26 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content mailbox-content">
                     <div class="file-manager">
-                        @*<div class="btn btn-block btn-primary compose-mail">@Html.ActionLink("Create New", "Create")</div>*@
+                      
                         <a class="btn btn-block btn-primary compose-mail" href="@Url.Action("Create", "Mensajes")">Nuevo Requerimiento</a>
                         <div class="space-25"></div>
                         <h5>Bandejas</h5>
                         <ul class="folder-list m-b-md" style="padding: 0">
-                            @*<a href="#" class="details">Details</a>*@
 
-                            @*<li><a href="#" class="enviados"> <i class="fa fa-inbox "></i> Recibidos <span class="label label-warning pull-right">@ViewData["contarmensajeentrada"]</span> </a></li>*@
                             <li><a href="@Url.Action("Index", "Mensajes")"> <i class="fa fa-inbox "></i> Recibidos <span class="label label-warning pull-right">@ViewData["contarmensajeentrada"]</span> </a></li>
                             <li><a href="@Url.Action("Enviados", "Mensajes")"> <i class="fa fa-envelope-o"></i> Enviados <span class="label label-danger pull-right">@ViewData["contarmensajesalida"]</span> </a></li>
-                            @*<li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-certificate"></i> Important</a></li>
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-file-text-o"></i> Drafts <span class="label label-danger pull-right">2</span></a></li>
-                                <li><a href="@Url.Action("Inbox", "Mailbox")"> <i class="fa fa-trash-o"></i> Trash</a></li>*@
+                          
                         </ul>
-                        @*<h5>Carpetas</h5>*@
-
-
-                        @*<ul>
-
-                                @foreach (var item in Model)
-                                {
-
-                                    <li>
-                                        @Html.DisplayFor(modelItem => item.Carpetas.Nombre)
-                                    </li>
-
-
-                                }
-
-                            </ul>*@
+                       
 
 
 
-                        @*<ul class="category-list" style="padding: 0">
-                                <li><a href="#"> <i class="fa fa-circle text-navy" style="color: black"></i> Delegados a mi <strong>@ViewData["Aceptado"] </strong></a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-danger"></i> Delegados por mi <strong>@ViewData["Rechazado"] </strong></a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-primary"></i> Social</a></li>
-                                    <li><a href="#"> <i class="fa fa-circle text-info"></i> Advertising</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-warning"></i> Inconsistentes <strong>@ViewData["Inconsistente"] </strong></a></li>
-
-
-
-
-
-
-                            </ul>*@
+                      
 
                         @{
                             Html.RenderAction("Inicios", "Mensajes");
                         }
 
-
-
-
-                        @*@Html.Partial("Inicios", Model);*@
 
                         <div class="clearfix"></div>
                     </div>
@@ -148,29 +113,9 @@
 
             <div class="animated fadeInRight">
                 <div class="mail-box-header">
-                    @*<form method="get" action="#" class="pull-right mail-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm m-b-xs" id="filter"
-                                   placeholder="Buscar en toda la tabla">
-
-
-                            <input type="text" class="form-control input-sm" name="search" placeholder="Search email">
-                            <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-sm btn-primary">
-                                        Search
-                                    </button>
-                                </div>
-                        </div>
-                    </form>*@
-                    @*<h2>
-                        @ViewData["nombrecarpeta"]
-                    </h2>*@
+                
                     <div class="mail-tools tooltip-demo m-t-md">
-                        @*<div class="btn-group pull-right">
-                <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
-                <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
-            </div>*@
-
+                     
                         <div class="col-lg-1">
                             <a href="" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Volver a Cargar"><i class="fa fa-refresh"></i> Refresh</a>
 
@@ -183,12 +128,6 @@
                         </div>
                         <br />
                         <br />
-
-
-                        @*<button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
-            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
-            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
-            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>*@
                     </div>
 
 
@@ -203,18 +142,9 @@
                     <div class="col-sm-12">
                         <div class="col-sm-6 form-group form-inline pull-left" id="data_5" style="width: 40%;">
                             <div class="input-group" style="width: 50%;">
-                                @*<button data-toggle="dropdown" class="btn btn-white" type="button">Enviar <span class="caret"></span></button>*@
-                                @*<button data-toggle="dropdown" class="btn btn-white dropdown-toggle" type="button">ss<span class="caret">qq</span></button>*@
+                             
                                 @Html.DropDownList("IdCarpeta", null, "--Seleccione--", htmlAttributes: new { @class = "form-control" })
 
-
-                                @*<ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>*@
                             </div>
                             <div class="btn-group">
 
@@ -224,7 +154,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6 form-group form-inline pull-right" id="data_5" style="width: 40%;">
-                            @*<label class="font-normal">Range select</label>*@
+                           
                             <div class="input-daterange input-group" id="datepicker">
                                 <input type="text" id="comienzo" class="input-sm form-control" name="start" placeholder="Fecha desde" />
                                 <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -249,12 +179,6 @@
                                        placeholder="Buscar en toda la tabla">
 
 
-                                @*<input type="text" class="form-control input-sm" name="search" placeholder="Search email">*@
-                                @*<div class="input-group-btn">
-                    <button type="submit" class="btn btn-sm btn-primary">
-                        Search
-                    </button>
-                </div>*@
                             </div>
                         </form>
                         <br />
@@ -297,13 +221,10 @@
 
 
                                 <tr class="@Html.DisplayFor(modelItem => item.Estado)">
-                                    @*<td class="check-mail">
-                                            <input type="checkbox" class="i-checks">
-                                            </td>*@
-
+                                   
                                     <td class="check-mail">
 
-                                        @*@Html.EditorFor(modelItem => item.checkcarpeta, new { id = item.Id }, new {  htmlAttributes = new { @class = "checkbox i-checks" } })*@
+                                      
                                         <input type="checkbox" class="i-checks" name="deleteInputs[]" value="@item.Id"/>
 
                                     </td>
@@ -323,21 +244,7 @@
                                             <span><i class="fa fa-paperclip"></i>@item.Archivos.Count() Archivos(s)</span>
                                         }
                                     </td>
-                                    @*<td>
-                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                                <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">Delete</a>
-                                            </td>*@
-
-
-
-
-
-
-
-
-
-
+                                   
                                     <td class="">
                                         @if (item.Novedades.Count() == 0)
                                         {
@@ -389,15 +296,7 @@
                                     </td>
 
 
-
-
-
-
-
                                 </tr>
-
-
-
 
                                 </tbody>
                             }
@@ -415,17 +314,7 @@
                 }
             </div>
 
-            @*<div id="detailsPlace" style="display: none"></div>
-                @Html.Partial("entrada", Model)
-
-
-                <div id="entradas" style="display:none"></div>
-                @Html.Partial("entrada", Model)*@
-
         </div>
-
-
-
 
 
 
@@ -502,10 +391,10 @@
             }
         );
 
-       // ssd.init();
+      
         $(document).ready(function() {
 
-         //   function (partialView) {
+        
             $(function(){
              $.ajax({
                     url: '@Url.Action("Entrada", "Mensajes")',
@@ -518,10 +407,7 @@
                     }
                 });
             });
-
-          //  }
-
-
+            
             $('.enviados').click(function() {
 
                 $.ajax({

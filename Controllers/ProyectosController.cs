@@ -45,7 +45,7 @@ namespace Requerimientos.Models
         public ActionResult Create()
         {
             ViewBag.CambioEstado = this.CambioEstado();
-            //ViewBag.User_Id = new SelectList(db.Usuarios, "User_Id", "Usuario");
+           
             return View();
         }
 

@@ -58,6 +58,13 @@ namespace Requerimientos.Controllers
 
             if (ModelState.IsValid)
             {
+                var query = db.Usuarios
+              .Include(p => p.Area).AsQueryable();
+               
+                query = query.Where(r => r.User_Id == idusuario);
+                int Idarearequerimiento = Convert.ToInt32(query.FirstOrDefault().Idarea);
+
+                estado_requerimiento.Idearea = Idarearequerimiento;
                 estado_requerimiento.color = mycolor;
                 estado_requerimiento.idusuario = idusuario;
                 db.Estado_requerimiento.Add(estado_requerimiento);
@@ -81,7 +88,7 @@ namespace Requerimientos.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.idusuario = new SelectList(db.Usuarios, "User_Id", "Usuario", estado_requerimiento.idusuario);
+           
             return View(estado_requerimiento);
         }
 
@@ -96,8 +103,6 @@ namespace Requerimientos.Controllers
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             if (ModelState.IsValid)
             {
-
-               
 
                 db.Entry(estado_requerimiento).State = EntityState.Modified;
                 estado_requerimiento.color = mycolor;
@@ -121,7 +126,7 @@ namespace Requerimientos.Controllers
             {
                 return HttpNotFound();
             }
-            //TempData["error"] = "el estado se encuentra asociado a un mensaje";
+           
             return View(estado_requerimiento);
         }
 

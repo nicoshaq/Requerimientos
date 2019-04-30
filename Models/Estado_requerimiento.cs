@@ -11,8 +11,7 @@ namespace Requerimientos.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Estado_requerimiento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,11 +21,10 @@ namespace Requerimientos.Models
         }
     
         public int Idestado { get; set; }
-        [Required(ErrorMessage = "La Descripcion es requerida")]
         public string Descripcion { get; set; }
         public Nullable<int> idusuario { get; set; }
-        [Required(ErrorMessage = "El color es requerido")]
         public string color { get; set; }
+        public Nullable<int> Idearea { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

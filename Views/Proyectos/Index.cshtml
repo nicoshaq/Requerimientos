@@ -69,15 +69,7 @@
                               @foreach (var item in Model)
                               {
                              
-                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Idproyecto }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Idproyecto }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Idproyecto })*@
-                                
-                               
-                              
-                             
-                               
-                              
+                                     
                                 <tr>
                                     <td class="project-status">
                                         <span class="label @Html.DisplayFor(modelItem => item.Estado)">@Html.DisplayFor(modelItem => item.Estado)</span>
@@ -90,17 +82,12 @@
                                     </td>
                                     <td class="project-completion">
                                         <small>Creado por: @Html.DisplayFor(modelItem => item.Creadopor)</small>
-                                        @*<div class="progress progress-mini">
-                                            <div style="width: 28%;" class="progress-bar"></div>
-                                        </div>*@
+                                       
                                     </td>
                                     <td class="project-people">
                                         @Html.Raw(item.Descripcion)
                                     </td>
-                                    @*<td class="project-actions">
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                    </td>*@
+                                 
                                 </tr>
 
                               }
@@ -133,79 +120,3 @@
     </script>
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Creadopor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Idmensaje)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuarios.Usuario)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Creadopor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Idmensaje)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuarios.Usuario)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Idproyecto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Idproyecto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Idproyecto })
-        </td>
-    </tr>
-}
-
-</table>*@

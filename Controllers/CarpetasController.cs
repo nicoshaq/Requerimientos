@@ -13,20 +13,15 @@ namespace Requerimientos.Models
     {
 
         ILog log = LogManager.GetLogger(typeof(MensajesController));
-        // GET: Mensajes
+      
         private RequerimientosConn db = new RequerimientosConn();
         private int idusuario;
-     //   private int? usuaridelegado;
-     //   private int? estado;
-        // GET: Carpetas
+    
         public PartialViewResult Inicio()
         {
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             var query = db.Carpetas.AsQueryable();
             query = query.Where(r => r.User_Id == idusuario);
-
-            //  query = query.OrderByDescending(r => r.Fecha);
-
 
             return PartialView(query.ToList());
         }
@@ -51,7 +46,6 @@ namespace Requerimientos.Models
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             if (ModelState.IsValid)
             {
-                //carpetas.color = mycolor;
                 carpetas.User_Id = idusuario;
                 carpetas.Fecha = DateTime.Now;
                 db.Carpetas.Add(carpetas);
@@ -77,11 +71,11 @@ namespace Requerimientos.Models
             {
                 return HttpNotFound();
             }
-            //TempData["error"] = "el estado se encuentra asociado a un mensaje";
+           
             return View(carpeta);
         }
 
-        // POST: Estado_requerimiento/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -89,8 +83,6 @@ namespace Requerimientos.Models
             Carpetas carpeta = db.Carpetas.Find(id);
             try
             {
-
-
 
                 db.Carpetas.Remove(carpeta);
                 db.SaveChanges();
@@ -116,8 +108,6 @@ namespace Requerimientos.Models
             Carpetas carpeta = db.Carpetas.Find(id);
             try
             {
-
-
 
                 db.Carpetas.Remove(carpeta);
                 db.SaveChanges();
@@ -146,10 +136,7 @@ namespace Requerimientos.Models
             base.Dispose(disposing);
         }
 
-
-
-
-
+        
 
     }
 }

@@ -5,25 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-
-
-
-
-
-@*@using (Html.BeginForm("Edit", "Mensajes", null, FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+<h2>Crear</h2>
 
 @using (Html.BeginForm(null, null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
-
-
-
-
-
-
-
+    
     @Html.AntiForgeryToken()
 
     <div class="wrapper wrapper-content">
@@ -50,7 +36,7 @@
                                 <div class="col-md-10">
                                     @Html.DropDownList("CambioEstado", null, htmlAttributes: new { @class = "form-control" })
 
-                                    @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
+                                 
                                 </div>
 
                             </div>
@@ -79,21 +65,11 @@
                 <div class="clearfix"></div>
             </div>
 
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Archivos, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input type="file" name="files[]" id="file" multiple="multiple" />
-                </div>
-            </div>*@
-
-
+        
             <div class="mail-body text-right tooltip-demo">
                 <input type="submit" value="Create" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send" />
 
-                @*<a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> Send</a>*@
-                @*<a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> Discard</a>
-                <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>*@
-            </div>
+               </div>
             <div class="clearfix"></div>
 
         </div>
@@ -146,105 +122,3 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Novedades</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-        
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        
-        
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CambioEstado", null, htmlAttributes: new { @class = "form-control" })
-
-                @Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })
-            </div>
-
-            </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Idmensaje, "Idmensaje", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Idmensaje", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Idmensaje, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-
-
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Idmensaje, "Idmensaje", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Idmensaje", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Idmensaje, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-            @*<div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@

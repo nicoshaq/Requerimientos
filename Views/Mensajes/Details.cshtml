@@ -84,23 +84,17 @@
 @using (Html.BeginForm("Details", "Mensajes", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
-<div class="wrapper wrapper-content">
+<div id="hola" class="wrapper wrapper-content">
     <div class="row">
 
 
-
-
-
-
-
-     
                 <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 <h4 class="modal-title">Historial delegacion Requerimiento</h4>
-                                @*<small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>*@
+                            
                             </div>
                             <div class="modal-body">
                                 <div class="mail-box">                                    <table class="table footable table-hover table-stripped" data-page-size="11" data-filter=#filter>
@@ -129,22 +123,13 @@
 
 
                                                 <tr>
-                                                    @*<td class="check-mail">
-                            <input type="checkbox" class="i-checks">
-                            </td>*@
-
-
                                                     <td class="i-checks">@Html.DisplayFor(modelItem => item.Idhistorial)</td>
                                                     <td class="mail-ontact">@Html.DisplayFor(modelItem => item.Idmensaje)</td>
                                                     <td class="mail-subject">@Html.DisplayFor(modelItem => item.Proyectos.Titulo) </td>
                                                     <td>@Html.DisplayFor(modelItem => item.Usuariodelega)</td>
                                                     <td>@Html.DisplayFor(modelItem => item.Usuariodelegado)</td>
                                                  
-                                                  
                                                 </tr>
-
-
-
 
                                             </tbody>
                                         }
@@ -162,7 +147,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
-                                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                               
                             </div>
                         </div>
                     </div>
@@ -173,10 +158,7 @@
         <div class="col-lg-12 animated fadeInRight">
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
-                    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
-                @Html.ActionLink("Back to List", "Index")
-                @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)*@
+                 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">
                         Usuarios delegados
                     </button>
@@ -187,8 +169,7 @@
                     }
                     <a href="@Url.Action("Index", "Mensajes")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Volver"><i class="fa fa-reply"></i> Volver</a>
 
-                    @*<a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
-                <a href="@Url.Action("Inbox", "Mailbox")" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>*@
+                  
                     <div><p><span style="background-color: @Html.DisplayFor(modelItem => Model.Estado_requerimiento.color); color:#fff;" class="pull-right font-normal label pull-right">@Html.DisplayFor(modelItem => Model.Estado_requerimiento.Descripcion)</span></p></div>
 
                     @if (Model.Idusuariodelega != null)
@@ -232,11 +213,7 @@
                         if (ViewBag.estadodos == false)
                         {
 
-
-
-
-                            //if (Model.Estado_requerimiento.Idestado != null)
-                            //{
+                            
                             <div class="row" style="margin-bottom: 2%;">
                                 <div style="width: 100%">
                                     <div class="col-lg-1">
@@ -246,16 +223,10 @@
                                     <div class="col-lg-3">
                                         <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" />
                                     </div>
-                                    @*@Html.ValidationMessageFor(model => model.CambioEstado, "", new { @class = "text-danger" })*@
+                             
                                 </div>
                             </div>
 
-
-
-
-
-
-                            //}
                         }
                     }
                     if (ViewBag.estadodos == false)
@@ -273,16 +244,13 @@
                                     <button type="submit" class="btn btn-primary btn-w-m " id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Delegando usuario">Guardar</button>
                                 </div>
 
-                                @*<div class="col-lg-3">
-                                <input class="btn btn-primary btn-w-m" type="submit" value="Guardar" />
-                            </div>*@
                             </div>
                         </div>
 
                     }
                     <br />
 
-                    if (Model.Status == "check")
+                    @*if (Model.Status == "check")
                     {
                         <div class="row">
                             <div style="width: 100%">
@@ -305,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                    }
+                    }*@
 
 
                 }
@@ -341,19 +309,6 @@
 
                     <div class="mail-attachment">
 
-                        @*<li>
-
-                                <a href="javascript:void(0);" data-id="@item.Id" class="deleteItem">X</a>
-                            </li>*@
-
-
-
-                        @*<p>
-                                <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
-                                <a href="#">Download all</a>
-                                |
-                                <a href="#">View all images</a>
-                            </p>*@
 
                         <div class="col-lg-6">
                             <div class="attachment">
@@ -371,7 +326,7 @@
 
                                             <div class="file">
 
-                                                <a class="title" href="/Mensajes/FillForm/@Html.DisplayFor(model => model.Id)" target="_blank">
+                                                <a class="title requerimiento" href="/Mensajes/FillForm/@Html.DisplayFor(model => model.Id)">
                                                     <span class="corner"></span>
                                                     <div class="icon">
                                                         <i class="fa fa-file-pdf-o"></i>
@@ -380,7 +335,7 @@
                                                         @Html.DisplayFor(model => model.Asunto)
 
                                                         <br />
-                                                        @*<small>Added: Jan 11, 2014</small>*@
+                                                     
                                                     </div>
                                                 </a>
                                             </div>
@@ -407,7 +362,7 @@
                                                     @item.Nombre
 
                                                     <br />
-                                                    @*<small>Added: Jan 11, 2014</small>*@
+                                                 
                                                 </div>
                                             </a>
                                         </div>
@@ -422,38 +377,6 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
-
-                        @*<div class="col-lg-6">
-                                <div class="attachment">
-
-                                        <div class="file-box">
-
-
-
-
-                                            <div class="file">
-
-                                                <a class="title" href="/Mensajes/Pdfdowload/@Html.DisplayFor(model => model.Id)" target="_blank">
-                                                    <span class="corner"></span>
-                                                    <div class="icon">
-                                                        <i class="fa fa-file-pdf-o"></i>
-                                                    </div>
-                                                    <div class="file-name text-center">
-                                                        @Html.DisplayFor(model => model.Asunto)
-
-                                                        <br />
-
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                        </div>
-
-
-                                    <div class="clearfix"></div>
-                                </div>
-
-                            </div>*@
 
                     </div>
                     <div class="row">
@@ -492,7 +415,7 @@
                                                 <th data-hide="phone,tablet">Usuario</th>
                                                 <th data-hide="phone,tablet">Proyecto</th>
                                                 <th data-hide="phone,tablet">Fecha</th>
-                                                @*<th data-hide="phone,tablet">CSS grade</th>*@
+                                              
                                             </tr>
                                         </thead>
 
@@ -505,7 +428,7 @@
                                                     <td>
                                                         @if (item.Privado == true)
                                                         {
-                                                            //  @item.Privado;
+                                                          
                                                             @Html.DisplayName("Privado");
                                                         }
 
@@ -530,35 +453,6 @@
                                                         @item.Fecha
                                                     </td>
 
-
-                                                    @*<td style="cursor:pointer;" data-toggle="modal"  data-target="#myModal6">
-                                                            @item.Fecha
-                                                        </td>*@
-                                                    @*<td>
-
-
-                                                            <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog" aria-hidden="true">
-                                                                <div class="modal-dialog modal-sm">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                                            <h4 class="modal-title">@item.Titulo</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>
-                                                                                <strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                                                                                remaining essentially unchanged.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>*@
                                                 </tr>
 
                                             }
@@ -578,31 +472,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    @*<div class="mail-body text-right tooltip-demo">
-                            <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-reply"></i> Reply</a>
-                            <a class="btn btn-sm btn-white" href="@Url.Action("ComposeEmail", "Mailbox")"><i class="fa fa-arrow-right"></i> Forward</a>
-                            <button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="Print" class="btn btn-sm btn-white"><i class="fa fa-print"></i> Print</button>
-                            <button title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</button>
-                        </div>
-                        <div class="clearfix"></div>*@
-
                 </div>
             </div>
 
@@ -614,26 +483,6 @@
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-   @Html.ActionLink("Create New", "Create", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Create", "Create", "Novedades", new { id = Model.Id }, null)
-</p>*@
 
 
 @section Styles {
@@ -701,6 +550,7 @@
 
     $(document).ready(function () {
 
+    
         $('.btn').on('click', function () {
             var $this = $(this);
             $this.button('loading');

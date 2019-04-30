@@ -23,8 +23,7 @@ namespace Requerimientos.Models
         {
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             var hola = new Novedades();
-            //var novedades = db.Novedades.Include(n => n.Mensajes);
-
+            
             if (hola.Privado)
             {
                 var query = db.Novedades.Include(m => m.Mensajes).AsQueryable();
@@ -74,10 +73,8 @@ namespace Requerimientos.Models
             if (ModelState.IsValid)
             {
 
-
-
                 db.Entry(support).State = EntityState.Modified;
-                //support.User_Id = idusuario;
+                
                 support.Estado = CambioEstado;
 
                 db.SaveChanges();
@@ -128,8 +125,6 @@ namespace Requerimientos.Models
        // [ValidateAntiForgeryToken]
         public ActionResult Create(Novedades novedades, int? id, int? idproyecto, int? CambioEstado, int? Idmensaje)
         {
-
-          //  idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
 
             if (ModelState.IsValid)
             {
@@ -211,7 +206,7 @@ namespace Requerimientos.Models
                 {
                     TempData["success"] = "La novedad que creo se encuentra "+ CambioEstado;
                     return RedirectToAction("Details"+"/" +id, "Mensajes");
-                   // return RedirectToAction("/Mensajes/Details/" + id);
+                  
                 }
              
             }
@@ -293,13 +288,7 @@ namespace Requerimientos.Models
             base.Dispose(disposing);
         }
 
-
-       
-
-
-
-
-
+        
         public List<SelectListItem> CambioEstado()
         {
 
@@ -315,22 +304,8 @@ namespace Requerimientos.Models
                 }).ToList();
 
             return ViewBag.novedad;
-            //var _retVal = new List<SelectListItem>();
-            //try
-            //{
-            //    _retVal.Add(new SelectListItem { Text = "Iniciado" });
-            //    _retVal.Add(new SelectListItem { Text = "Proceso" });
-            //    _retVal.Add(new SelectListItem { Text = "Finalizado" });
-            //}
-            //catch { }
-            //return _retVal;
+   
         }
-
-
-
-
-
-
 
 
     }

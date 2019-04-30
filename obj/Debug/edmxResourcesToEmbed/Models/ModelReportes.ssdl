@@ -37,6 +37,7 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="150" />
     <Property Name="idusuario" Type="int" />
     <Property Name="color" Type="varchar" MaxLength="10" />
+    <Property Name="Idearea" Type="int" />
   </EntityType>
   <EntityType Name="Estado_requerimiento">
     <Key>
@@ -46,6 +47,7 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="150" />
     <Property Name="idusuario" Type="int" />
     <Property Name="color" Type="varchar" MaxLength="10" />
+    <Property Name="Idearea" Type="int" />
   </EntityType>
   <EntityType Name="HistorialDelega">
     <Key>
@@ -178,6 +180,7 @@
     <Property Name="Nuevarch1" Type="bit" Nullable="false" />
     <Property Name="Nuevarch2" Type="bit" Nullable="false" />
     <Property Name="Nuevarch3" Type="bit" Nullable="false" />
+    <Property Name="Idearea" Type="int" />
   </EntityType>
   <EntityType Name="Novedades">
     <Key>
@@ -194,6 +197,7 @@
     <Property Name="Idestadonovedad" Type="int" />
     <Property Name="User_Id" Type="int" />
     <Property Name="Privado" Type="bit" />
+    <Property Name="Idearea" Type="int" />
   </EntityType>
   <EntityType Name="Permisos">
     <Key>
@@ -215,6 +219,7 @@
     <Property Name="Fecha" Type="datetime" />
     <Property Name="Fechamodif" Type="datetime" />
     <Property Name="Estado" Type="varchar" MaxLength="50" />
+    <Property Name="Idearea" Type="int" />
   </EntityType>
   <EntityType Name="ROLES">
     <Key>
@@ -275,18 +280,6 @@
       </Principal>
       <Dependent Role="Archivos">
         <PropertyRef Name="Idproyecto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Carpetas_Mensajes">
-    <End Role="Carpetas" Type="Self.Carpetas" Multiplicity="0..1" />
-    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Carpetas">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Mensajes">
-        <PropertyRef Name="IdCarpeta" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -542,10 +535,6 @@
     <AssociationSet Name="FK_Archivos_Proyectos" Association="Self.FK_Archivos_Proyectos">
       <End Role="Proyectos" EntitySet="Proyectos" />
       <End Role="Archivos" EntitySet="Archivos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Carpetas_Mensajes" Association="Self.FK_Carpetas_Mensajes">
-      <End Role="Carpetas" EntitySet="Carpetas" />
-      <End Role="Mensajes" EntitySet="Mensajes" />
     </AssociationSet>
     <AssociationSet Name="FK_Carpetas_Usuarios" Association="Self.FK_Carpetas_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />

@@ -118,10 +118,7 @@
                                     <dd>@Html.DisplayFor(model => model.Creadopor)</dd>
                                     <dt>Requerimientos:</dt>
                                     <dd>  @ViewData["mensajeproyecto"]</dd>
-                                    @*<dt>Client:</dt>
-                                    <dd><a href="#" class="text-navy"> Zender Company</a> </dd>
-                                    <dt>Version:</dt>
-                                    <dd> 	v1.1 </dd>*@
+                                   
                                 </dl>
                             </div>
                             <div class="col-lg-7" id="cluster_info">
@@ -130,35 +127,15 @@
                                     <dd>@Html.DisplayFor(model => model.Fechamodif)</dd>
                                     <dt>Creado:</dt>
                                     <dd> 	@Html.DisplayFor(model => model.Fecha) </dd>
-                                    @*<dt>Participants:</dt>
-
-                                    <dd class="project-people">
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a3.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a1.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a2.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a4.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a5.jpg"></a>
-                                    </dd>*@
+                                   
                                 </dl>
                             </div>
                         </div>
-                        @*<div class="row">
-                            <div class="col-lg-12">
-                                <dl class="dl-horizontal">
-                                    <dt>Completed:</dt>
-                                    <dd>
-                                        <div class="progress progress-striped active m-b-sm">
-                                            <div style="width: 60%;" class="progress-bar"></div>
-                                        </div>
-                                        <small>Project completed in <strong>60%</strong>. Remaining close the project, sign a contract and invoice.</small>
-                                    </dd>
-                                </dl>
-                            </div>
-                        </div>*@
+                       
                         <div class="row m-t-sm">
                             <div class="col-lg-12">
                                 <div class="panel blank-panel">
-                                    @*<a href="@Html.ActionLink("Edit", "Edit", new { id = Model.Idproyecto })" class="btn btn-white btn-xs pull-right">Edit project</a>*@
+                                  
                                     <div class="panel-heading">
                                         <div class="panel-options">
                                             <ul class="nav nav-tabs">
@@ -188,11 +165,7 @@
             <tr>
                 <td>
                     <div class="feed-element">
-                        @*<a href="#" class="pull-left">
-                <img alt="image" class="img-circle" src="~/Images/a2.jpg">
-            </a>*@
-
-
+                    
                         <div class="media-body ">
                             <small class="pull-right"></small>
                             <strong>Nro de Requerimiento: @item.Id</strong><br>
@@ -321,7 +294,7 @@
         <div class="col-lg-3">
             <div class="wrapper wrapper-content project-manager">
                 <h4>Descripcion del proyecto</h4>
-                @*<img src="~/Images/zender_logo.png" class="img-responsive">*@
+             
                 <p class="small">
                     @Html.Raw(Model.Descripcion)
                 </p>
@@ -340,15 +313,9 @@
 
     <ul class="list-unstyled project-files">
         <li><a href="/Mensajes/Descarga/?p=@(item.Id + item.Extension)&d=@item.Nombre"><i class="fa fa-file"></i> @item.Nombre</a></li>
-        @*<li><a href=""><i class="fa fa-file-picture-o"></i> Logo_zender_company.jpg</a></li>
-        <li><a href=""><i class="fa fa-stack-exchange"></i> Email_from_Alex.mln</a></li>
-        <li><a href=""><i class="fa fa-file"></i> Contract_20_11_2014.docx</a></li>*@
+       
     </ul>
-    @*<div class="text-center m-t-md">
-        <a href="#" class="btn btn-xs btn-primary">Add files</a>
-        <a href="#" class="btn btn-xs btn-primary">Report contact</a>
-    </div>*@
-
+ 
 }
             </div>
         </div>

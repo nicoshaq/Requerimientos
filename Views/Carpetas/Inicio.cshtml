@@ -191,58 +191,12 @@
                 <div class="ibox-content">
                     <input type="button" class="btn btn-primary btn-w-m pull-right" value="Nueva Carpeta" onclick="location.href='@Url.Action("Create", "Carpetas")'" />
 
-                    @*@using (Html.BeginForm())
-                        {
-                            <div class="form-group form-inline" id="data_5">
-
-                                <div class="input-daterange input-group" id="datepicker">
-                                    <input type="text" id="comienzo" class="input-sm form-control" name="start" placeholder="Fecha desde" />
-                                    <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" id="final" class="input-sm form-control" name="end" placeholder="fecha hasta" />
-
-                                </div>
-                                <div class="btn-group">
-
-                                    <input type="submit" value="Filtrar" class="btn btn-primary" id="btngetdata">
-                                </div>
-                                <a href="/ImportarExcel/Index" id="submitButton1" class="btn btn-primary subir">Importar Reporte</a>
-                            </div>
-
-                        }*@
-
-                    @*<form class='filter-form form-inline'>
-                            <h3>Filtros</h3>
-                            <div class="form-group">
-                                <label>Subtipo :</label>
-                                <input type='text' value='' class='filter'>
-                                <label>Id Externo :</label>
-                                <input type='text' value='' class='filter2'>
-                                <label>Area:</label>
-                                <input type='text' value='' class='filter3'>
-                            </div>
-                        </form>*@
-
                     <div class="ibox-content">
                         <form role="form" class="form-inline">
                             <div class="form-group">
                                 <label for="exampleInputEmail2" class="sr-only">Email address</label>
                                 <input type="email" placeholder="Carpetas" id="exampleInputEmail2" class="form-control filter">
                             </div>
-
-                            @*<div class="form-group">
-                                    <label for="exampleInputEmail2" class="sr-only">Email address</label>
-                                    <input type="email" placeholder="Id Externo" id="exampleInputEmail2" class="form-control filter2">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputEmail2" class="sr-only">Email address</label>
-                                    <input type="email" placeholder="Area" id="exampleInputEmail2" class="form-control filter3">
-                                </div>*@
-
-
-
-
-
                         </form>
 
 
@@ -263,10 +217,6 @@
                                 <th>
                                     Creado por
                                 </th>
-
-                                @*<th>
-                                    Color
-                                </th>*@
 
                                 <th>
                                     Acciones
@@ -291,21 +241,11 @@
                                         @Html.DisplayFor(modelItem => item.Usuarios.Usuario)
                                     </td>
 
-                                    @*<td style="color:#fff; background-color: @Html.DisplayFor(modelItem => item.color)">
-                                        @Html.DisplayFor(modelItem => item.color)
-                                    </td>*@
-
+                                 
 
                                     <td>
-                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Idestado }) |
-                                            @Html.ActionLink("Details", "Details", new { id = item.Idestado }) |*@
-                                        @*@Html.ActionLink("Delete", "Delete", new {id = item.Id})|*@
                                         <button class="btn btn-warning btn-sm demo3" data-toggle="modal" data-target="#myModal6" alt="Borrar Carpeta">Eliminar</button>
-                                        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal6">
-                                            Small Modal
-                                        </button>*@
-                                        @*<img class="deleteUser" src="@Url.Content("~/Content/Images/bin.png")" alt="Borrar usuario" id="@item.Idestado" />*@
-                                    </td>
+                                      </td>
 
                                 </tr>
 
@@ -324,18 +264,8 @@
                                                 <span>
                                                     <p  class="alerta_descripcion" style="display: block; text-align: center;">Va a eliminar una carpeta contenedor de mensajes!</p>
                                                 </span>
-                                                @*<div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                                                    <span class="sa-body pulseWarningIns"></span>
-                                                    <span class="sa-dot pulseWarningIns"></span>
-                                                </div>*@
-
-                                            </div>
+                                               </div>
                                             <div class="modal-footer">
-
-
-
-
-                                                @*<input type="button" class="btn btn-primary" value="Eliminar" onclick="location.href = '@Url.Action("borrar", "Carpetas", new {id = item.Id})'"/>*@
                                                 <button type="button" class="btn btn-white" data-dismiss="modal">Cancelar</button>
                                                 <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("borrar", "Carpetas", new {id = item.Id})'">Eliminar</button>
                                             </div>
@@ -346,17 +276,14 @@
                             }
                         </tbody>
 
-                    </table>@*@Html.ActionLink("Create New", "Create")*@
+                    </table>
                   
                     <br />
                     <div>
-
-                        @*<input type="button" id="importPermissions2" name="importPermissions2" value="Import Permissions" onclick="location.href='@Url.Action("PermissionsImport", "Admin")'" />*@
-                        <br />
+                    <br />
                     </div>
 
                     <br />
-                    @*@Html.ActionLink("Go to Roles", "RolIndex", "Admin")*@
                     
                 </div>
             </div>
@@ -434,53 +361,7 @@
         $(document).ready(function () {
 
 
-            //$(function () {
-            //    var displayMessage = function (message, msgType) {
-            //        toastr.options = {
-            //            "closeButton": true,
-            //            "debug": false,
-            //            "newestOnTop": false,
-            //            "progressBar": true,
-            //            "positionClass": "toast-top-right",
-            //            "preventDuplicates": false,
-            //            "onclick": null,
-            //            "showDuration": "300",
-            //            "hideDuration": "1000",
-            //            "timeOut": "5000",
-            //            "extendedTimeOut": "1000",
-            //            "showEasing": "swing",
-            //            "hideEasing": "linear",
-            //            "showMethod": "fadeIn",
-            //            "hideMethod": "fadeOut"
-            //        };
-            //        toastr[msgType](message);
-            //    };
-
-            //    if ($('#success').val()) {
-            //        displayMessage($('#success').val(), 'success');
-            //    }
-            //    if ($('#info').val()) {
-            //        displayMessage($('#info').val(), 'info');
-            //    }
-            //    if ($('#warning').val()) {
-            //        displayMessage($('#warning').val(), 'warning');
-            //    }
-            //    if ($('#error').val()) {
-            //        displayMessage($('#error').val(), 'error');
-            //    }
-            //});
-
-
-
-
-
-
-
-
-
-
-
-
+          
             $('#data_1 .input-group.date').datepicker({
                 todayBtn: "linked",
                 keyboardNavigation: false,

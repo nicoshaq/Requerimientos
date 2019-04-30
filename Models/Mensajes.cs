@@ -33,40 +33,58 @@ namespace Requerimientos.Models
         public Nullable<System.DateTime> Fecha { get; set; }
         public string Status { get; set; }
         public string Estado { get; set; }
-        //[Required(ErrorMessage = "El destinatario es requerido")]
         public Nullable<int> Idusuariodestino { get; set; }
         public string Maildestino { get; set; }
         public string Destinatario { get; set; }
         public string Email { get; set; }
         public Nullable<int> Idpadre { get; set; }
-        [Required(ErrorMessage = "El Asunto es requerido")]
         public Nullable<int> Idproyecto { get; set; }
         public Nullable<int> Idusuariodelega { get; set; }
         public string Usuariodelega { get; set; }
         public Nullable<int> Idestado { get; set; }
         public Nullable<int> IdCarpeta { get; set; }
+        [MaxLength(50, ErrorMessage = "La Prioridad es demasiado larga")]
         public string Prioridad { get; set; }
+        [MaxLength(50, ErrorMessage = "La Naturaleza es demasiado larga")]
         public string Naturaleza { get; set; }
         public string Descripcion { get; set; }
         public string Objetivo { get; set; }
         public string Alcance { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Func1 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Func2 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Func3 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Func4 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Func5 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Func6 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Impresa1 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Impresa2 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Impresa3 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Pantalla1 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Pantalla2 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Pantalla3 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Porarchivo1 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Porarchivo2 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Porarchivo3 { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Ventaja { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Arearelacion { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
         public string Afectado { get; set; }
         public string Fechadeseada { get; set; }
         public string Normas { get; set; }
@@ -128,6 +146,7 @@ namespace Requerimientos.Models
         public bool Nuevarch1 { get; set; }
         public bool Nuevarch2 { get; set; }
         public bool Nuevarch3 { get; set; }
+        public Nullable<int> Idearea { get; set; }
 
         public bool Enviamail { get; set; }
 

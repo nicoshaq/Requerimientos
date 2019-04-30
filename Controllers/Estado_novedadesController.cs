@@ -60,7 +60,16 @@ namespace Requerimientos.Controllers
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             if (ModelState.IsValid)
             {
+
+                var query = db.Usuarios.Include(p => p.Area).AsQueryable();
+                    query = query.Where(r => r.User_Id == idusuario);
+
+
+                 int Idareanovedad = Convert.ToInt32(query.FirstOrDefault().Idarea);
+               
+
                 estado_novedades.color = mycolor;
+                estado_novedades.Idearea = Idareanovedad;
                 estado_novedades.idusuario = idusuario;
                 db.Estado_novedades.Add(estado_novedades);
                 db.SaveChanges();
