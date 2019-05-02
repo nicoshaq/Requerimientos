@@ -142,22 +142,13 @@
                     </ul>
                 </li>
 
-                <li class="dropdown">
+                @*<li class="dropdown">
                     <a aria-expanded="true" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">Novedades <span class="caret"></span></a>
                     <ul role="menu" class="dropdown-menu">
                         <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "Novedades")">Novedades</a></li>
-                        @*@{
-                if (ViewContext.Controller.HasRole("Suscriptor") || ViewContext.Controller.HasRole("Administrador"))
-                {*@
-
-
-
-                        @*<li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Novedades")">Crear Novedad</a></li>*@
-                        @*<li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "Mensajes")">Nuevo mensaje</a></li>*@
-
-                        @*} }*@
+                       
                     </ul>
-                </li>
+                </li>*@
 
 @*@if (ViewContext.Controller.HasRoles("sAsASAsSsSs") || ViewContext.Controller.HasRoles("Suscriptor"))
 {*@
