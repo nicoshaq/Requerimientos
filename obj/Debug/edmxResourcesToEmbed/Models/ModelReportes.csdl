@@ -202,7 +202,7 @@
     <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Novedades_Usuarios" FromRole="Novedades" ToRole="Usuarios" />
     <Property Name="Privado" Type="Boolean" />
     <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Novedades" ToRole="Mensajes" />
-    <Property Name="Idearea" Type="Int32" />
+    <Property Name="Idarea" Type="Int32" />
   </EntityType>
   <Association Name="FK_Archivos_Novedades">
     <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="0..1" />
@@ -234,7 +234,7 @@
     <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Proyectos" FromRole="Proyectos" ToRole="Archivos" />
     <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Proyectos" FromRole="Proyectos" ToRole="HistorialDelega" />
     <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Proyectos" ToRole="Mensajes" />
-    <Property Name="Idearea" Type="Int32" />
+    <Property Name="Idarea" Type="Int32" />
   </EntityType>
   <Association Name="FK_Proyectos_Usuarios">
     <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
@@ -302,7 +302,7 @@
     <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_novedades_Usuarios" FromRole="Estado_novedades" ToRole="Usuarios" />
     <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Estado_novedades" FromRole="Estado_novedades" ToRole="Novedades" />
     <Property Name="color" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-    <Property Name="Idearea" Type="Int32" />
+    <Property Name="Idarea" Type="Int32" />
   </EntityType>
   <EntityType Name="Estado_requerimiento">
     <Key>
@@ -314,7 +314,7 @@
     <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_requerimiento_Usuarios" FromRole="Estado_requerimiento" ToRole="Usuarios" />
     <Property Name="color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Estado_requerimiento" ToRole="Mensajes" />
-    <Property Name="Idearea" Type="Int32" />
+    <Property Name="Idarea" Type="Int32" />
   </EntityType>
   <Association Name="FK_Estado_novedades_Usuarios">
     <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
@@ -523,7 +523,8 @@
     <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Mensajes" ToRole="Proyectos" />
     <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Mensajes" ToRole="Usuarios" />
     <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Mensajes" ToRole="Novedades" />
-    <Property Name="Idearea" Type="Int32" />
+    <Property Name="Idarea" Type="Int32" />
+    <Property Name="Estadodelegado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Archivos_Mensajes">
     <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />

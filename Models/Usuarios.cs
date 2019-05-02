@@ -44,9 +44,10 @@ namespace Requerimientos.Models
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "El Email no es válido")]
         public string EMail { get; set; }
         public Nullable<int> Idproyectos { get; set; }
-        [Required(ErrorMessage = "El area es requerido")]
         public Nullable<int> Idarea { get; set; }
-    
+
+   
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ROLES> ROLES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -43,56 +43,67 @@ namespace Requerimientos.Models
         public string Usuariodelega { get; set; }
         public Nullable<int> Idestado { get; set; }
         public Nullable<int> IdCarpeta { get; set; }
-        [MaxLength(50, ErrorMessage = "La Prioridad es demasiado larga")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Prioridad { get; set; }
-        [MaxLength(50, ErrorMessage = "La Naturaleza es demasiado larga")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Naturaleza { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Descripcion { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Objetivo { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Alcance { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Func1 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Func2 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Func3 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Func4 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Func5 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Func6 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Impresa1 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Impresa2 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Impresa3 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Pantalla1 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Pantalla2 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Pantalla3 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Porarchivo1 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Porarchivo2 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Porarchivo3 { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Ventaja { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Arearelacion { get; set; }
-        [MaxLength(50, ErrorMessage = "El campo es demasiado largo")]
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Afectado { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Fechadeseada { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Normas { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Docadjunta { get; set; }
+
         public string Area1 { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Area2 { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Area3 { get; set; }
+        [MaxLength(100, ErrorMessage = "El campo es demasiado largo")]
         public string Gerente1 { get; set; }
+
         public string Gerente2 { get; set; }
         public string Gerente3 { get; set; }
         public string Firma1 { get; set; }
@@ -146,10 +157,9 @@ namespace Requerimientos.Models
         public bool Nuevarch1 { get; set; }
         public bool Nuevarch2 { get; set; }
         public bool Nuevarch3 { get; set; }
-        public Nullable<int> Idearea { get; set; }
-
+        public Nullable<int> Idarea { get; set; }
+        public string Estadodelegado { get; set; }
         public bool Enviamail { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archivos> Archivos { get; set; }
         public virtual Carpetas Carpetas { get; set; }

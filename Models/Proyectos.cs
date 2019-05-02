@@ -30,14 +30,13 @@ namespace Requerimientos.Models
         public string Titulo { get; set; }
         public string Creadopor { get; set; }
         public Nullable<int> Idmensaje { get; set; }
-        [Required(ErrorMessage = "El nombre es requerido")]
-        //[MaxLength(100, ErrorMessage = "El nombre es demasiado largo")]
+        [Required(ErrorMessage = "La descripcion es requerida")]
         public string Descripcion { get; set; }
         public Nullable<int> User_Id { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<System.DateTime> Fechamodif { get; set; }
         public string Estado { get; set; }
-        public Nullable<int> Idearea { get; set; }
+        public Nullable<int> Idarea { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -86,6 +86,22 @@ namespace Requerimientos.Models
             query = query.OrderByDescending(r => r.Fecha);
 
 
+           ViewBag.delegar = idusuario;
+
+            var hola = db.Mensajes.Select(r => r.Idusuariodelega == idusuario && r.Estadodelegado == "Noleido");
+
+            //if (hola == 0)
+            //{
+            //    ViewData["delegar"] = "delegado";
+            //}
+            //else
+            //{
+            //    ViewData["delegar"] = "nodelegado";
+
+            //}
+
+
+
             return View(query.ToList());
 
 
@@ -360,7 +376,7 @@ namespace Requerimientos.Models
                                     };
                     foreach (var c in query_ne1)
                     {
-                        support.Idearea = c.Idarea;
+                        support.Idarea = c.Idarea;
                         support.Destinatario = c.Nombre;
                         support.Idusuariodestino = c.User_Id;
                         support.Maildestino = c.EMail;
@@ -537,6 +553,15 @@ namespace Requerimientos.Models
            
             if (mensajes.Estado == "leido")
             {
+
+                if (mensajes.Estadodelegado == "Noleido" && mensajes.Idusuariodelega == idusuario)
+                {
+                    mensajes.Estadodelegado = "leido";
+                    db.Entry(mensajes).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+
                 return View(mensajes);
 
             }
@@ -549,8 +574,10 @@ namespace Requerimientos.Models
             }
 
           
-          
-           
+
+
+
+
             return View(mensajes);
         }
 
@@ -599,6 +626,7 @@ namespace Requerimientos.Models
                     {
                             txtTo = c.EMail;
                             support.Usuariodelega = c.Nombre;
+                            support.Estadodelegado = "Noleido";
                         TempData["success"] = "Ha delegado el mensaje a " + c.Nombre;
                         support.Idusuariodelega = userdelega;
                             log.Info("la delegacion de usuario se realizo con exito");

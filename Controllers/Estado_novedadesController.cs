@@ -69,7 +69,7 @@ namespace Requerimientos.Controllers
                
 
                 estado_novedades.color = mycolor;
-                estado_novedades.Idearea = Idareanovedad;
+                estado_novedades.Idarea = Idareanovedad;
                 estado_novedades.idusuario = idusuario;
                 db.Estado_novedades.Add(estado_novedades);
                 db.SaveChanges();

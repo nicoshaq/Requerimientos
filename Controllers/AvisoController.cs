@@ -23,17 +23,18 @@ namespace Requerimientos.Controllers
           
             var query = db.Mensajes.AsQueryable();           
             query = query.Where(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
-            query = query.Where(r => r.Estado == "Noleido");
+            query = query.Where(r => r.Estado == "Noleido" || (r.Estadodelegado == "Noleido"  && r.Idusuariodelega == idusuario));
             query = query.OrderByDescending(r => r.Fecha);
 
-            
+
             int count = (from row in db.Mensajes
-                         where row.Estado == "Noleido" && row.Idusuariodestino == idusuario 
+                         where (row.Estado == "Noleido" && row.Idusuariodestino == idusuario) ||  (row.Estadodelegado == "Noleido" && row.Idusuariodelega == idusuario)
                          select row).Count();
 
             ViewData["sinleer"] = count;
 
-            
+            ViewBag.delegar = idusuario;
+
             return PartialView(query.Take(5));
         }
     }

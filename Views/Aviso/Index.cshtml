@@ -55,7 +55,7 @@
                                 <small class="pull-right">@Html.DisplayFor(modelItem => item.Fecha)</small>
                                 <strong>@Html.DisplayFor(modelItem => item.Usuarios.Nombre)</strong><br />
                                 
-@if (item.Idusuariodelega == item.Usuarios.User_Id)
+@if (item.Estadodelegado == "Noleido" && item.Idusuariodelega == ViewBag.delegar)
 {
     <span>te delegó el requerimiento</span>
 

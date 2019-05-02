@@ -37,7 +37,7 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="150" />
     <Property Name="idusuario" Type="int" />
     <Property Name="color" Type="varchar" MaxLength="10" />
-    <Property Name="Idearea" Type="int" />
+    <Property Name="Idarea" Type="int" />
   </EntityType>
   <EntityType Name="Estado_requerimiento">
     <Key>
@@ -47,7 +47,7 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="150" />
     <Property Name="idusuario" Type="int" />
     <Property Name="color" Type="varchar" MaxLength="10" />
-    <Property Name="Idearea" Type="int" />
+    <Property Name="Idarea" Type="int" />
   </EntityType>
   <EntityType Name="HistorialDelega">
     <Key>
@@ -180,7 +180,8 @@
     <Property Name="Nuevarch1" Type="bit" Nullable="false" />
     <Property Name="Nuevarch2" Type="bit" Nullable="false" />
     <Property Name="Nuevarch3" Type="bit" Nullable="false" />
-    <Property Name="Idearea" Type="int" />
+    <Property Name="Idarea" Type="int" />
+    <Property Name="Estadodelegado" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Novedades">
     <Key>
@@ -197,7 +198,7 @@
     <Property Name="Idestadonovedad" Type="int" />
     <Property Name="User_Id" Type="int" />
     <Property Name="Privado" Type="bit" />
-    <Property Name="Idearea" Type="int" />
+    <Property Name="Idarea" Type="int" />
   </EntityType>
   <EntityType Name="Permisos">
     <Key>
@@ -219,7 +220,7 @@
     <Property Name="Fecha" Type="datetime" />
     <Property Name="Fechamodif" Type="datetime" />
     <Property Name="Estado" Type="varchar" MaxLength="50" />
-    <Property Name="Idearea" Type="int" />
+    <Property Name="Idarea" Type="int" />
   </EntityType>
   <EntityType Name="ROLES">
     <Key>

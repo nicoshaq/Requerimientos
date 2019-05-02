@@ -22,8 +22,8 @@ namespace Requerimientos.Models
         }
     
         public int Id { get; set; }
-        [Required(ErrorMessage = "El Nombre es requerido")]
-        [MaxLength(100, ErrorMessage = "El Nombre es demasiado largo")]
+        [Required(ErrorMessage = "El nombre es requerido")]
+        [MaxLength(100, ErrorMessage = "El nombre es demasiado largo")]
         public string Nombre { get; set; }
         public Nullable<int> User_Id { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }

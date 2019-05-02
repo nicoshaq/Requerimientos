@@ -70,7 +70,7 @@
     <EntitySetMapping Name="Novedades">
       <EntityTypeMapping TypeName="pruebaModel.Novedades">
         <MappingFragment StoreEntitySet="Novedades">
-          <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
           <ScalarProperty Name="Privado" ColumnName="Privado" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="Idestadonovedad" ColumnName="Idestadonovedad" />
@@ -88,7 +88,7 @@
     <EntitySetMapping Name="Proyectos">
       <EntityTypeMapping TypeName="pruebaModel.Proyectos">
         <MappingFragment StoreEntitySet="Proyectos">
-          <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fechamodif" ColumnName="Fechamodif" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -112,7 +112,7 @@
     <EntitySetMapping Name="Estado_novedades">
       <EntityTypeMapping TypeName="pruebaModel.Estado_novedades">
         <MappingFragment StoreEntitySet="Estado_novedades">
-          <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
           <ScalarProperty Name="color" ColumnName="color" />
           <ScalarProperty Name="idusuario" ColumnName="idusuario" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -123,7 +123,7 @@
     <EntitySetMapping Name="Estado_requerimiento">
       <EntityTypeMapping TypeName="pruebaModel.Estado_requerimiento">
         <MappingFragment StoreEntitySet="Estado_requerimiento">
-          <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
           <ScalarProperty Name="color" ColumnName="color" />
           <ScalarProperty Name="idusuario" ColumnName="idusuario" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -157,7 +157,8 @@
     <EntitySetMapping Name="Mensajes">
       <EntityTypeMapping TypeName="pruebaModel.Mensajes">
         <MappingFragment StoreEntitySet="Mensajes">
-          <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+          <ScalarProperty Name="Estadodelegado" ColumnName="Estadodelegado" />
+          <ScalarProperty Name="Idarea" ColumnName="Idarea" />
           <ScalarProperty Name="Nuevarch3" ColumnName="Nuevarch3" />
           <ScalarProperty Name="Nuevarch2" ColumnName="Nuevarch2" />
           <ScalarProperty Name="Nuevarch1" ColumnName="Nuevarch1" />

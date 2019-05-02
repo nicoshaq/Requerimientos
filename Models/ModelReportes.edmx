@@ -42,7 +42,7 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="150" />
           <Property Name="idusuario" Type="int" />
           <Property Name="color" Type="varchar" MaxLength="10" />
-          <Property Name="Idearea" Type="int" />
+          <Property Name="Idarea" Type="int" />
         </EntityType>
         <EntityType Name="Estado_requerimiento">
           <Key>
@@ -52,7 +52,7 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="150" />
           <Property Name="idusuario" Type="int" />
           <Property Name="color" Type="varchar" MaxLength="10" />
-          <Property Name="Idearea" Type="int" />
+          <Property Name="Idarea" Type="int" />
         </EntityType>
         <EntityType Name="HistorialDelega">
           <Key>
@@ -185,7 +185,8 @@
           <Property Name="Nuevarch1" Type="bit" Nullable="false" />
           <Property Name="Nuevarch2" Type="bit" Nullable="false" />
           <Property Name="Nuevarch3" Type="bit" Nullable="false" />
-          <Property Name="Idearea" Type="int" />
+          <Property Name="Idarea" Type="int" />
+          <Property Name="Estadodelegado" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Novedades">
           <Key>
@@ -202,7 +203,7 @@
           <Property Name="Idestadonovedad" Type="int" />
           <Property Name="User_Id" Type="int" />
           <Property Name="Privado" Type="bit" />
-          <Property Name="Idearea" Type="int" />
+          <Property Name="Idarea" Type="int" />
         </EntityType>
         <EntityType Name="Permisos">
           <Key>
@@ -224,7 +225,7 @@
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Fechamodif" Type="datetime" />
           <Property Name="Estado" Type="varchar" MaxLength="50" />
-          <Property Name="Idearea" Type="int" />
+          <Property Name="Idarea" Type="int" />
         </EntityType>
         <EntityType Name="ROLES">
           <Key>
@@ -823,7 +824,8 @@
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Novedades_Usuarios" FromRole="Novedades" ToRole="Usuarios" />
           <Property Name="Privado" Type="Boolean" />
           <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Novedades" ToRole="Mensajes" />
-          <Property Name="Idearea" Type="Int32" />
+         
+          <Property Name="Idarea" Type="Int32" />
         </EntityType>
         <Association Name="FK_Archivos_Novedades">
           <End Type="pruebaModel.Novedades" Role="Novedades" Multiplicity="0..1" />
@@ -855,7 +857,8 @@
           <NavigationProperty Name="Archivos" Relationship="pruebaModel.FK_Archivos_Proyectos" FromRole="Proyectos" ToRole="Archivos" />
           <NavigationProperty Name="HistorialDelega" Relationship="pruebaModel.FK_HistorialDelega_Proyectos" FromRole="Proyectos" ToRole="HistorialDelega" />
           <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Proyectos" ToRole="Mensajes" />
-          <Property Name="Idearea" Type="Int32" />
+         
+          <Property Name="Idarea" Type="Int32" />
         </EntityType>
         <Association Name="FK_Proyectos_Usuarios">
           <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
@@ -923,7 +926,8 @@
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_novedades_Usuarios" FromRole="Estado_novedades" ToRole="Usuarios" />
           <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Estado_novedades" FromRole="Estado_novedades" ToRole="Novedades" />
           <Property Name="color" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="Idearea" Type="Int32" />
+          
+          <Property Name="Idarea" Type="Int32" />
         </EntityType>
         <EntityType Name="Estado_requerimiento">
           <Key>
@@ -935,7 +939,8 @@
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Estado_requerimiento_Usuarios" FromRole="Estado_requerimiento" ToRole="Usuarios" />
           <Property Name="color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Mensajes" Relationship="pruebaModel.FK_Mensajes_Estado_requerimiento" FromRole="Estado_requerimiento" ToRole="Mensajes" />
-          <Property Name="Idearea" Type="Int32" />
+        
+          <Property Name="Idarea" Type="Int32" />
         </EntityType>
         <Association Name="FK_Estado_novedades_Usuarios">
           <End Type="pruebaModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
@@ -1144,7 +1149,8 @@
           <NavigationProperty Name="Proyectos" Relationship="pruebaModel.FK_Mensajes_Proyectos" FromRole="Mensajes" ToRole="Proyectos" />
           <NavigationProperty Name="Usuarios" Relationship="pruebaModel.FK_Mensajes_Usuarios" FromRole="Mensajes" ToRole="Usuarios" />
           <NavigationProperty Name="Novedades" Relationship="pruebaModel.FK_Novedades_Mensajes" FromRole="Mensajes" ToRole="Novedades" />
-          <Property Name="Idearea" Type="Int32" />
+          <Property Name="Idarea" Type="Int32" />
+          <Property Name="Estadodelegado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Archivos_Mensajes">
           <End Type="pruebaModel.Mensajes" Role="Mensajes" Multiplicity="0..1" />
@@ -1305,7 +1311,7 @@
           <EntitySetMapping Name="Novedades">
             <EntityTypeMapping TypeName="pruebaModel.Novedades">
               <MappingFragment StoreEntitySet="Novedades">
-                <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
                 <ScalarProperty Name="Privado" ColumnName="Privado" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Idestadonovedad" ColumnName="Idestadonovedad" />
@@ -1323,7 +1329,7 @@
           <EntitySetMapping Name="Proyectos">
             <EntityTypeMapping TypeName="pruebaModel.Proyectos">
               <MappingFragment StoreEntitySet="Proyectos">
-                <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fechamodif" ColumnName="Fechamodif" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
@@ -1347,7 +1353,7 @@
           <EntitySetMapping Name="Estado_novedades">
             <EntityTypeMapping TypeName="pruebaModel.Estado_novedades">
               <MappingFragment StoreEntitySet="Estado_novedades">
-                <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="idusuario" ColumnName="idusuario" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -1358,7 +1364,7 @@
           <EntitySetMapping Name="Estado_requerimiento">
             <EntityTypeMapping TypeName="pruebaModel.Estado_requerimiento">
               <MappingFragment StoreEntitySet="Estado_requerimiento">
-                <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="idusuario" ColumnName="idusuario" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -1392,7 +1398,8 @@
           <EntitySetMapping Name="Mensajes">
             <EntityTypeMapping TypeName="pruebaModel.Mensajes">
               <MappingFragment StoreEntitySet="Mensajes">
-                <ScalarProperty Name="Idearea" ColumnName="Idearea" />
+                <ScalarProperty Name="Estadodelegado" ColumnName="Estadodelegado" />
+                <ScalarProperty Name="Idarea" ColumnName="Idarea" />
                 <ScalarProperty Name="Nuevarch3" ColumnName="Nuevarch3" />
                 <ScalarProperty Name="Nuevarch2" ColumnName="Nuevarch2" />
                 <ScalarProperty Name="Nuevarch1" ColumnName="Nuevarch1" />

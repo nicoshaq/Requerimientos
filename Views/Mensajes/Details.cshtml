@@ -159,7 +159,7 @@
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
                  
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">
+                    <button data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> cargando" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">
                         Usuarios delegados
                     </button>
                     @if (ViewBag.estadodos == false)
@@ -192,7 +192,9 @@
                     <h5>
                         <span class="pull-right font-normal">@Html.DisplayFor(model => model.Fecha)</span>
 
-                        <span class="font-normal">De: </span>@Html.DisplayFor(model => model.Remitente)
+                        <span class="font-normal">De: </span>@Html.DisplayFor(model => model.Usuarios.Nombre) 
+                        @*<span class="font-normal">Usuario: </span>@Html.DisplayFor(model => model.Remitente)*@ 
+                        
 
 
 

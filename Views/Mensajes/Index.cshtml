@@ -35,6 +35,14 @@
   font-weight: 600;
   color: inherit;
 }
+    .nodelegado td a,
+    .nodelegado td {
+        font-weight: 600;
+        color: inherit;
+    }
+
+
+
 .leido td a,
 .leido td {
   font-weight: normal;
@@ -44,6 +52,11 @@
   background-color: #e6e6e6;
   color: black;
 }
+
+    .nodelegado td {
+        background-color: #e6e6e6;
+        color: black;
+    }
 
 .footable-odd {
     background-color: #ffffff;
@@ -193,15 +206,15 @@
                 <br />
                 <br/>
 
-
+               
                 <b> @ViewData["Fechas"]</b>
                 <table class="table footable table-hover table-stripped" data-page-size="20" data-filter=#filter>
 
                     <tr style="background-color: #1ab394; color: #FFFFFF;">
                         <th class="text-center"></th>
-                        <th>
+                        @*<th>
                             Identificador
-                        </th>
+                        </th>*@
                         <th>
                             Remitente
                         </th>
@@ -230,8 +243,18 @@
                     {
                         <tbody>
 
+                            @if (item.Estadodelegado=="Noleido" && item.Idusuariodelega == ViewBag.delegar)
+                            {
+                                ViewBag.hola = "nodelegado";
+                            }
+                            else
+                            {
+                                ViewBag.hola = "delegado";
 
-                        <tr class="@Html.DisplayFor(modelItem => item.Estado)">
+                            }
+
+
+                        <tr class="@Html.DisplayFor(modelItem => item.Estado) @ViewBag.hola">
                          
                             <td class="check-mail">
 
@@ -240,7 +263,7 @@
 
                             </td>
 
-                            <td class="i-checks">@Html.DisplayFor(modelItem => item.Id)</td>
+                            @*<td class="i-checks">@Html.DisplayFor(modelItem => item.Id)</td>*@
                             <td><a href="@Url.Action("Details", "Mensajes", new {id = item.Id})">@Html.DisplayFor(modelItem => item.Usuarios.Nombre)</a></td>
                             <td class="mail-subject"><a href="@Url.Action("Details", "Mensajes", new {id = item.Id})">@Html.DisplayFor(modelItem => item.Asunto)</a></td>
                             <td><span style="background-color: @Html.DisplayFor(modelItem => item.Estado_requerimiento.color); color: #fff;" class="label">@Html.DisplayFor(modelItem => item.Estado_requerimiento.Descripcion)</span></td>

@@ -16,13 +16,13 @@ using log4net;
 namespace Requerimientos.Models
 {
     
-    // [RBAC]
+    [RBAC]
     public class AdminController : Controller
     {
         ILog log = LogManager.GetLogger(typeof(AdminController));
         string userName = System.Web.HttpContext.Current.Request.LogonUserIdentity.Name;
         private RequerimientosConn database = new RequerimientosConn();
-        private int? idearea;
+        private int? idarea;
         private int? areas;
 
         #region USERS
@@ -109,7 +109,7 @@ namespace Requerimientos.Models
 
                         if (ModelState.IsValid)
                         {
-                            _user.Idarea = idearea;
+                            _user.Idarea = idarea;
                             _user.Inactivo = false;
                             _user.Modificado = System.DateTime.Now;
 

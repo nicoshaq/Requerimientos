@@ -64,7 +64,7 @@ namespace Requerimientos.Controllers
                 query = query.Where(r => r.User_Id == idusuario);
                 int Idarearequerimiento = Convert.ToInt32(query.FirstOrDefault().Idarea);
 
-                estado_requerimiento.Idearea = Idarearequerimiento;
+                estado_requerimiento.Idarea = Idarearequerimiento;
                 estado_requerimiento.color = mycolor;
                 estado_requerimiento.idusuario = idusuario;
                 db.Estado_requerimiento.Add(estado_requerimiento);

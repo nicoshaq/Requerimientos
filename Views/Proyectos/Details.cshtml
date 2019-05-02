@@ -141,6 +141,7 @@
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#tab-1" data-toggle="tab">Requerimientos</a></li>
                                                 <li class=""><a href="#tab-2" data-toggle="tab">Novedades</a></li>
+                                                @*<li class=""><a href="#tab-3" data-toggle="tab">Usuarios</a></li>*@
                                             </ul>
                                         </div>
                                     </div>
@@ -265,6 +266,74 @@
 
                                                             </tr>
                                                         }
+
+
+
+
+
+
+
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="10">
+                                                                <ul class="pagination pull-right"></ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+
+
+
+
+                                            <div class="tab-pane" id="tab-3">
+                                                <table class="table footable table-hover table-stripped" data-page-size="11" data-filter=#filter>
+                                                    <thead>
+                                                        <tr>
+                                                            @*<th>Estado</th>*@
+                                                            <th>Titulo</th>
+                                                            <th>Fecha</th>
+                                                            @*<th>Usuario</th>
+                                                            <th>Comentario</th>
+                                                            <th>Requerimiento</th>*@
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                        @*@foreach (var item in Model.Mensajes)
+                                                        {*@
+
+
+                                                            <tr>
+                                                                @*<td>
+                                                                    <span style="background-color: @Html.DisplayFor(modelItem => item.Usuarios.color); color:#fff;" class="label pull-right"><i class="fa fa-check"></i>@Html.DisplayFor(modelItem => item.Estado_novedades.Descripcion)</span>
+                                                                </td>*@
+                                                                <td>
+                                                                    @Html.DisplayFor(model => model.Usuarios.Nombre)
+                                                                </td>
+                                                                <td>
+                                                                   @Html.DisplayFor(model => model.Titulo)
+                                                                </td>
+                                                                @*<td>
+                                                                    @item.Usuario
+                                                                </td>
+                                                                <td>
+                                                                    <p class="small">
+                                                                        @Html.Raw(item.Descripcion)
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="small">
+                                                                        @Html.Raw(item.Mensajes.Asunto)
+                                                                    </p>
+                                                                </td>*@
+
+
+
+                                                            </tr>
+                                                        
 
 
 
