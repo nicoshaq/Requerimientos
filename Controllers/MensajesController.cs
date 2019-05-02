@@ -1640,7 +1640,7 @@ namespace Requerimientos.Models
 
                 smtp.Credentials = NetworkCred;
 
-                smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); 
+                //smtp.Port = int.Parse(ConfigurationManager.AppSettings["Port"]); 
 
                 smtp.Send(mailMessage);
 
