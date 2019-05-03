@@ -66,7 +66,7 @@ namespace Requerimientos.Models
         idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             ViewData["contarmensajeentrada"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
 
-            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
+            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario && r.User_Id == idusuario);
 
 
             ViewData["Aceptado"] = db.Mensajes.Count(r => r.Status == "Aceptado");
@@ -182,8 +182,7 @@ namespace Requerimientos.Models
                         db.Mensajes.Include(m => m.Usuarios)
                             .Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
 
-                    ViewData["contarmensajesalida"] =
-                        db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
+                    ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario && r.User_Id == idusuario);
 
                     ViewData["Aceptado"] = db.Mensajes.Count(r => r.Status == "Aceptado");
                     ViewData["Rechazado"] = db.Mensajes.Count(r => r.Status == "Rechazado");
@@ -404,7 +403,7 @@ namespace Requerimientos.Models
                     support.IdCarpeta = 1;
                     support.Idproyecto = Idproyecto;
                     support.Fecha = DateTime.Now;
-                    support.User_Id = User_Id; //new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
+                    support.User_Id = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
                     support.Remitente = new SUIUsuarios(HttpContext.User.Identity.Name).Usuario;
                     support.Estado = "Noleido";
 
@@ -728,7 +727,7 @@ namespace Requerimientos.Models
             idusuario = new SUIUsuarios(HttpContext.User.Identity.Name).User_Id;
             ViewData["contarmensajeentrada"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
 
-            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
+            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario && r.User_Id == idusuario);
 
 
             ViewData["Aceptado"] = db.Mensajes.Count(r => r.Status == "Aceptado");
@@ -741,7 +740,7 @@ namespace Requerimientos.Models
             var query = db.Mensajes.Include(p => p.Proyectos).AsQueryable();
             query = query.Where(r => r.Fecha >= fechainicio);
             query = query.Where(r => r.Fecha <= DateTime.Now);
-            query = query.Where(r => r.Idusuariodestino != idusuario);
+            query = query.Where(r => r.Idusuariodestino != idusuario && r.User_Id == idusuario);
             query = query.OrderByDescending(r => r.Fecha);
 
             return View(query.ToList());
@@ -759,7 +758,7 @@ namespace Requerimientos.Models
 
             ViewData["contarmensajeentrada"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino == idusuario || r.Idusuariodelega == idusuario);
 
-            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario);
+            ViewData["contarmensajesalida"] = db.Mensajes.Include(m => m.Usuarios).Count(r => r.Idusuariodestino != idusuario && r.User_Id == idusuario);
 
             ViewData["Aceptado"] = db.Mensajes.Count(r => r.Status == "Aceptado");
                     ViewData["Rechazado"] = db.Mensajes.Count(r => r.Status == "Rechazado");
@@ -800,7 +799,7 @@ namespace Requerimientos.Models
                     
                         query = query.Where(r => r.Fecha >= starter);
                         query = query.Where(r => r.Fecha <= ender);
-                query = query.Where(r => r.Idusuariodestino != idusuario);
+                query = query.Where(r => r.Idusuariodestino != idusuario && r.User_Id == idusuario);
                 query = query.OrderByDescending(r => r.Fecha);
                 
                         ViewData["Fechas"] = "Periodo entre: " + start + " y " + end;
